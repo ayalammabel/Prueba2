@@ -318,7 +318,7 @@
 
     // ------- Carga de datos -------
     async function loadData(){
-      const path = 'data/lenguaje.json?v=' + Date.now();
+      const path = 'lenguaje.json?v=' + Date.now();
       try{
         const res = await fetch(path);
         if(!res.ok) throw new Error('HTTP '+res.status);
