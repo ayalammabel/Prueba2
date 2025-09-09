@@ -57,7 +57,7 @@
   <header>
     <div class="wrap">
       <h1>Lenguaje controlado – Vista maestro‑detalle (jerárquica)</h1>
-      <div class="sub">Jerarquía: <strong>término padre → término hijo → subtermino → subtermino1</strong>. La definición del padre proviene de la fila con <code>termino_hijo = 0</code>. Para el resto, la definición se muestra <strong>solo en el último nivel disponible</strong>.</div>
+      <div class="sub">Jerarquía: <strong>término padre → término hijo → subtermino → subtermino1</strong>. La definición del padre proviene de la fila con <code>termino_hijo = 0</code>. Para el resto, la definición se muestra <strong>solo en el último nivel disponible</strong> (evitando títulos repetidos).</div>
       <div class="toolbar">
         <div class="badge"><span id="count">0</span> padres • <span id="fields">0</span> campos</div>
         <input id="q" type="text" placeholder="Buscar por padre/hijo/subtermino/definición…" />
@@ -222,9 +222,8 @@
                 body2.append(leaf);
               }
             } else {
-              // s es hoja
+              // s es hoja (el título ya está en el encabezado)
               const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
-              const leafTitle=document.createElement('h4'); leafTitle.textContent=s.name; leaf.append(leafTitle);
               if(s.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s.def; leaf.append(def); }
               const meta=document.createElement('div'); meta.className='meta';
               if(s.source) meta.append(Object.assign(document.createElement('span'),{textContent:s.source}));
