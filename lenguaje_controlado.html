@@ -3,382 +3,250 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lenguaje controlado – Visualización (con búsqueda y filtros)</title>
+  <title>Lenguaje controlado – Tarjetas</title>
   <style>
     :root {
-      --bg: #0b0f14;
-      --panel: #121821;
-      --muted: #8aa0b3;
-      --text: #e9eef3;
-      --accent: #4da3ff;
-      --ok: #37c297;
-      --warn: #ffb020;
-      --err: #ff5a5f;
-      --border: #1f2a38;
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --muted: #5f6c7b;
+      --text: #1b2430;
+      --accent: #6c5ce7; /* lila suave */
+      --border: #e5e9f2;
+      --shadow: 0 4px 12px rgba(27,36,48,.06);
     }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
-    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--text); }
-    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); background: linear-gradient(180deg, rgba(11,15,20,.95), rgba(11,15,20,.65)); border-bottom: 1px solid var(--border); }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial; background: var(--bg); color: var(--text); }
+
+    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); background: rgba(247,248,251,.8); border-bottom: 1px solid var(--border); }
     .wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
-    h1 { margin: 0; font-size: 20px; letter-spacing: .2px; }
-    .sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    h1 { margin: 0; font-size: 22px; letter-spacing: .2px; }
+    .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
 
     .toolbar { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; margin-top: 12px; }
-    .left { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-    .right { display: flex; gap: 8px; }
-    .badge { padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; }
-    .spacer { flex: 1; }
-    button, select, input[type="text"] { background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 14px; }
-    button { cursor: pointer; }
-    button:hover, select:hover, input[type="text"]:focus { border-color: var(--accent); outline: none; }
+    .badge { padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; background: #fff; }
+    input[type="text"] { background: #fff; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 14px; outline: none; box-shadow: var(--shadow); }
+    input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,92,231,.12); }
+    button { background: #fff; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 14px; cursor: pointer; box-shadow: var(--shadow); }
+    button:hover { border-color: var(--accent); }
 
-    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-top: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; }
+    .term { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; cursor: pointer; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; }
+    .term:hover { background: #f0efff; border-color: rgba(108,92,231,.35); }
+    .term .chev { font-size: 12px; color: var(--muted); }
+    .def { color: #2d3643; line-height: 1.45; }
+    .source { color: var(--muted); font-size: 13px; }
+    .link a { color: var(--accent); text-decoration: none; }
+    .link a:hover { text-decoration: underline; }
 
-    .filters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
-    .filter-chip { display: flex; gap: 6px; align-items: center; padding: 6px; border: 1px solid var(--border); border-radius: 12px; }
-    .filter-chip select, .filter-chip input { padding: 6px 8px; font-size: 13px; }
-    .chip-del { background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 4px 6px; cursor: pointer; }
+    .children { display: none; border-top: 1px dashed var(--border); padding-top: 10px; margin-top: 4px; }
+    .child { padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; margin-top: 8px; background: #fbfbfe; }
+    .child-title { font-weight: 600; }
+    .child-def { color: #3a4452; font-size: 14px; margin-top: 4px; }
 
-    .table-wrap { overflow: auto; border: 1px solid var(--border); border-radius: 12px; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    thead { position: sticky; top: 0; background: #0e141c; }
-    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-    th { text-align: left; white-space: nowrap; color: var(--muted); font-weight: 600; cursor: pointer; user-select: none; }
-    th .sort { opacity: .8; font-size: 11px; margin-left: 6px; }
-    tr:hover td { background: rgba(77,163,255,0.06); }
-
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; color: var(--muted); }
-    .status { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--border); }
-    .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--ok); }
-
-    .error { background: rgba(255,90,95,.08); border: 1px solid rgba(255,90,95,.35); color: #ffd7d9; padding: 12px; border-radius: 12px; }
-
-    .footer-note { color: var(--muted); font-size: 12px; margin-top: 8px; }
-
-    /* Responsive columns when hay campos largos */
-    .cell-long { max-width: 520px; overflow: hidden; text-overflow: ellipsis; }
-    .wrap-text { white-space: pre-wrap; }
+    .status { color: var(--muted); font-size: 12px; }
+    .empty { color: var(--muted); text-align: center; padding: 24px; }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <h1>Lenguaje controlado – Visualización</h1>
-      <div class="sub">Base funcionando + búsqueda global y filtros dinámicos. Luego podemos añadir relaciones y fichas de detalle.</div>
+      <h1>Lenguaje controlado – Tarjetas</h1>
+      <div class="sub">Vista en tarjetas (claro). Haz clic en el término para desplegar sus términos hijos.</div>
 
       <div class="toolbar">
-        <div class="left">
-          <span id="status" class="status"><span class="dot"></span><span>Cargando…</span></span>
-          <span id="count" class="badge">0 registros</span>
-          <span id="fields" class="badge">0 campos</span>
-        </div>
-        <input id="q" type="text" placeholder="Buscar en todos los campos…" />
-        <div class="right">
-          <button id="addFilter">+ Filtro</button>
-          <button id="clearFilters">Limpiar</button>
-          <button id="reload">Recargar</button>
-          <button id="toggleRaw">Ver registro ejemplo</button>
-        </div>
+        <div class="status"><span id="count">0</span> elementos • <span id="fields">0</span> campos</div>
+        <input id="q" type="text" placeholder="Buscar por término, definición o fuente…" />
+        <button id="reload">Recargar</button>
       </div>
-
-      <div id="filters" class="filters"></div>
     </div>
   </header>
 
-  <main class="wrap" style="margin-top:16px;">
-    <section class="panel">
-      <div class="table-wrap">
-        <table id="tbl">
-          <thead></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <div class="footer-note mono">
-        Fuente JSON: <span id="dataUrl"></span>
-      </div>
-    </section>
-
-    <section id="rawBox" class="panel" style="margin-top:12px; display:none;">
-      <div class="mono" id="rawSample"></div>
-    </section>
-
-    <section id="errorBox" style="display:none; margin-top:12px;">
-      <div class="error" id="errorMsg"></div>
-    </section>
-
-    <section class="footer-note" style="margin-top:12px;">
-      <details>
-        <summary>¿Cómo conectar otro archivo?</summary>
-        <div style="margin-top:8px;">
-          Edita la constante <code class="mono">DATA_URL</code> al inicio del script o coloca el archivo <code class="mono">lenguaje.json</code> junto a este <em>index.html</em>.
-        </div>
-      </details>
-    </section>
+  <main class="wrap">
+    <div id="cards" class="cards"></div>
+    <div id="empty" class="empty" style="display:none;">Sin resultados</div>
+    <div class="status" style="margin-top:10px;">Fuente JSON: <span id="dataUrl"></span></div>
   </main>
 
   <script>
-    // 🔗 Ajusta esta ruta si tu JSON está en otra carpeta o con otro nombre
+    // Configura la ruta de tu JSON aquí
     const DATA_URL = './lenguaje.json';
 
-    // 📦 Estado
-    let RAW = [];        // dataset completo
-    let VIEW = [];       // dataset filtrado/ordenado
-    let COLUMNS = [];    // columnas detectadas
-    let SORT = { key: null, dir: 1 }; // 1 asc / -1 desc
+    // Estado
+    let RAW = [];
+    let COLUMNS = [];
+    let INDEX_BY_NAME = new Map(); // nombre → [filas]
+    let FIELD = { name: null, parent: null, definition: null, source: null, link: null };
 
-    // 🧠 Helpers
+    // Utilidades
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-    const el = (tag, props = {}, children = []) => { const n = document.createElement(tag); Object.assign(n, props); for (const c of children) n.append(c); return n; };
-    const deb = (fn, ms=250) => { let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); }; };
+    const norm = (s) => String(s||'')
+      .toLowerCase()
+      .normalize('NFD').replace(/\p{Diacritic}/gu,'')
+      .replace(/[^a-z0-9]+/g,'_');
 
-    const statusOk = (msg) => $('#status').innerHTML = '<span class="dot"></span><span>'+msg+'</span>';
-    const statusWarn = (msg) => $('#status').innerHTML = '<span class="dot" style="background:var(--warn)"></span><span>'+msg+'</span>';
-    const statusErr = (msg) => $('#status').innerHTML = '<span class="dot" style="background:var(--err)"></span><span>'+msg+'</span>';
-
-    function showError(message, detail) {
-      statusErr('Error al cargar');
-      $('#errorBox').style.display = 'block';
-      $('#errorMsg').textContent = message + (detail ? ('\n\n' + detail) : '');
-      console.error('[JSON error]', message, detail);
-    }
-
-    function normalizeArray(data) {
-      if (Array.isArray(data)) return data;
-      if (data && Array.isArray(data.items)) return data.items;
-      if (data && Array.isArray(data.data)) return data.data;
+    function findField(patterns) {
+      const cols = COLUMNS.map(c => [c, norm(c)]);
+      for (const p of patterns) {
+        const pn = norm(p);
+        const cands = cols.filter(([_,n]) => n.includes(pn));
+        if (cands.length) {
+          cands.sort((a,b) => a[1].length - b[1].length);
+          return cands[0][0];
+        }
+      }
       return null;
     }
 
-    function extractColumns(rows) {
-      const cols = new Set();
-      for (const r of rows) Object.keys(r || {}).forEach(k => cols.add(k));
-      return Array.from(cols);
+    function detectFields() {
+      FIELD.name = findField(['termino','término','nombre','concepto']) || findField(['termino_padre']);
+      FIELD.parent = findField(['termino_padre','término_padre','padre','parent']);
+      FIELD.definition = findField(['definicion_termino','definicion','definicion termino']);
+      FIELD.source = findField(['fuente_termino','fuente termino','fuente']);
+      FIELD.link = findField(['link_fuente_termino','enlace_fuente','url_fuente','link fuente']);
     }
 
-    function uniqueValues(rows, key) {
-      const s = new Set();
-      for (const r of rows) {
-        const v = r?.[key];
-        if (v === undefined || v === null || v === '') continue;
-        if (Array.isArray(v)) v.forEach(x => s.add(String(x)));
-        else s.add(String(v));
+    function indexByName() {
+      INDEX_BY_NAME = new Map();
+      for (const r of RAW) {
+        const name = r?.[FIELD.name];
+        const key = name==null ? '' : String(name).trim();
+        if (!INDEX_BY_NAME.has(key)) INDEX_BY_NAME.set(key, []);
+        INDEX_BY_NAME.get(key).push(r);
       }
-      return Array.from(s).sort((a,b)=> a.localeCompare(b,'es',{sensitivity:'base'}));
     }
 
-    function compare(a,b) {
-      // num-aware string compare
-      const na = parseFloat(a), nb = parseFloat(b);
-      const aNum = !Number.isNaN(na) && String(a).trim() !== '' && /^-?\d+(\.\d+)?$/.test(String(a).trim());
-      const bNum = !Number.isNaN(nb) && String(b).trim() !== '' && /^-?\d+(\.\d+)?$/.test(String(b).trim());
-      if (aNum && bNum) return na - nb;
-      return String(a).localeCompare(String(b),'es',{sensitivity:'base'});
+    function uniqueNames(list) {
+      return Array.from(new Set(list.map(r => String(r?.[FIELD.name] ?? '').trim()))).filter(Boolean).sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}));
     }
 
-    function renderTable(rows) {
-      const thead = $('#tbl thead');
-      const tbody = $('#tbl tbody');
-      thead.innerHTML = '';
-      tbody.innerHTML = '';
+    function renderCards(rows) {
+      const container = $('#cards');
+      container.innerHTML = '';
 
-      if (!rows || !rows.length) {
-        statusWarn('0 registros');
-        $('#count').textContent = '0 registros';
+      if (!rows.length) {
+        $('#empty').style.display = 'block';
+        $('#count').textContent = '0';
         return;
+      } else {
+        $('#empty').style.display = 'none';
       }
 
-      const trh = el('tr');
-      for (const c of COLUMNS) {
-        const th = el('th', { textContent: c });
-        const sortIcon = el('span', { className: 'sort', textContent: SORT.key === c ? (SORT.dir === 1 ? '▲' : '▼') : '⇅' });
-        th.append(sortIcon);
-        th.addEventListener('click', () => {
-          if (SORT.key === c) SORT.dir *= -1; else { SORT.key = c; SORT.dir = 1; }
-          applyAll();
-        });
-        trh.append(th);
-      }
-      thead.append(trh);
-
+      const names = uniqueNames(rows);
       const frag = document.createDocumentFragment();
-      for (const r of rows) {
-        const tr = el('tr');
-        for (const c of COLUMNS) {
-          let v = r[c];
-          if (typeof v === 'object' && v !== null) {
-            try { v = JSON.stringify(v); } catch { v = String(v); }
-            tr.append(el('td', { textContent: v, className: 'cell-long' }));
-          } else {
-            const s = v == null ? '' : String(v);
-            tr.append(el('td', { textContent: s, className: (s.length > 120 ? 'cell-long wrap-text' : '') }));
+
+      for (const name of names) {
+        const anyRow = (INDEX_BY_NAME.get(name) || [])[0] || {};
+        const def = anyRow?.[FIELD.definition] ?? '';
+        const source = anyRow?.[FIELD.source] ?? '';
+        const link = anyRow?.[FIELD.link] ?? '';
+
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const termBtn = document.createElement('div');
+        termBtn.className = 'term';
+        termBtn.innerHTML = `<span class="chev">▸</span><span>${name || '(sin nombre)'}</span>`;
+
+        const defEl = document.createElement('div');
+        defEl.className = 'def';
+        defEl.textContent = def;
+
+        const sourceEl = document.createElement('div');
+        sourceEl.className = 'source';
+        sourceEl.textContent = source;
+
+        const linkEl = document.createElement('div');
+        linkEl.className = 'link';
+        if (typeof link === 'string' && /^https?:\/\//i.test(link)) {
+          linkEl.innerHTML = `<a href="${link}" target="_blank" rel="noopener">Abrir fuente</a>`;
+        } else if (String(link || '').length) {
+          // si no es url pero hay contenido, lo mostramos plano
+          linkEl.textContent = String(link);
+        }
+
+        const childrenBox = document.createElement('div');
+        childrenBox.className = 'children';
+
+        // Busca hijos: filas cuyo parent == este nombre
+        let children = [];
+        if (FIELD.parent) {
+          children = RAW.filter(r => String(r?.[FIELD.parent] ?? '').trim() === name);
+        }
+
+        if (children.length) {
+          for (const ch of children) {
+            const chName = ch?.[FIELD.name] ?? '(término)';
+            const chDef = ch?.[FIELD.definition] ?? '';
+            const chDiv = document.createElement('div');
+            chDiv.className = 'child';
+            chDiv.innerHTML = `<div class="child-title">${chName}</div>` + (chDef ? `<div class="child-def">${chDef}</div>` : '');
+            childrenBox.appendChild(chDiv);
           }
-        }
-        frag.append(tr);
-      }
-      tbody.append(frag);
-
-      $('#count').textContent = rows.length + ' registros';
-      $('#fields').textContent = COLUMNS.length + ' campos';
-      statusOk('Listo');
-    }
-
-    // 🔎 Búsqueda global
-    function matchesSearch(row, q) {
-      if (!q) return true;
-      const tokens = q.toLowerCase().split(/\s+/).filter(Boolean);
-      if (!tokens.length) return true;
-      const haystack = COLUMNS.map(k => {
-        const v = row[k];
-        if (v == null) return '';
-        return typeof v === 'object' ? JSON.stringify(v).toLowerCase() : String(v).toLowerCase();
-      }).join(' | ');
-      return tokens.every(t => haystack.includes(t));
-    }
-
-    // 🧰 Filtros dinámicos
-    const ACTIVE_FILTERS = []; // {id, field, value, mode}
-
-    function newFilterChip(id) {
-      const chip = el('div', { className: 'filter-chip', dataset: { id } });
-
-      const fieldSel = el('select');
-      fieldSel.append(el('option', { value: '', textContent: '— campo —' }));
-      for (const c of COLUMNS) fieldSel.append(el('option', { value: c, textContent: c }));
-
-      const modeSel = el('select');
-      ['es','contiene','empieza'].forEach(m => modeSel.append(el('option', { value: m, textContent: m })));
-
-      const valueWrap = el('span'); // se reemplaza por select o input según cardinalidad
-
-      const del = el('button', { className: 'chip-del', title: 'Quitar', textContent: '✕' });
-
-      const rebuildValueInput = () => {
-        const field = fieldSel.value;
-        valueWrap.innerHTML = '';
-        if (!field) { valueWrap.append(el('input', { type:'text', placeholder: 'valor…', disabled: true })); return; }
-        const values = uniqueValues(RAW, field);
-        if (values.length > 120) {
-          // muchos valores → input libre
-          valueWrap.append(el('input', { type:'text', placeholder: 'valor…' }));
         } else {
-          const vsel = el('select');
-          vsel.append(el('option', { value: '', textContent: '— valor —' }));
-          values.forEach(v => vsel.append(el('option', { value: v, textContent: v })));
-          valueWrap.append(vsel);
+          const none = document.createElement('div');
+          none.className = 'child';
+          none.style.background = '#fff';
+          none.style.borderStyle = 'dashed';
+          none.textContent = 'No hay términos hijos';
+          childrenBox.appendChild(none);
         }
-      };
 
-      fieldSel.addEventListener('change', () => { rebuildValueInput(); applyAll(); });
-      modeSel.addEventListener('change', () => applyAll());
-      del.addEventListener('click', () => {
-        chip.remove();
-        const idx = ACTIVE_FILTERS.findIndex(f => f.id === id);
-        if (idx >= 0) ACTIVE_FILTERS.splice(idx,1);
-        applyAll();
-      });
+        termBtn.addEventListener('click', () => {
+          const chev = termBtn.querySelector('.chev');
+          const isOpen = childrenBox.style.display === 'block';
+          childrenBox.style.display = isOpen ? 'none' : 'block';
+          chev.textContent = isOpen ? '▸' : '▾';
+        });
 
-      // Observa cambios en el value (sea select o input)
-      const obs = new MutationObserver(() => {
-        const inp = valueWrap.querySelector('select, input');
-        if (!inp) return;
-        inp.addEventListener('input', deb(applyAll, 100));
-        inp.addEventListener('change', applyAll);
-      });
-      obs.observe(valueWrap, { childList: true });
-
-      rebuildValueInput();
-      chip.append(fieldSel, modeSel, valueWrap, del);
-      return chip;
-    }
-
-    function readFiltersFromUI() {
-      const chips = $$('#filters .filter-chip');
-      const filters = [];
-      for (const chip of chips) {
-        const field = chip.querySelector('select').value; // primer select = field
-        const selects = chip.querySelectorAll('select');
-        const mode = selects[1]?.value || 'es';
-        const valEl = chip.querySelector('select:last-of-type, input');
-        const value = valEl?.value ?? '';
-        if (field && value) filters.push({ field, mode, value });
+        card.append(termBtn);
+        if (def) card.append(defEl);
+        if (source) card.append(sourceEl);
+        if (link) card.append(linkEl);
+        card.append(childrenBox);
+        frag.append(card);
       }
-      return filters;
+
+      container.append(frag);
+      $('#count').textContent = names.length;
+      $('#fields').textContent = COLUMNS.length;
     }
 
-    function matchesFilters(row, filters) {
-      for (const f of filters) {
-        const v = row?.[f.field];
-        const s = v == null ? '' : (typeof v === 'object' ? JSON.stringify(v) : String(v));
-        const target = String(f.value);
-        if (f.mode === 'es' && s !== target) return false;
-        if (f.mode === 'contiene' && !s.toLowerCase().includes(target.toLowerCase())) return false;
-        if (f.mode === 'empieza' && !s.toLowerCase().startsWith(target.toLowerCase())) return false;
-      }
-      return true;
+    function matchesSearch(r, q) {
+      if (!q) return true;
+      const t = q.toLowerCase().split(/\s+/).filter(Boolean);
+      const pile = [FIELD.name, FIELD.definition, FIELD.source]
+        .map(k => String(r?.[k] ?? '').toLowerCase()).join(' | ');
+      return t.every(s => pile.includes(s));
     }
 
-    function applyAll() {
+    function applySearch() {
       const q = $('#q').value.trim();
-      const filters = readFiltersFromUI();
-      VIEW = RAW.filter(r => matchesSearch(r, q) && matchesFilters(r, filters));
-
-      // Orden
-      if (SORT.key) {
-        VIEW.sort((a,b) => SORT.dir * compare(a?.[SORT.key], b?.[SORT.key]));
-      }
-      renderTable(VIEW);
+      const filtered = RAW.filter(r => matchesSearch(r, q));
+      renderCards(filtered);
     }
 
     async function loadData() {
-      $('#errorBox').style.display = 'none';
-      statusOk('Cargando…');
       $('#dataUrl').textContent = DATA_URL;
-      try {
-        const res = await fetch(DATA_URL, { cache: 'no-store' });
-        if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + res.statusText);
-        const json = await res.json();
-        const arr = normalizeArray(json);
-        if (!arr) {
-          showError('El JSON no es un array de objetos ni contiene {items:[…]} o {data:[…]}.' , 'Estructura recibida: ' + Object.keys(json || {}).join(', '));
-          return;
-        }
-        RAW = arr;
-        COLUMNS = extractColumns(RAW);
-        // Reinicia filtros UI
-        $('#filters').innerHTML = '';
-        SORT = { key: null, dir: 1 };
-        $('#q').value = '';
-        VIEW = [...RAW];
-        renderTable(VIEW);
-        $('#rawSample').textContent = JSON.stringify(RAW[0] || {}, null, 2);
-      } catch (e) {
-        showError('No se pudo leer el archivo JSON en "' + DATA_URL + '".', e.message);
-      }
+      const res = await fetch(DATA_URL, { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const json = await res.json();
+      const arr = Array.isArray(json) ? json : (Array.isArray(json.items) ? json.items : (Array.isArray(json.data) ? json.data : []));
+      RAW = arr;
+      COLUMNS = Object.keys(arr[0] || {});
+      detectFields();
+      indexByName();
+      applySearch();
     }
 
-    // 🎛️ Eventos UI
-    $('#reload').addEventListener('click', loadData);
-    $('#toggleRaw').addEventListener('click', () => {
-      const box = $('#rawBox');
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
-    });
-    $('#q').addEventListener('input', deb(applyAll, 200));
-    $('#addFilter').addEventListener('click', () => {
-      const id = crypto.randomUUID?.() || String(Date.now() + Math.random());
-      $('#filters').append(newFilterChip(id));
-    });
-    $('#clearFilters').addEventListener('click', () => {
-      $('#filters').innerHTML = '';
-      $('#q').value = '';
-      SORT = { key: null, dir: 1 };
-      applyAll();
-    });
+    // UI events
+    document.getElementById('q').addEventListener('input', () => { clearTimeout(window.__t); window.__t = setTimeout(applySearch, 150); });
+    document.getElementById('reload').addEventListener('click', loadData);
 
-    // 🚀 Inicio
-    loadData();
+    // Init
+    loadData().catch(err => { console.error(err); document.getElementById('empty').style.display = 'block'; document.getElementById('empty').textContent = 'Error cargando datos'; });
   </script>
 </body>
 </html>
