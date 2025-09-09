@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lenguaje controlado – Tarjetas</title>
+  <title>Lenguaje controlado – Tarjetas por término padre</title>
   <style>
     :root {
-      --bg: #f7f8fb;
+      --bg: #f6f8fb;
       --panel: #ffffff;
       --muted: #5f6c7b;
-      --text: #1b2430;
-      --accent: #6c5ce7; /* lila suave */
-      --border: #e5e9f2;
-      --shadow: 0 4px 12px rgba(27,36,48,.06);
+      --text: #16202a;
+      --accent: #4f46e5; /* índigo */
+      --border: #e6eaf0;
+      --shadow: 0 4px 14px rgba(22,32,42,.06);
     }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial; background: var(--bg); color: var(--text); }
 
-    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); background: rgba(247,248,251,.8); border-bottom: 1px solid var(--border); }
+    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); background: rgba(246,248,251,.85); border-bottom: 1px solid var(--border); }
     .wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
     h1 { margin: 0; font-size: 22px; letter-spacing: .2px; }
     .sub { color: var(--muted); font-size: 13px; margin-top: 4px; }
@@ -26,24 +26,26 @@
     .toolbar { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; margin-top: 12px; }
     .badge { padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; background: #fff; }
     input[type="text"] { background: #fff; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 14px; outline: none; box-shadow: var(--shadow); }
-    input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,92,231,.12); }
+    input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,70,229,.12); }
     button { background: #fff; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 14px; cursor: pointer; box-shadow: var(--shadow); }
     button:hover { border-color: var(--accent); }
 
-    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-top: 16px; }
-    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; }
-    .term { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; cursor: pointer; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; }
-    .term:hover { background: #f0efff; border-color: rgba(108,92,231,.35); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 14px; margin-top: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; }
+
+    .term { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-weight: 800; font-size: 18px; cursor: pointer; padding: 8px 10px; border-radius: 12px; border: 1px solid transparent; }
+    .term:hover { background: #eef0ff; border-color: rgba(79,70,229,.35); }
     .term .chev { font-size: 12px; color: var(--muted); }
-    .def { color: #2d3643; line-height: 1.45; }
+
+    .def { color: #2d3748; line-height: 1.5; white-space: pre-wrap; }
     .source { color: var(--muted); font-size: 13px; }
     .link a { color: var(--accent); text-decoration: none; }
     .link a:hover { text-decoration: underline; }
 
-    .children { display: none; border-top: 1px dashed var(--border); padding-top: 10px; margin-top: 4px; }
-    .child { padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; margin-top: 8px; background: #fbfbfe; }
-    .child-title { font-weight: 600; }
-    .child-def { color: #3a4452; font-size: 14px; margin-top: 4px; }
+    .children { display: none; border-top: 1px dashed var(--border); padding-top: 10px; margin-top: 6px; }
+    .child { padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; margin-top: 10px; background: #fbfbfe; }
+    .child-title { font-weight: 700; }
+    .child-def { color: #3a4452; font-size: 14px; margin-top: 4px; white-space: pre-wrap; }
 
     .status { color: var(--muted); font-size: 12px; }
     .empty { color: var(--muted); text-align: center; padding: 24px; }
@@ -52,12 +54,12 @@
 <body>
   <header>
     <div class="wrap">
-      <h1>Lenguaje controlado – Tarjetas</h1>
-      <div class="sub">Vista en tarjetas (claro). Haz clic en el término para desplegar sus términos hijos.</div>
+      <h1>Lenguaje controlado – Tarjetas por término padre</h1>
+      <div class="sub">Título = <strong>termino_padre</strong>. Al hacer clic, se despliegan los <strong>terminos_hijo</strong> asociados. La definición del padre proviene de la fila con <code>termino_hijo = 0</code>.</div>
 
       <div class="toolbar">
-        <div class="status"><span id="count">0</span> elementos • <span id="fields">0</span> campos</div>
-        <input id="q" type="text" placeholder="Buscar por término, definición o fuente…" />
+        <div class="status"><span id="count">0</span> padres • <span id="fields">0</span> campos</div>
+        <input id="q" type="text" placeholder="Buscar por padre/hijo, definición o fuente…" />
         <button id="reload">Recargar</button>
       </div>
     </div>
@@ -70,16 +72,15 @@
   </main>
 
   <script>
-    // Configura la ruta de tu JSON aquí
+    // Ruta del JSON
     const DATA_URL = './lenguaje.json';
 
     // Estado
     let RAW = [];
     let COLUMNS = [];
-    let INDEX_BY_NAME = new Map(); // nombre → [filas]
-    let FIELD = { name: null, parent: null, definition: null, source: null, link: null };
+    const FIELD = { parent:null, child:null, definition:null, source:null, link:null };
 
-    // Utilidades
+    // Helpers
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => Array.from(document.querySelectorAll(sel));
     const norm = (s) => String(s||'')
@@ -89,6 +90,11 @@
 
     function findField(patterns) {
       const cols = COLUMNS.map(c => [c, norm(c)]);
+      // prioridad: match exacto; luego includes
+      for (const p of patterns) {
+        const exact = cols.find(([orig,n]) => n === norm(p));
+        if (exact) return exact[0];
+      }
       for (const p of patterns) {
         const pn = norm(p);
         const cands = cols.filter(([_,n]) => n.includes(pn));
@@ -101,32 +107,50 @@
     }
 
     function detectFields() {
-      FIELD.name = findField(['termino','término','nombre','concepto']) || findField(['termino_padre']);
-      FIELD.parent = findField(['termino_padre','término_padre','padre','parent']);
-      FIELD.definition = findField(['definicion_termino','definicion','definicion termino']);
-      FIELD.source = findField(['fuente_termino','fuente termino','fuente']);
-      FIELD.link = findField(['link_fuente_termino','enlace_fuente','url_fuente','link fuente']);
+      FIELD.parent     = findField(['termino_padre','término_padre','padre']);
+      FIELD.child      = findField(['termino_hijo','término_hijo','hijo']);
+      FIELD.definition = findField(['definicion_termino','definicion termino','definicion','definicion_termino2']);
+      FIELD.source     = findField(['fuente_termino','fuente termino','fuente','fuente_termino_2']);
+      FIELD.link       = findField(['link_fuente_termino','link fuente termino','enlace_fuente','url_fuente','link_fuente_termino_']);
     }
 
-    function indexByName() {
-      INDEX_BY_NAME = new Map();
-      for (const r of RAW) {
-        const name = r?.[FIELD.name];
-        const key = name==null ? '' : String(name).trim();
-        if (!INDEX_BY_NAME.has(key)) INDEX_BY_NAME.set(key, []);
-        INDEX_BY_NAME.get(key).push(r);
+    function prettyChildName(v) {
+      const s = String(v ?? '').trim();
+      // elimina prefijo numérico tipo "1 ", "2.", "3)" si existe
+      return s.replace(/^\s*\d+[\s\-.:)]*/,'').trim() || s || '(término)';
+    }
+
+    function groupByParent(rows) {
+      const map = new Map();
+      for (const r of rows) {
+        const p = String(r?.[FIELD.parent] ?? '').trim();
+        if (!p) continue;
+        if (!map.has(p)) map.set(p, { name:p, pDef:'', pSource:'', pLink:'', children:[] });
+        const chVal = String(r?.[FIELD.child] ?? '').trim();
+        const isParentRow = chVal === '0' || chVal === 0 || /^0(\.0+)?$/.test(chVal);
+        if (isParentRow) {
+          map.get(p).pDef = r?.[FIELD.definition] ?? map.get(p).pDef;
+          map.get(p).pSource = r?.[FIELD.source] ?? map.get(p).pSource;
+          map.get(p).pLink = r?.[FIELD.link] ?? map.get(p).pLink;
+        } else {
+          map.get(p).children.push({
+            name: prettyChildName(chVal),
+            def: r?.[FIELD.definition] ?? '',
+            source: r?.[FIELD.source] ?? '',
+            link: r?.[FIELD.link] ?? ''
+          });
+        }
       }
+      // Ordena hijos por nombre
+      for (const g of map.values()) g.children.sort((a,b)=> a.name.localeCompare(b.name,'es',{sensitivity:'base'}));
+      return Array.from(map.values()).sort((a,b)=> a.name.localeCompare(b.name,'es',{sensitivity:'base'}));
     }
 
-    function uniqueNames(list) {
-      return Array.from(new Set(list.map(r => String(r?.[FIELD.name] ?? '').trim()))).filter(Boolean).sort((a,b)=>a.localeCompare(b,'es',{sensitivity:'base'}));
-    }
-
-    function renderCards(rows) {
+    function render(groups) {
       const container = $('#cards');
       container.innerHTML = '';
 
-      if (!rows.length) {
+      if (!groups.length) {
         $('#empty').style.display = 'block';
         $('#count').textContent = '0';
         return;
@@ -134,56 +158,51 @@
         $('#empty').style.display = 'none';
       }
 
-      const names = uniqueNames(rows);
       const frag = document.createDocumentFragment();
-
-      for (const name of names) {
-        const anyRow = (INDEX_BY_NAME.get(name) || [])[0] || {};
-        const def = anyRow?.[FIELD.definition] ?? '';
-        const source = anyRow?.[FIELD.source] ?? '';
-        const link = anyRow?.[FIELD.link] ?? '';
-
+      for (const g of groups) {
         const card = document.createElement('div');
         card.className = 'card';
 
         const termBtn = document.createElement('div');
         termBtn.className = 'term';
-        termBtn.innerHTML = `<span class="chev">▸</span><span>${name || '(sin nombre)'}</span>`;
+        termBtn.innerHTML = `<span>${g.name}</span><span class="chev">▸</span>`;
 
         const defEl = document.createElement('div');
         defEl.className = 'def';
-        defEl.textContent = def;
+        if (g.pDef) defEl.textContent = g.pDef;
 
         const sourceEl = document.createElement('div');
         sourceEl.className = 'source';
-        sourceEl.textContent = source;
+        if (g.pSource) sourceEl.textContent = g.pSource;
 
         const linkEl = document.createElement('div');
         linkEl.className = 'link';
-        if (typeof link === 'string' && /^https?:\/\//i.test(link)) {
-          linkEl.innerHTML = `<a href="${link}" target="_blank" rel="noopener">Abrir fuente</a>`;
-        } else if (String(link || '').length) {
-          // si no es url pero hay contenido, lo mostramos plano
-          linkEl.textContent = String(link);
+        if (typeof g.pLink === 'string' && /^https?:\/\//i.test(g.pLink)) {
+          linkEl.innerHTML = `<a href="${g.pLink}" target="_blank" rel="noopener">Abrir fuente</a>`;
+        } else if (String(g.pLink||'').length) {
+          linkEl.textContent = String(g.pLink);
         }
 
         const childrenBox = document.createElement('div');
         childrenBox.className = 'children';
 
-        // Busca hijos: filas cuyo parent == este nombre
-        let children = [];
-        if (FIELD.parent) {
-          children = RAW.filter(r => String(r?.[FIELD.parent] ?? '').trim() === name);
-        }
-
-        if (children.length) {
-          for (const ch of children) {
-            const chName = ch?.[FIELD.name] ?? '(término)';
-            const chDef = ch?.[FIELD.definition] ?? '';
+        if (g.children.length) {
+          for (const ch of g.children) {
             const chDiv = document.createElement('div');
             chDiv.className = 'child';
-            chDiv.innerHTML = `<div class="child-title">${chName}</div>` + (chDef ? `<div class="child-def">${chDef}</div>` : '');
-            childrenBox.appendChild(chDiv);
+            const chTitle = document.createElement('div');
+            chTitle.className = 'child-title';
+            chTitle.textContent = ch.name;
+            const chDef = document.createElement('div');
+            chDef.className = 'child-def';
+            if (ch.def) chDef.textContent = ch.def;
+            const chLink = document.createElement('div');
+            chLink.className = 'link';
+            if (typeof ch.link === 'string' && /^https?:\/\//i.test(ch.link)) chLink.innerHTML = `<a href="${ch.link}" target="_blank" rel="noopener">Abrir fuente</a>`;
+            chDiv.append(chTitle);
+            if (ch.def) chDiv.append(chDef);
+            if (ch.link) chDiv.append(chLink);
+            childrenBox.append(chDiv);
           }
         } else {
           const none = document.createElement('div');
@@ -202,30 +221,28 @@
         });
 
         card.append(termBtn);
-        if (def) card.append(defEl);
-        if (source) card.append(sourceEl);
-        if (link) card.append(linkEl);
+        if (g.pDef) card.append(defEl);
+        if (g.pSource) card.append(sourceEl);
+        if (g.pLink) card.append(linkEl);
         card.append(childrenBox);
         frag.append(card);
       }
 
       container.append(frag);
-      $('#count').textContent = names.length;
+      $('#count').textContent = groups.length;
       $('#fields').textContent = COLUMNS.length;
     }
 
-    function matchesSearch(r, q) {
+    function matchesQuery(g, q) {
       if (!q) return true;
       const t = q.toLowerCase().split(/\s+/).filter(Boolean);
-      const pile = [FIELD.name, FIELD.definition, FIELD.source]
-        .map(k => String(r?.[k] ?? '').toLowerCase()).join(' | ');
+      const pile = [g.name, g.pDef, g.pSource].join(' | ').toLowerCase() + ' | ' + g.children.map(c => (c.name + ' ' + (c.def||'')).toLowerCase()).join(' | ');
       return t.every(s => pile.includes(s));
     }
 
-    function applySearch() {
+    function applySearch(groups) {
       const q = $('#q').value.trim();
-      const filtered = RAW.filter(r => matchesSearch(r, q));
-      renderCards(filtered);
+      render(groups.filter(g => matchesQuery(g,q)));
     }
 
     async function loadData() {
@@ -237,19 +254,18 @@
       RAW = arr;
       COLUMNS = Object.keys(arr[0] || {});
       detectFields();
-      indexByName();
-      applySearch();
+      const groups = groupByParent(RAW);
+      render(groups);
+      $('#q').addEventListener('input', () => { clearTimeout(window.__t); window.__t = setTimeout(() => applySearch(groups), 160); });
     }
 
-    // UI events
-    document.getElementById('q').addEventListener('input', () => { clearTimeout(window.__t); window.__t = setTimeout(applySearch, 150); });
-    document.getElementById('reload').addEventListener('click', loadData);
-
     // Init
-    loadData().catch(err => { console.error(err); document.getElementById('empty').style.display = 'block'; document.getElementById('empty').textContent = 'Error cargando datos'; });
+    document.getElementById('reload').addEventListener('click', loadData);
+    loadData().catch(err => { console.error(err); const e = document.getElementById('empty'); e.style.display = 'block'; e.textContent = 'Error cargando datos'; });
   </script>
 </body>
 </html>
+
 
 
 
