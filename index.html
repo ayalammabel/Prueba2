@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lenguaje controlado – Visualización (base sin filtros)</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #121821;
+      --muted: #8aa0b3;
+      --text: #e9eef3;
+      --accent: #4da3ff;
+      --ok: #37c297;
+      --warn: #ffb020;
+      --err: #ff5a5f;
+      --border: #1f2a38;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--text); }
+    header { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); background: linear-gradient(180deg, rgba(11,15,20,.95), rgba(11,15,20,.65)); border-bottom: 1px solid var(--border); }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
+    h1 { margin: 0; font-size: 20px; letter-spacing: .2px; }
+    .sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+    .toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+    .badge { padding: 4px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; }
+    .spacer { flex: 1; }
+    button, select { background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 14px; cursor: pointer; }
+    button:hover { border-color: var(--accent); }
+
+    .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+    .table-wrap { overflow: auto; border: 1px solid var(--border); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead { position: sticky; top: 0; background: #0e141c; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { text-align: left; white-space: nowrap; color: var(--muted); font-weight: 600; }
+    tr:hover td { background: rgba(77,163,255,0.06); }
+
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; color: var(--muted); }
+    .status { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--border); }
+    .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--ok); }
+
+    .error { background: rgba(255,90,95,.08); border: 1px solid rgba(255,90,95,.35); color: #ffd7d9; padding: 12px; border-radius: 12px; }
+
+    .footer-note { color: var(--muted); font-size: 12px; margin-top: 8px; }
+
+    /* Responsive columns when hay campos largos */
+    .cell-long { max-width: 520px; overflow: hidden; text-overflow: ellipsis; }
+    .wrap-text { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Lenguaje controlado – Visualización base</h1>
+      <div class="sub">Primero mostramos todo. Después agregamos filtros, búsquedas y relaciones.</div>
+
+      <div class="toolbar">
+        <span id="status" class="status"><span class="dot"></span><span>Cargando…</span></span>
+        <span id="count" class="badge">0 registros</span>
+        <span id="fields" class="badge">0 campos</span>
+        <div class="spacer"></div>
+        <button id="reload">Recargar</button>
+        <button id="toggleRaw">Ver registro ejemplo</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" style="margin-top:16px;">
+    <section class="panel">
+      <div class="table-wrap">
+        <table id="tbl">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="footer-note mono">
+        Fuente JSON: <span id="dataUrl"></span>
+      </div>
+    </section>
+
+    <section id="rawBox" class="panel" style="margin-top:12px; display:none;">
+      <div class="mono" id="rawSample"></div>
+    </section>
+
+    <section id="errorBox" style="display:none; margin-top:12px;">
+      <div class="error" id="errorMsg"></div>
+    </section>
+
+    <section class="footer-note" style="margin-top:12px;">
+      <details>
+        <summary>¿Cómo conectar otro archivo?</summary>
+        <div style="margin-top:8px;">
+          Edita la constante <code class="mono">DATA_URL</code> al inicio del script o coloca el archivo <code class="mono">lenguaje.json</code> junto a este <em>index.html</em>.
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <script>
+    // 🔗 Ajusta esta ruta si tu JSON está en otra carpeta o con otro nombre
+    const DATA_URL = './lenguaje.json';
+
+    // 🧠 Render utilidades
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+    const el = (tag, props = {}, children = []) => {
+      const n = document.createElement(tag);
+      Object.assign(n, props);
+      for (const c of children) n.append(c);
+      return n;
+    };
+
+    const statusOk = (msg) => {
+      const s = $('#status');
+      s.innerHTML = '<span class="dot"></span><span>'+msg+'</span>';
+    };
+    const statusWarn = (msg) => {
+      const s = $('#status');
+      s.innerHTML = '<span class="dot" style="background:var(--warn)"></span><span>'+msg+'</span>';
+    };
+    const statusErr = (msg) => {
+      const s = $('#status');
+      s.innerHTML = '<span class="dot" style="background:var(--err)"></span><span>'+msg+'</span>';
+    };
+
+    function showError(message, detail) {
+      statusErr('Error al cargar');
+      const box = $('#errorBox');
+      const msg = $('#errorMsg');
+      msg.textContent = message + (detail ? ('\n\n' + detail) : '');
+      box.style.display = 'block';
+      console.error('[JSON error]', message, detail);
+    }
+
+    function normalizeArray(data) {
+      // Acepta: array de objetos; o {items:[...]}; o {data:[...]}
+      if (Array.isArray(data)) return data;
+      if (data && Array.isArray(data.items)) return data.items;
+      if (data && Array.isArray(data.data)) return data.data;
+      return null;
+    }
+
+    function extractColumns(rows) {
+      const cols = new Set();
+      for (const r of rows) {
+        Object.keys(r || {}).forEach(k => cols.add(k));
+      }
+      return Array.from(cols);
+    }
+
+    function renderTable(rows) {
+      const thead = $('#tbl thead');
+      const tbody = $('#tbl tbody');
+      thead.innerHTML = '';
+      tbody.innerHTML = '';
+
+      if (!rows || !rows.length) {
+        statusWarn('0 registros');
+        $('#count').textContent = '0 registros';
+        return;
+      }
+
+      const columns = extractColumns(rows);
+
+      // Encabezados
+      const trh = el('tr');
+      for (const c of columns) {
+        trh.append(el('th', { textContent: c }));
+      }
+      thead.append(trh);
+
+      // Filas
+      const frag = document.createDocumentFragment();
+      for (const r of rows) {
+        const tr = el('tr');
+        for (const c of columns) {
+          let v = r[c];
+          if (typeof v === 'object' && v !== null) {
+            // Listas/objetos -> string compacto
+            try { v = JSON.stringify(v); } catch { v = String(v); }
+            tr.append(el('td', { textContent: v, className: 'cell-long' }));
+          } else {
+            tr.append(el('td', { textContent: v == null ? '' : String(v), className: (String(v||'').length > 120 ? 'cell-long wrap-text' : '') }));
+          }
+        }
+        frag.append(tr);
+      }
+      tbody.append(frag);
+
+      // Contadores
+      $('#count').textContent = rows.length + ' registros';
+      $('#fields').textContent = columns.length + ' campos';
+      statusOk('Listo');
+    }
+
+    async function loadData() {
+      $('#errorBox').style.display = 'none';
+      statusOk('Cargando…');
+      $('#dataUrl').textContent = DATA_URL;
+      try {
+        const res = await fetch(DATA_URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + res.statusText);
+        const json = await res.json();
+        const arr = normalizeArray(json);
+        if (!arr) {
+          showError('El JSON no es un array de objetos ni contiene {items:[…]} o {data:[…]}.' , 'Estructura recibida: ' + Object.keys(json || {}).join(', '));
+          return;
+        }
+        renderTable(arr);
+        // Muestra un ejemplo del primer registro
+        const first = arr[0] || {};
+        $('#rawSample').textContent = JSON.stringify(first, null, 2);
+      } catch (e) {
+        showError('No se pudo leer el archivo JSON en "' + DATA_URL + '".', e.message);
+      }
+    }
+
+    // Eventos UI
+    $('#reload').addEventListener('click', loadData);
+    $('#toggleRaw').addEventListener('click', () => {
+      const box = $('#rawBox');
+      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // 🚀 Inicio
+    loadData();
+  </script>
+</body>
+</html>
