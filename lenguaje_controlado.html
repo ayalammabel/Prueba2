@@ -63,21 +63,6 @@
     </section>
 
     <!-- Explorador de términos relacionados -->
-    <section class="card p-4 mb-4" id="relSearch">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-        <div class="md:col-span-4">
-          <label class="block text-sm font-medium mb-1">Buscar en “términos_relacionados”</label>
-          <input id="qRel" type="search" placeholder="Ej.: 'denuncia', 'cuidado', 'acceso'…" class="w-full rounded-xl border px-3 py-2" />
-          <p class="text-xs text-gray-500 mt-1">Escribe para ver coincidencias; haz clic en un término para filtrar los resultados.</p>
-          <div id="relActive" class="mt-2"></div>
-        </div>
-        <div class="md:col-span-8">
-          <label class="block text-sm font-medium mb-1">Coincidencias en términos relacionados</label>
-          <div id="relatedList" class="flex flex-wrap gap-2"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- Lista de términos -->
     <section id="results" class="grid grid-cols-1 md:grid-cols-2 gap-4"></section>
 
@@ -87,6 +72,21 @@
       <div id="pageInfo" class="text-sm text-gray-600"></div>
       <button id="next" class="btn">Siguiente ▶</button>
     </div>
+
+    <!-- Modal de detalle de término -->
+    <dialog id="dlgTerm" class="p-0 rounded-2xl w-full max-w-2xl">
+      <div class="card p-6">
+        <div class="flex items-start justify-between">
+          <h2 id="dlgTitle" class="text-lg font-semibold"></h2>
+          <div class="flex gap-2">
+            <button id="btnShowOnly" class="btn">Ver solo este</button>
+            <button id="btnShowAll" class="btn">Mostrar todos</button>
+            <button class="btn" onclick="document.getElementById('dlgTerm').close()">Cerrar</button>
+          </div>
+        </div>
+        <div id="dlgBody" class="mt-3 text-sm"></div>
+      </div>
+    </dialog>
 
     <!-- Modal de ayuda -->
     <dialog id="dlgAyuda" class="p-0 rounded-2xl w-full max-w-2xl">
@@ -127,9 +127,8 @@
       filtered: [],
       page: 1,
       pageSize: 10,
-      selectedRelatedKey: '',
-      selectedRelatedLabel: '',
-      relatedIndex: {}, // key (normalizado) -> { label, count }
+      viewMode: 'list', // 'list' | 'tree'
+      selectedTerm: '', // si está activo, mostramos solo ese
       facets: {
         sistema_informacion: new Set(),
         modulo: new Set(),
@@ -182,9 +181,16 @@
         if(f.modulo && normalize(r.modulo) !== f.modulo) return false;
         if(f.submodulo && normalize(r.submodulo) !== f.submodulo) return false;
         if(f.tema && normalize(r.tema) !== f.tema) return false;
-        if(state.selectedRelatedKey){
-          if(!(r._rel_norm||[]).includes(state.selectedRelatedKey)) return false;
+        if(state.selectedTerm){
+          if(normalize(r.termino) !== normalize(state.selectedTerm)) return false;
         }
+        return true;
+      });
+
+      state.filtered = rows;
+      state.page = 1;
+      render();
+    }
         return true;
       });
 
@@ -234,10 +240,16 @@
     }
 
     function cardTemplate(r){
-      const rel = (r.terminos_relacionados || []).filter(Boolean);
+      const defs = r.definiciones || [];
+      const defsHtml = defs.length ? `<ol class="mt-2 list-decimal pl-5 space-y-1">${defs.map(d => {
+          const src = d.fuente ? (d.link ? `<a href="${escapeHtml(d.link)}" target="_blank" class="underline">${escapeHtml(d.fuente)}</a>` : escapeHtml(d.fuente)) : '';
+          return `<li><div class=\"leading-6\">${escapeHtml(d.texto)}${src?` <span class=\"text-gray-500\">— ${src}</span>`:''}</div></li>`;
+        }).join('')}</ol>` : (r.definicion_termino ? `<p class="mt-2 text-sm leading-6">${escapeHtml(r.definicion_termino)}</p>` : '');
+      const hijos = getChildrenLabels(r);
+      const hijosHtml = hijos.length ? `<details class="mt-2"><summary class="cursor-pointer text-sm">Hijos (${hijos.length})</summary><div class="mt-2 flex flex-wrap gap-2">${hijos.map(h => `<span class=\"chip\">${escapeHtml(h)}</span>`).join('')}</div></details>` : '';
       return `<article class="card p-4">
         <div class="flex items-start justify-between gap-3">
-          <h3 class="text-lg font-semibold">${escapeHtml(r.termino || '(Sin término)')}</h3>
+          <button class=\"text-left text-lg font-semibold hover:underline\" data-term=\"${escapeHtml(normalize(r.termino))}\">${escapeHtml(r.termino || '(Sin término)')}</button>
           ${r.codigo ? `<span class="chip">${escapeHtml(r.codigo)}</span>` : ''}
         </div>
         <p class="mt-2 text-sm leading-6">${escapeHtml(r.definicion_termino || '')}</p>
@@ -284,7 +296,10 @@
     $('#q').addEventListener('input', debounce(applyFilters, 200));
     ['#fSistema','#fModulo','#fSubmodulo','#fTema'].forEach(sel => $(sel).addEventListener('change', applyFilters));
     $('#btnClear').addEventListener('click', () => {
-      ['#q','#qRel','#fSistema','#fModulo','#fSubmodulo','#fTema'].forEach(sel=>$(sel).value='');
+      ['#q','#fSistema','#fModulo','#fSubmodulo','#fTema'].forEach(sel=>$(sel).value='');
+      state.selectedTerm='';
+      applyFilters();
+    });
       state.selectedRelatedKey='';
       state.selectedRelatedLabel='';
       renderRelatedSuggestions();
@@ -303,15 +318,20 @@
 
     // ------- Carga de datos -------
     async function loadData(){
-      const path = 'lenguaje.json';
+      const path = 'data/lenguaje.json?v=' + Date.now();
       try{
         const res = await fetch(path);
         if(!res.ok) throw new Error('HTTP '+res.status);
         const json = await res.json();
         if(!Array.isArray(json)) throw new Error('El JSON debe ser un arreglo de objetos');
         state.raw = json.map(cleanRow);
+        console.log('✅ Cargado lenguaje.json, registros:', state.raw.length);
       }catch(err){
-        console.warn('No se pudo cargar lenguaje.json, usando datos de ejemplo.', err);
+        console.warn('No se pudo cargar data/lenguaje.json, usando datos de ejemplo.', err);
+        const alert = document.createElement('div');
+        alert.className='my-3 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3';
+        alert.innerHTML='No se pudo cargar <code>data/lenguaje.json</code>. Mostrando <strong>datos de ejemplo</strong>. Revisa la ruta y que GitHub Pages exponga el archivo correctamente.';
+        document.querySelector('main').prepend(alert);
         state.raw = sampleData().map(cleanRow);
       }
       buildFacets(state.raw);
@@ -515,7 +535,7 @@
       return `<article class="card p-4">
         <div class="flex items-start justify-between gap-3">
           <div>
-            <h3 class="text-lg font-semibold">${escapeHtml(r.termino || '(Sin término)')}</h3>
+            <button class=\"text-left text-lg font-semibold hover:underline\" data-term=\"${escapeHtml(normalize(r.termino))}\">${escapeHtml(r.termino || '(Sin término)')}</button>
             ${r.ruta_jerarquica ? `<div class="text-xs text-gray-500 mt-0.5">${escapeHtml(r.ruta_jerarquica)}</div>` : ''}
           </div>
           ${r.codigo ? `<span class="chip">${escapeHtml(r.codigo)}</span>` : ''}
@@ -531,8 +551,39 @@
       </article>`;
     }
 
+    // Eventos de clic en título para abrir detalle
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest('[data-term]');
+      if(!el) return;
+      const term = el.getAttribute('data-term');
+      const row = state.raw.find(r => normalize(r.termino) === term);
+      if(!row) return;
+      showDetail(row);
+    });
+
+    function showDetail(r){
+      $('#dlgTitle').textContent = r.termino || '(Sin término)';
+      const defs = r.definiciones || [];
+      const defsHtml = defs.length ? `<ol class="list-decimal pl-5 space-y-1">${defs.map(d => {
+        const src = d.fuente ? (d.link ? `<a href="${escapeHtml(d.link)}" target="_blank" class="underline">${escapeHtml(d.fuente)}</a>` : escapeHtml(d.fuente)) : '';
+        return `<li><div class=\"leading-6\">${escapeHtml(d.texto)}${src?` <span class=\"text-gray-500\">— ${src}</span>`:''}</div></li>`;
+      }).join('')}</ol>` : (r.definicion_termino ? `<p class="leading-6">${escapeHtml(r.definicion_termino)}</p>` : '<p class="text-gray-500">Sin definiciones</p>');
+      const hijos = getChildrenLabels(r);
+      const meta = [r.sistema_informacion, r.modulo, r.submodulo, r.tema].filter(Boolean).join(' / ');
+      $('#dlgBody').innerHTML = `
+        ${r.ruta_jerarquica?`<div class=\"text-xs text-gray-500\">${escapeHtml(r.ruta_jerarquica)}</div>`:''}
+        ${defsHtml}
+        ${meta?`<div class=\"text-xs text-gray-500 mt-2\">${escapeHtml(meta)}</div>`:''}
+        ${hijos.length?`<div class=\"mt-2\"><div class=\"font-medium\">Hijos (${hijos.length})</div><div class=\"mt-1 flex flex-wrap gap-2\">${hijos.map(h=>`<span class=\"chip\">${escapeHtml(h)}</span>`).join('')}</div></div>`:''}
+      `;
+      $('#dlgTerm').showModal();
+      $('#btnShowOnly').onclick = () => { state.selectedTerm = r.termino; $('#dlgTerm').close(); applyFilters(); };
+      $('#btnShowAll').onclick = () => { state.selectedTerm = ''; $('#dlgTerm').close(); applyFilters(); };
+    }
+
     loadData();
   </script>
 </body>
 </html>
+
 
