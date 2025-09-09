@@ -1,1 +1,538 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lenguaje controlado – Secretaría de la Mujer</title>
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Pequeños ajustes */
+    .chip{ @apply inline-flex items-center rounded-full border px-2 py-1 text-sm mr-2 mb-2 } 
+    .btn{ @apply inline-flex items-center rounded-xl border px-3 py-2 text-sm shadow-sm hover:shadow; }
+    .card{ @apply rounded-2xl border bg-white shadow-sm; }
+    .kbd{ @apply inline-block rounded border bg-gray-50 px-1 text-xs font-mono; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="sticky top-0 z-10 bg-white/80 backdrop-blur border-b">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+      <h1 class="text-2xl font-semibold">Lenguaje controlado · SDMujer</h1>
+      <nav class="flex gap-2 text-sm">
+        <button id="btnExportJSON" class="btn">Exportar JSON</button>
+        <button id="btnExportCSV" class="btn">Exportar CSV</button>
+        <a href="#" id="btnAyuda" class="btn">Ayuda</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-4">
+    <!-- Panel de filtros -->
+    <section class="card p-4 mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+        <div class="md:col-span-4">
+          <label class="block text-sm font-medium mb-1">Búsqueda rápida</label>
+          <div class="relative">
+            <input id="q" type="search" placeholder="Buscar por término, definición, relacionados, tema, fuente… (Ctrl+/)" class="w-full rounded-xl border px-3 py-2 pr-10" />
+            <div class="absolute right-2 top-2.5 text-gray-400"><span class="kbd">Ctrl</span><span>+</span><span class="kbd">/</span></div>
+          </div>
+        </div>
+
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium mb-1">Sistema</label>
+          <select id="fSistema" class="w-full rounded-xl border px-3 py-2"></select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium mb-1">Módulo</label>
+          <select id="fModulo" class="w-full rounded-xl border px-3 py-2"></select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium mb-1">Submódulo</label>
+          <select id="fSubmodulo" class="w-full rounded-xl border px-3 py-2"></select>
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-sm font-medium mb-1">Tema</label>
+          <select id="fTema" class="w-full rounded-xl border px-3 py-2"></select>
+        </div>
+
+        <div class="md:col-span-12 flex flex-wrap items-center gap-2">
+          <button id="btnClear" class="btn">Limpiar filtros</button>
+          <span id="stats" class="text-sm text-gray-600"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explorador de términos relacionados -->
+    <section class="card p-4 mb-4" id="relSearch">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+        <div class="md:col-span-4">
+          <label class="block text-sm font-medium mb-1">Buscar en “términos_relacionados”</label>
+          <input id="qRel" type="search" placeholder="Ej.: 'denuncia', 'cuidado', 'acceso'…" class="w-full rounded-xl border px-3 py-2" />
+          <p class="text-xs text-gray-500 mt-1">Escribe para ver coincidencias; haz clic en un término para filtrar los resultados.</p>
+          <div id="relActive" class="mt-2"></div>
+        </div>
+        <div class="md:col-span-8">
+          <label class="block text-sm font-medium mb-1">Coincidencias en términos relacionados</label>
+          <div id="relatedList" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lista de términos -->
+    <section id="results" class="grid grid-cols-1 md:grid-cols-2 gap-4"></section>
+
+    <!-- Paginación -->
+    <div class="flex items-center justify-between mt-6">
+      <button id="prev" class="btn">◀ Anterior</button>
+      <div id="pageInfo" class="text-sm text-gray-600"></div>
+      <button id="next" class="btn">Siguiente ▶</button>
+    </div>
+
+    <!-- Modal de ayuda -->
+    <dialog id="dlgAyuda" class="p-0 rounded-2xl w-full max-w-2xl">
+      <div class="card p-6">
+        <h2 class="text-lg font-semibold mb-2">Formato de datos y uso</h2>
+        <p class="text-sm mb-3">Coloca un archivo <code>data/lenguaje.json</code> en el repositorio. El formato esperado es un arreglo de objetos como:</p>
+        <pre class="text-xs bg-gray-900 text-gray-100 p-3 rounded-lg overflow-auto">[
+  {
+    "sistema_informacion": "SIG Mujer",
+    "modulo": "Servicios",
+    "submodulo": "Rutas de atención",
+    "tema": "Violencias",
+    "termino": "Medida de protección",
+    "definicion_termino": "Actuación administrativa o judicial para prevenir o cesar la violencia…",
+    "terminos_relacionados": ["protección", "atención", "denuncia"],
+    "fuente": "Ley 1257 de 2008",
+    "dimension": "Tejido social, redes y cooperación",
+    "enfoque_transversal": "Género",
+    "codigo": "T-0001",
+    "updated_at": "2025-08-20"
+  }
+]</pre>
+        <p class="text-sm">También puedes subir un CSV con las mismas columnas y convertirlo a JSON con herramientas externas o un script.</p>
+        <div class="mt-4 text-right">
+          <button class="btn" onclick="document.getElementById('dlgAyuda').close()">Cerrar</button>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <script>
+    // ------- Utilidades -------
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    const state = {
+      raw: [],
+      filtered: [],
+      page: 1,
+      pageSize: 10,
+      selectedRelatedKey: '',
+      selectedRelatedLabel: '',
+      relatedIndex: {}, // key (normalizado) -> { label, count }
+      facets: {
+        sistema_informacion: new Set(),
+        modulo: new Set(),
+        submodulo: new Set(),
+        tema: new Set(),
+      }
+    };
+
+    function normalize(v){ return (v ?? '').toString().trim(); }
+
+    function buildFacets(rows){
+      // Vaciar
+      Object.keys(state.facets).forEach(k => state.facets[k].clear());
+      rows.forEach(r => {
+        Object.keys(state.facets).forEach(k => {
+          const val = normalize(r[k]);
+          if(val) state.facets[k].add(val);
+        });
+      });
+      setSelect('#fSistema', state.facets.sistema_informacion);
+      setSelect('#fModulo', state.facets.modulo);
+      setSelect('#fSubmodulo', state.facets.submodulo);
+      setSelect('#fTema', state.facets.tema);
+      }
+
+    function setSelect(sel, set){
+      const el = $(sel);
+      const opts = ['<option value="">(Todos)</option>', ...Array.from(set).sort().map(v => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`)];
+      el.innerHTML = opts.join('');
+    }
+
+    function escapeHtml(str){
+      return str.replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+    }
+
+    function applyFilters(){
+      const q = normalize($('#q').value).toLowerCase();
+      const f = {
+        sistema_informacion: normalize($('#fSistema').value),
+        modulo: normalize($('#fModulo').value),
+        submodulo: normalize($('#fSubmodulo').value),
+        tema: normalize($('#fTema').value)
+      };
+
+      let rows = state.raw.filter(r => {
+        const blob = [r.termino, r.definicion_termino, (r.terminos_relacionados||[]).join(' '), r.tema, r.fuente]
+          .map(x => normalize(x).toLowerCase()).join(' ');
+        if(q && !blob.includes(q)) return false;
+        if(f.sistema_informacion && normalize(r.sistema_informacion) !== f.sistema_informacion) return false;
+        if(f.modulo && normalize(r.modulo) !== f.modulo) return false;
+        if(f.submodulo && normalize(r.submodulo) !== f.submodulo) return false;
+        if(f.tema && normalize(r.tema) !== f.tema) return false;
+        if(state.selectedRelatedKey){
+          if(!(r._rel_norm||[]).includes(state.selectedRelatedKey)) return false;
+        }
+        return true;
+      });
+
+      state.filtered = rows;
+      state.page = 1;
+      render();
+    }
+        return true;
+      });
+
+      state.filtered = rows;
+      state.page = 1;
+      render();
+    }
+
+    function render(){
+      const total = state.filtered.length;
+      // Vista árbol
+      if(state.viewMode === 'tree'){
+        const pagWrap = document.querySelector('.mt-6');
+        if(pagWrap) pagWrap.classList.add('hidden');
+        $('#results').classList.add('hidden');
+        $('#treeView').classList.remove('hidden');
+        renderTree(state.filtered);
+        $('#stats').textContent = `${total} término${total===1?'':'s'} (vista árbol)`;
+        return;
+      }
+
+      // Vista lista
+      const pagWrap = document.querySelector('.mt-6');
+      if(pagWrap) pagWrap.classList.remove('hidden');
+      $('#treeView').classList.add('hidden');
+      $('#results').classList.remove('hidden');
+
+      const start = (state.page - 1) * state.pageSize;
+      const pageRows = state.filtered.slice(start, start + state.pageSize);
+      const html = pageRows.map(cardTemplate2).join('');
+      $('#results').innerHTML = html || `<div class="text-center text-gray-600">No hay resultados con los filtros actuales.</div>`;
+      $('#stats').textContent = `${total} término${total===1?'':'s'} encontrados`;
+      $('#pageInfo').textContent = total ? `Página ${state.page} de ${Math.ceil(total / state.pageSize)}` : '';
+      $('#prev').disabled = state.page <= 1; 
+      $('#next').disabled = start + state.pageSize >= total;
+    } término${total===1?'':'s'} encontrados`;
+      $('#pageInfo').textContent = total ? `Página ${state.page} de ${Math.ceil(total / state.pageSize)}` : '';
+      $('#prev').disabled = state.page <= 1; 
+      $('#next').disabled = start + state.pageSize >= total;
+    }
+
+    function cardTemplate(r){
+      const rel = (r.terminos_relacionados || []).filter(Boolean);
+      return `<article class="card p-4">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="text-lg font-semibold">${escapeHtml(r.termino || '(Sin término)')}</h3>
+          ${r.codigo ? `<span class="chip">${escapeHtml(r.codigo)}</span>` : ''}
+        </div>
+        <p class="mt-2 text-sm leading-6">${escapeHtml(r.definicion_termino || '')}</p>
+        ${rel.length ? `<div class="mt-2">${rel.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>` : ''}
+        <dl class="mt-3 text-sm grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div><dt class="font-medium">Sistema · Módulo · Submódulo</dt><dd>${[r.sistema_informacion, r.modulo, r.submodulo].map(v=>escapeHtml(normalize(v))).filter(Boolean).join(' / ')}</dd></div>
+          <div><dt class="font-medium">Tema</dt><dd>${escapeHtml(normalize(r.tema))}</dd></div>
+          <div><dt class="font-medium">Dimensión</dt><dd>${escapeHtml(normalize(r.dimension))}</dd></div>
+          <div><dt class="font-medium">Enfoque</dt><dd>${escapeHtml(normalize(r.enfoque_transversal))}</dd></div>
+          <div><dt class="font-medium">Fuente</dt><dd>${escapeHtml(normalize(r.fuente))}</dd></div>
+          <div><dt class="font-medium">Actualizado</dt><dd>${escapeHtml(normalize(r.updated_at))}</dd></div>
+        </dl>
+      </article>`;
+    }
+
+    function toCSV(rows){
+      if(!rows.length) return '';
+      const cols = Array.from(new Set(rows.flatMap(r => Object.keys(r)))).filter(c => !c.startsWith('_'));
+      const escapeCell = (v) => {
+        const s = (v==null?'':Array.isArray(v)?v.join('; '):String(v));
+        return /["
+,]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+      };
+      const header = cols.join(',');
+      const body = rows.map(r => cols.map(c => escapeCell(r[c])).join(',')).join('
+');
+      return header + '
+' + body;
+    };
+      const header = cols.join(',');
+      const body = rows.map(r => cols.map(c => escapeCell(r[c])).join(',')).join('\n');
+      return header + '\n' + body;
+    }
+
+    function download(filename, content, type='text/plain'){
+      const blob = new Blob([content], {type});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // ------- Eventos -------
+    $('#q').addEventListener('input', debounce(applyFilters, 200));
+    ['#fSistema','#fModulo','#fSubmodulo','#fTema'].forEach(sel => $(sel).addEventListener('change', applyFilters));
+    $('#btnClear').addEventListener('click', () => {
+      ['#q','#qRel','#fSistema','#fModulo','#fSubmodulo','#fTema'].forEach(sel=>$(sel).value='');
+      state.selectedRelatedKey='';
+      state.selectedRelatedLabel='';
+      renderRelatedSuggestions();
+      renderActiveRelatedChip();
+      applyFilters();
+    }); ['#q','#fSistema','#fModulo','#fSubmodulo','#fTema'].forEach(sel=>$(sel).value=''); applyFilters(); });
+    $('#prev').addEventListener('click', () => { if(state.page>1){ state.page--; render(); }});
+    $('#next').addEventListener('click', () => { const total = state.filtered.length; if(state.page*state.pageSize < total){ state.page++; render(); }});
+    document.addEventListener('keydown', (e) => { if(e.ctrlKey && e.key === '/'){ e.preventDefault(); $('#q').focus(); }});
+    $('#btnAyuda').addEventListener('click', e => { e.preventDefault(); $('#dlgAyuda').showModal(); });
+
+    $('#btnExportJSON').addEventListener('click', () => download('lenguaje_filtrado.json', JSON.stringify(state.filtered, null, 2), 'application/json'));
+    $('#btnExportCSV').addEventListener('click', () => download('lenguaje_filtrado.csv', toCSV(state.filtered), 'text/csv'));
+
+    function debounce(fn, wait){ let t; return (...args) => { clearTimeout(t); t=setTimeout(()=>fn(...args), wait); }; }
+
+    // ------- Carga de datos -------
+    async function loadData(){
+      const path = 'lenguaje.json';
+      try{
+        const res = await fetch(path);
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const json = await res.json();
+        if(!Array.isArray(json)) throw new Error('El JSON debe ser un arreglo de objetos');
+        state.raw = json.map(cleanRow);
+      }catch(err){
+        console.warn('No se pudo cargar lenguaje.json, usando datos de ejemplo.', err);
+        state.raw = sampleData().map(cleanRow);
+      }
+      buildFacets(state.raw);
+      buildRelatedIndex(state.raw);
+      state.filtered = state.raw.slice();
+      renderRelatedSuggestions();
+      renderActiveRelatedChip();
+      render();
+    }catch(err){
+        console.warn('No se pudo cargar data/lenguaje.json, usando datos de ejemplo.', err);
+        state.raw = sampleData().map(cleanRow);
+      }
+      buildFacets(state.raw);
+      state.filtered = state.raw.slice();
+      render();
+    }
+
+    function cleanRow(r){
+      // Normalización básica de campos esperados
+      const out = {
+        sistema_informacion: r.sistema_informacion ?? '',
+        modulo: r.modulo ?? '',
+        submodulo: r.submodulo ?? '',
+        tema: r.tema ?? '',
+        termino: r.termino ?? '',
+        definicion_termino: r.definicion_termino ?? '',
+        terminos_relacionados: Array.isArray(r.terminos_relacionados) ? r.terminos_relacionados : (r.terminos_relacionados ? String(r.terminos_relacionados).split(/;|,/) : []),
+        fuente: r.fuente ?? '',
+        dimension: r.dimension ?? '',
+        enfoque_transversal: r.enfoque_transversal ?? '',
+        codigo: r.codigo ?? '',
+        updated_at: r.updated_at ?? ''
+      };
+      out.terminos_relacionados = out.terminos_relacionados.map(v => normalize(v)).filter(Boolean);
+      out._rel_norm = out.terminos_relacionados.map(normalizeSearch);
+      return out;
+    };
+      return out;
+    }
+
+    function sampleData(){
+      return [
+        { sistema_informacion:'SIG Mujer', modulo:'Servicios', submodulo:'Rutas de atención', tema:'Violencias', termino:'Medida de protección', definicion_termino:'Actuación administrativa o judicial para prevenir o cesar la violencia contra las mujeres.', terminos_relacionados:['protección','denuncia','atención'], fuente:'Ley 1257 de 2008', dimension:'Tejido social, redes y cooperación', enfoque_transversal:'Género', codigo:'T-0001', updated_at:'2025-08-20' },
+        { sistema_informacion:'SIG Mujer', modulo:'Servicios', submodulo:'Cuidado', tema:'Sistema Distrital de Cuidado', termino:'Manzana del Cuidado', definicion_termino:'Infraestructura de servicios integrados de cuidado, formación y respiro para cuidadoras y sus familias.', terminos_relacionados:['cuidado','servicios sociales'], fuente:'SDMujer – 2024', dimension:'Proyectos de vida y sostenibilidad económica', enfoque_transversal:'Cuidado', codigo:'T-0002', updated_at:'2025-05-02' },
+        { sistema_informacion:'Observatorio', modulo:'Participación', submodulo:'Instancias', tema:'Consejos', termino:'Consejo Consultivo de Mujeres', definicion_termino:'Instancia de participación para la incidencia de las mujeres en políticas públicas.', terminos_relacionados:['incidencia','participación'], fuente:'Decreto Distrital', dimension:'Participación y gobernanza', enfoque_transversal:'Enfoque diferencial', codigo:'T-0003', updated_at:'2025-07-11' }
+      ];
+    }
+
+    function normalizeSearch(s){ return (s ?? '').toString().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim(); }
+
+    function buildRelatedIndex(rows){
+      const idx = {};
+      rows.forEach(r => {
+        (r.terminos_relacionados||[]).forEach(lab => {
+          const key = normalizeSearch(lab);
+          if(!key) return;
+          if(!idx[key]) idx[key] = { label: lab, count: 0 };
+          idx[key].count += 1;
+        });
+      });
+      state.relatedIndex = idx;
+    }
+
+    function renderRelatedSuggestions(){
+      const q = normalizeSearch($('#qRel').value);
+      const entries = Object.entries(state.relatedIndex);
+      let items = entries;
+      if(q){ items = entries.filter(([k,v]) => k.includes(q) || normalizeSearch(v.label).includes(q)); }
+      items.sort((a,b) => b[1].count - a[1].count);
+      items = items.slice(0, 60);
+      const html = items.map(([key, info]) => `<button class="chip hover:shadow" data-rel="${key}" data-label="${escapeHtml(info.label)}">${escapeHtml(info.label)} <span class="ml-1 text-gray-500">(${info.count})</span></button>`).join('');
+      $('#relatedList').innerHTML = html || '<span class="text-sm text-gray-500">Sin coincidencias.</span>';
+    }
+
+    function renderActiveRelatedChip(){
+      if(state.selectedRelatedKey){
+        $('#relActive').innerHTML = `<span class="chip">Relacionado: ${escapeHtml(state.selectedRelatedLabel)} <button id="relClear" class="ml-2">&times;</button></span>`;
+        $('#relClear').addEventListener('click', () => { state.selectedRelatedKey=''; state.selectedRelatedLabel=''; renderActiveRelatedChip(); applyFilters(); });
+      } else {
+        $('#relActive').innerHTML = '';
+      }
+    }
+
+    // Eventos para el buscador de relacionados
+    $('#qRel').addEventListener('input', debounce(renderRelatedSuggestions, 150));
+    $('#relatedList').addEventListener('click', (e) => {
+      const el = e.target.closest('[data-rel]');
+      if(!el) return;
+      state.selectedRelatedKey = el.getAttribute('data-rel');
+      state.selectedRelatedLabel = el.getAttribute('data-label') || el.textContent.trim();
+      renderActiveRelatedChip();
+      applyFilters();
+    });
+
+    function normalizeLabel(s){ return normalize(s); }
+
+    function getParentLabel(row){
+      // Busca el padre inmediato usando ruta_jerarquica o termino_padre
+      const route = normalize(row.ruta_jerarquica);
+      const self = normalize(row.termino);
+      if(route && route.includes('›')){
+        const parts = route.split('›').map(s => normalize(s).trim()).filter(Boolean);
+        if(parts.length >= 2){ return parts[parts.length - 2]; }
+      }
+      const p = normalize(row.termino_padre);
+      if(p && p !== self) return p;
+      return '';
+    }
+
+    function getChildrenLabels(row){
+      const self = normalize(row.termino);
+      if(!self) return [];
+      const labels = [];
+      state.filtered.forEach(x => {
+        const parent = getParentLabel(x);
+        if(parent && normalize(parent) === self){ labels.push(normalize(x.termino)); }
+      });
+      // dedup + sort
+      return Array.from(new Set(labels)).sort((a,b)=>a.localeCompare(b));
+    }
+
+    function buildHierarchyFromRows(rows){
+      const children = new Map();
+      const labelSet = new Set();
+      const parentSet = new Set();
+      function addChild(parentLabel, childLabel){
+        const pkey = normalizeSearch(parentLabel);
+        const set = children.get(pkey) || new Set();
+        set.add(childLabel);
+        children.set(pkey, set);
+      }
+      rows.forEach(r => {
+        const term = normalize(r.termino); if(!term) return; labelSet.add(term);
+        const parent = getParentLabel(r);
+        if(parent){ parentSet.add(parent); addChild(parent, term); }
+      });
+      const childLabels = new Set();
+      children.forEach(set => set.forEach(l => childLabels.add(normalize(l))));
+      const roots = Array.from(new Set([...parentSet, ...labelSet])).filter(l => !childLabels.has(l));
+      return { roots, children };
+    }
+
+    function renderTree(rows){
+      const { roots, children } = buildHierarchyFromRows(rows);
+      const sortLabels = (arr) => arr.slice().sort((a,b)=>a.localeCompare(b));
+      const makeNode = (label) => {
+        const key = normalizeSearch(label);
+        const kids = Array.from(children.get(key) || []);
+        const r = rows.find(x => normalize(x.termino) === label) || {};
+        const defsHtml = (r.definiciones||[]).length ? `<ol class="mt-1 list-decimal pl-5 space-y-1">${(r.definiciones||[]).map(d => {
+          const src = d.fuente ? (d.link ? `<a href="${escapeHtml(d.link)}" target="_blank" class="underline">${escapeHtml(d.fuente)}</a>` : escapeHtml(d.fuente)) : '';
+          return `<li><div class=\"leading-6\">${escapeHtml(d.texto)}${src?` <span class=\"text-gray-500\">— ${src}</span>`:''}</div></li>`;
+        }).join('')}</ol>` : '';
+        const meta = [r.sistema_informacion, r.modulo, r.submodulo, r.tema].filter(Boolean).join(' / ');
+        if(kids.length){
+          return `<details class="mb-2"> 
+            <summary class="font-medium cursor-pointer">${escapeHtml(label)} <span class="text-xs text-gray-500">(${kids.length} hijo${kids.length>1?'s':''})</span></summary>
+            ${defsHtml}
+            ${meta?`<div class=\"text-xs text-gray-500 mt-1\">${escapeHtml(meta)}</div>`:''}
+            <div class="ml-4 mt-2">${sortLabels(kids).map(makeNode).join('')}</div>
+          </details>`;
+        }
+        return `<div class="mb-2">
+          <div class="font-medium">${escapeHtml(label)}</div>
+          ${defsHtml}
+          ${meta?`<div class=\"text-xs text-gray-500 mt-1\">${escapeHtml(meta)}</div>`:''}
+        </div>`;
+      };
+      const html = sortLabels(roots).map(makeNode).join('') || '<div class="text-sm text-gray-500">No hay términos para mostrar en vista árbol.</div>';
+      $('#treeRoot').innerHTML = html;
+    }
+
+    // Vista: botones
+    const btnList = document.getElementById('btnViewList');
+    const btnTree = document.getElementById('btnViewTree');
+    if(btnList && btnTree){
+      btnList.addEventListener('click', () => { state.viewMode='list'; btnList.setAttribute('aria-pressed','true'); btnTree.setAttribute('aria-pressed','false'); render(); });
+      btnTree.addEventListener('click', () => { state.viewMode='tree'; btnList.setAttribute('aria-pressed','false'); btnTree.setAttribute('aria-pressed','true'); render(); });
+    }
+
+    // chips de relacionados dentro de tarjetas
+    document.getElementById('results').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-rel]');
+      if(!btn) return;
+      state.selectedRelatedKey = btn.getAttribute('data-rel');
+      state.selectedRelatedLabel = btn.textContent.trim();
+      renderActiveRelatedChip();
+      applyFilters();
+    });
+
+    // Nueva plantilla de tarjeta con múltiples definiciones y vista de hijos
+    function cardTemplate2(r){
+      const rel = (r.terminos_relacionados || []).filter(Boolean);
+      const defs = r.definiciones || [];
+      const defsHtml = defs.length ? `<ol class="mt-2 list-decimal pl-5 space-y-1">${defs.map(d => {
+          const src = d.fuente ? (d.link ? `<a href="${escapeHtml(d.link)}" target="_blank" class="underline">${escapeHtml(d.fuente)}</a>` : escapeHtml(d.fuente)) : '';
+          return `<li><div class=\"leading-6\">${escapeHtml(d.texto)}${src?` <span class=\"text-gray-500\">— ${src}</span>`:''}</div></li>`;
+        }).join('')}</ol>` : (r.definicion_termino ? `<p class="mt-2 text-sm leading-6">${escapeHtml(r.definicion_termino)}</p>` : '');
+      const hijos = getChildrenLabels(r);
+      const hijosHtml = hijos.length ? `<details class="mt-2"><summary class="cursor-pointer text-sm">Hijos (${hijos.length})</summary><div class="mt-2 flex flex-wrap gap-2">${hijos.map(h => `<span class=\"chip\">${escapeHtml(h)}</span>`).join('')}</div></details>` : '';
+      return `<article class="card p-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 class="text-lg font-semibold">${escapeHtml(r.termino || '(Sin término)')}</h3>
+            ${r.ruta_jerarquica ? `<div class="text-xs text-gray-500 mt-0.5">${escapeHtml(r.ruta_jerarquica)}</div>` : ''}
+          </div>
+          ${r.codigo ? `<span class="chip">${escapeHtml(r.codigo)}</span>` : ''}
+        </div>
+        ${defsHtml}
+        ${rel.length ? `<div class="mt-2">${rel.map(t => `<button class=\"chip hover:shadow\" data-rel=\"${normalizeSearch(t)}\">${escapeHtml(t)}</button>`).join('')}</div>` : ''}
+        <dl class="mt-3 text-sm grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div><dt class="font-medium">Sistema · Módulo · Submódulo</dt><dd>${[r.sistema_informacion, r.modulo, r.submodulo].map(v=>escapeHtml(normalize(v))).filter(Boolean).join(' / ')}</dd></div>
+          <div><dt class="font-medium">Tema</dt><dd>${escapeHtml(normalize(r.tema))}</dd></div>
+          <div><dt class="font-medium">Actualizado</dt><dd>${escapeHtml(normalize(r.updated_at))}</dd></div>
+        </dl>
+        ${hijosHtml}
+      </article>`;
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
 
