@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lenguaje controlado – Maestro‑Detalle (Jerárquico)</title>
+  <title>Lenguaje controlado – Maestro‑Detalle (Definición sin título)</title>
   <style>
     :root{--bg:#f6f8fb;--panel:#fff;--muted:#5f6c7b;--text:#16202a;--accent:#4f46e5;--border:#e6eaf0;--shadow:0 6px 18px rgba(22,32,42,.06)}
     *{box-sizing:border-box}
@@ -37,6 +37,7 @@
     .content{display:flex;flex-direction:column;gap:12px}
     .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
     .title{font-weight:800;font-size:20px;margin:0 0 6px}
+    .eyebrow{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
     .def{color:#2d3748;line-height:1.5;white-space:pre-wrap}
     .meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px}
     .meta a{color:var(--accent);text-decoration:none}
@@ -57,7 +58,7 @@
   <header>
     <div class="wrap">
       <h1>Lenguaje controlado – Vista maestro‑detalle (jerárquica)</h1>
-      <div class="sub">Jerarquía: <strong>término padre → término hijo → subtermino → subtermino1</strong>. La definición del padre proviene de la fila con <code>termino_hijo = 0</code>. Para el resto, la definición se muestra <strong>solo en el último nivel disponible</strong> (evitando títulos repetidos).</div>
+      <div class="sub">Jerarquía: <strong>padre → hijo → subtermino → subtermino1</strong>. La definición del padre viene de <code>termino_hijo = 0</code>. Si el hijo no tiene nombre, se <strong>promueven</strong> sus subniveles directamente bajo el padre (sin rótulo).</div>
       <div class="toolbar">
         <div class="badge"><span id="count">0</span> padres • <span id="fields">0</span> campos</div>
         <input id="q" type="text" placeholder="Buscar por padre/hijo/subtermino/definición…" />
@@ -88,23 +89,20 @@
 
   <script>
     const DATA_URL = './lenguaje.json';
+    const PARENT_DEF_LABEL = ''; // Deja '' para ocultar la etiqueta
 
     // ===== Estado =====
-    let RAW=[], COLUMNS=[], GROUPS=[]; // GROUPS = [{name,pDef,pSource,pLink,children:[{name,def,source,link,subs:[{name,def,source,link,subs:[{name,def,source,link}]}]}]}]
+    let RAW=[], COLUMNS=[], GROUPS=[];
 
     // ===== Utilidades =====
     const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
     const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
     const cleanNumPrefix=s=>String(s??'').trim().replace(/^\s*\d+[\s\-.:)]*/,'').trim();
-    const isZero=v=>v===0 || v==='0' || /^0(\.0+)?$/.test(String(v||''));
+    const isZero=v=>{ const s=String(v??'').trim(); if(s==='') return false; return s==='0' || /^0(\.0+)?$/.test(s) || (!Number.isNaN(Number(s)) && Number(s)===0); };
 
     function detectFields(cols){
       const ncols = cols.map(c=>[c,norm(c).replace(/[^a-z0-9]+/g,'_')]);
-      const pick = (arr)=>{
-        for(const p of arr){ const exact=ncols.find(([o,n])=>n===p); if(exact) return exact[0]; }
-        for(const p of arr){ const cand=ncols.find(([o,n])=>n.includes(p)); if(cand) return cand[0]; }
-        return null;
-      };
+      const pick = (arr)=>{ for(const p of arr){ const exact=ncols.find(([o,n])=>n===p); if(exact) return exact[0]; } for(const p of arr){ const cand=ncols.find(([o,n])=>n.includes(p)); if(cand) return cand[0]; } return null; };
       return {
         parent:     pick(['termino_padre','termino_padre_','t_rmino_padre','padre']),
         child:      pick(['termino_hijo','termino_hijo_','t_rmino_hijo','hijo']),
@@ -119,49 +117,50 @@
     function groupByHierarchy(rows, F){
       const map = new Map();
       const getGroup=(p)=>{ if(!map.has(p)) map.set(p,{name:p,pDef:'',pSource:'',pLink:'',children:[],_childMap:new Map()}); return map.get(p); };
-      const getChild=(g, name)=>{ const key=name||'(término)'; if(!g._childMap.has(key)) g._childMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_subMap:new Map()}); return g._childMap.get(key); };
-      const getSub=(ch, name)=>{ const key=name||'(término)'; if(!ch._subMap.has(key)) ch._subMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_sub1Map:new Map()}); return ch._subMap.get(key); };
-      const getSub1=(sub, name)=>{ const key=name||'(término)'; if(!sub._sub1Map.has(key)) sub._sub1Map.set(key,{name:key,def:'',source:'',link:''}); return sub._sub1Map.get(key); };
+      const getChild=(g, name)=>{ const key=(name||'__ghost__'); if(!g._childMap.has(key)) g._childMap.set(key,{name:(name||''),_ghost:!name,def:'',source:'',link:'',subs:[],_subMap:new Map()}); return g._childMap.get(key); };
+      const getSub=(ch, name)=>{ const key=name||'(sin nombre)'; if(!ch._subMap.has(key)) ch._subMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_sub1Map:new Map()}); return ch._subMap.get(key); };
+      const getSub1=(sub, name)=>{ const key=name||'(sin nombre)'; if(!sub._sub1Map.has(key)) sub._sub1Map.set(key,{name:key,def:'',source:'',link:''}); return sub._sub1Map.get(key); };
 
       for(const r of rows){
         const p = String(r?.[F.parent]??'').trim(); if(!p) continue; const g=getGroup(p);
-        const chRaw = r?.[F.child]; const chVal = cleanNumPrefix(chRaw);
-        const stRaw = r?.[F.subterm]; const stVal = cleanNumPrefix(stRaw);
-        const st1Raw = r?.[F.subterm1]; const st1Val = cleanNumPrefix(st1Raw);
+        const chRawTrim = String(r?.[F.child] ?? '').trim();
+        const chVal = cleanNumPrefix(chRawTrim);
+        const stVal = cleanNumPrefix(r?.[F.subterm]);
+        const st1Val = cleanNumPrefix(r?.[F.subterm1]);
 
-        if(isZero(chRaw)){
-          // definición/metadata del padre
+        if(isZero(chRawTrim)){
           g.pDef = r?.[F.definition] ?? g.pDef;
           g.pSource = r?.[F.source] ?? g.pSource;
           g.pLink = r?.[F.link] ?? g.pLink;
           continue;
         }
 
-        // Encontrar el nivel más profundo con valor no vacío
-        const hasSub = !!stVal; const hasSub1 = !!st1Val;
+        const hasSub = !!stVal; const hasSub1 = !!st1Val; const hasChildName = !!chVal;
+
         if(hasSub1){
-          const ch = getChild(g, chVal || '(término)');
-          const sub = getSub(ch, stVal);
-          const leaf = getSub1(sub, st1Val);
-          leaf.def   = r?.[F.definition] ?? leaf.def;
-          leaf.source= r?.[F.source] ?? leaf.source;
-          leaf.link  = r?.[F.link] ?? leaf.link;
+          if(hasChildName){
+            const ch = getChild(g, chVal); const sub = getSub(ch, stVal); const leaf = getSub1(sub, st1Val);
+            leaf.def=r?.[F.definition]??leaf.def; leaf.source=r?.[F.source]??leaf.source; leaf.link=r?.[F.link]??leaf.link;
+          } else {
+            const ghost = getChild(g, null); const sub = getSub(ghost, stVal); const leaf = getSub1(sub, st1Val);
+            leaf.def=r?.[F.definition]??leaf.def; leaf.source=r?.[F.source]??leaf.source; leaf.link=r?.[F.link]??leaf.link;
+          }
         } else if(hasSub){
-          const ch = getChild(g, chVal || '(término)');
-          const sub = getSub(ch, stVal);
-          sub.def   = r?.[F.definition] ?? sub.def;
-          sub.source= r?.[F.source] ?? sub.source;
-          sub.link  = r?.[F.link] ?? sub.link;
+          if(hasChildName){
+            const ch = getChild(g, chVal); const sub = getSub(ch, stVal);
+            sub.def=r?.[F.definition]??sub.def; sub.source=r?.[F.source]??sub.source; sub.link=r?.[F.link]??sub.link;
+          } else {
+            const ghost = getChild(g, null); const sub = getSub(ghost, stVal);
+            sub.def=r?.[F.definition]??sub.def; sub.source=r?.[F.source]??sub.source; sub.link=r?.[F.link]??sub.link;
+          }
         } else {
-          // sin subniveles → definición del hijo
-          const ch = getChild(g, chVal || '(término)');
-          ch.def   = r?.[F.definition] ?? ch.def;
-          ch.source= r?.[F.source] ?? ch.source;
-          ch.link  = r?.[F.link] ?? ch.link;
+          if(hasChildName){
+            const ch = getChild(g, chVal);
+            ch.def=r?.[F.definition]??ch.def; ch.source=r?.[F.source]??ch.source; ch.link=r?.[F.link]??ch.link;
+          }
         }
       }
 
-      // Pasar de maps a arrays y ordenar
       const groups = Array.from(map.values());
       for(const g of groups){
         g.children = Array.from(g._childMap.values()); delete g._childMap;
@@ -194,54 +193,61 @@
       return {row,chev};
     }
 
+    function renderLeaf(name, def, source, link){
+      const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
+      if(name){ const t=document.createElement('h4'); t.textContent=name; leaf.append(t); }
+      if(def){ const d=document.createElement('div'); d.className='leaf-def'; d.textContent=def; leaf.append(d); }
+      const m=document.createElement('div'); m.className='meta';
+      if(source) m.append(Object.assign(document.createElement('span'),{textContent:source}));
+      if(link){ const a=document.createElement('a'); a.href=link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; m.append(a); }
+      if(m.childNodes.length) leaf.append(m);
+      return leaf;
+    }
+
     function renderTree(g){
       const tree=$('#tree'); tree.innerHTML='';
       if(!g){ tree.innerHTML='<div class="empty">Selecciona un término</div>'; return; }
 
       for(const ch of g.children){
+        if(ch._ghost){
+          if(ch.subs && ch.subs.length){
+            for(const s of ch.subs){
+              if(Array.isArray(s.subs) && s.subs.length){
+                const n2=document.createElement('div'); n2.className='node';
+                const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
+                const body2=document.createElement('div'); body2.className='body'; body2.style.display='none';
+                for(const s1 of s.subs){ body2.append(renderLeaf(s1.name, s1.def, s1.source, s1.link)); }
+                row2.addEventListener('click',()=>{ const open=body2.style.display==='block'; body2.style.display=open?'none':'block'; chev2.textContent=open?'▸':'▾'; });
+                n2.append(body2); tree.append(n2);
+              } else {
+                tree.append(renderLeaf(s.name, s.def, s.source, s.link));
+              }
+            }
+          } else if(ch.def){
+            tree.append(renderLeaf('', ch.def, ch.source, ch.link));
+          }
+          continue;
+        }
+
         const n=document.createElement('div'); n.className='node';
         const {row,chev}=createNodeHeader(ch.name); n.append(row);
         const body=document.createElement('div'); body.className='body'; body.style.display='none';
 
         if(ch.subs && ch.subs.length){
-          // subnivel presente: definiciones solo en hojas
           for(const s of ch.subs){
-            const n2=document.createElement('div'); n2.className='node'; n2.style.marginTop='8px';
-            const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
-            const body2=document.createElement('div'); body2.className='body'; body2.style.display='none';
-
             if(Array.isArray(s.subs) && s.subs.length){
-              for(const s1 of s.subs){
-                const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
-                const leafTitle=document.createElement('h4'); leafTitle.textContent=s1.name; leaf.append(leafTitle);
-                if(s1.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s1.def; leaf.append(def); }
-                const meta=document.createElement('div'); meta.className='meta';
-                if(s1.source) meta.append(Object.assign(document.createElement('span'),{textContent:s1.source}));
-                if(s1.link){ const a=document.createElement('a'); a.href=s1.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-                if(meta.childNodes.length) leaf.append(meta);
-                body2.append(leaf);
-              }
+              const n2=document.createElement('div'); n2.className='node'; n2.style.marginTop='8px';
+              const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
+              const body2=document.createElement('div'); body2.className='body'; body2.style.display='none';
+              for(const s1 of s.subs){ body2.append(renderLeaf(s1.name, s1.def, s1.source, s1.link)); }
+              row2.addEventListener('click',()=>{ const open=body2.style.display==='block'; body2.style.display=open?'none':'block'; chev2.textContent=open?'▸':'▾'; });
+              n2.append(body2); body.append(n2);
             } else {
-              // s es hoja (el título ya está en el encabezado)
-              const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
-              if(s.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s.def; leaf.append(def); }
-              const meta=document.createElement('div'); meta.className='meta';
-              if(s.source) meta.append(Object.assign(document.createElement('span'),{textContent:s.source}));
-              if(s.link){ const a=document.createElement('a'); a.href=s.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-              if(meta.childNodes.length) leaf.append(meta);
-              body2.append(leaf);
+              body.append(renderLeaf(s.name, s.def, s.source, s.link));
             }
-
-            row2.addEventListener('click',()=>{ const open=body2.style.display==='block'; body2.style.display=open?'none':'block'; chev2.textContent=open?'▸':'▾'; });
-            n2.append(body2); body.append(n2);
           }
         } else {
-          // hijo es hoja
-          if(ch.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=ch.def; body.append(def); }
-          const meta=document.createElement('div'); meta.className='meta';
-          if(ch.source) meta.append(Object.assign(document.createElement('span'),{textContent:ch.source}));
-          if(ch.link){ const a=document.createElement('a'); a.href=ch.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-          if(meta.childNodes.length) body.append(meta);
+          body.append(renderLeaf('', ch.def, ch.source, ch.link));
         }
 
         row.addEventListener('click',()=>{ const open=body.style.display==='block'; body.style.display=open?'none':'block'; chev.textContent=open?'▸':'▾'; });
@@ -254,7 +260,10 @@
       $$('.item').forEach(n=>n.classList.toggle('active', n.dataset.name===name));
       const d=$('#detail'); d.innerHTML='';
       const title=document.createElement('h2'); title.className='title'; title.textContent=g.name; d.append(title);
-      if(g.pDef){ const def=document.createElement('div'); def.className='def'; def.textContent=g.pDef; d.append(def); }
+      if(g.pDef){
+        if(PARENT_DEF_LABEL){ const lab=document.createElement('div'); lab.className='eyebrow'; lab.textContent=PARENT_DEF_LABEL; d.append(lab); }
+        const def=document.createElement('div'); def.className='def'; def.textContent=g.pDef; d.append(def);
+      }
       const meta=document.createElement('div'); meta.className='meta';
       if(g.pSource) meta.append(Object.assign(document.createElement('span'),{textContent:g.pSource}));
       if(g.pLink){ const a=document.createElement('a'); a.href=g.pLink; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
@@ -280,10 +289,7 @@
       renderSidebar(matches); $('#empty').style.display = matches.length? 'none':'block';
     }
 
-    function expandCollapseTree(open){
-      $$('#tree .body').forEach(b=>{ b.style.display = open?'block':'none'; });
-      $$('#tree .chev').forEach(c=>{ c.textContent = open?'▾':'▸'; });
-    }
+    function expandCollapseTree(open){ $$('#tree .body').forEach(b=>{ b.style.display = open?'block':'none'; }); $$('#tree .chev').forEach(c=>{ c.textContent = open?'▾':'▸'; }); }
 
     async function load(){
       const res = await fetch(DATA_URL,{cache:'no-store'}); if(!res.ok) throw new Error('HTTP '+res.status);
@@ -307,6 +313,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
