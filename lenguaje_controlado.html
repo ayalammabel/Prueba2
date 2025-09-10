@@ -5,70 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lenguaje controlado – Maestro-Detalle (Jerárquico)</title>
   <style>
-    :root{--bg:#f6f8fb;--panel:#fff;--muted:#5f6c7b;--text:#16202a;--accent:#4f46e5;--border:#e6eaf0;--shadow:0 6px 18px rgba(22,32,42,.06)}
+    :root{
+      --bg:#f6f8fb;--panel:#fff;--muted:#5f6c7b;--text:#16202a;--accent:#4f46e5;--border:#e6eaf0;--shadow:0 6px 18px rgba(22,32,42,.06);
+      --border-soft:#eef1f6;--guide:#e9ecf3;
+    }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial;background:var(--bg);color:var(--text)}
 
-    /* ====== HEADER ====== */
-    header{position:sticky;top:0;z-index:10;background:rgba(246,248,251,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-    .wrap{max-width:1200px;margin:0 auto;padding:16px}
+    /* ===== HEADER refinado ===== */
+    header{position:sticky;top:0;z-index:10;background:rgba(246,248,251,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+    .wrap{max-width:1200px;margin:0 auto;padding:14px 16px}
     .brand{display:flex;align-items:flex-start;gap:14px}
     .brand-logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);box-shadow:var(--shadow)}
     .brand-text{display:flex;flex-direction:column}
     .brand-eyebrow{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-    h1.brand-title{margin:2px 0 2px;font-size:28px;line-height:1.15}
+    h1.brand-title{margin:2px 0 0;font-size:28px;line-height:1.15}
     .brand-sub{color:var(--muted);font-size:13px}
-    .helper{color:var(--muted);font-size:13px;margin-top:10px}
+    .helper{color:var(--muted);font-size:13px;margin-top:8px}
 
-    .toolbar{display:grid;grid-template-columns:1fr 320px auto;gap:10px;align-items:center;margin-top:12px}
+    .toolbar{display:grid;grid-template-columns:1fr 320px auto;gap:10px;align-items:center;margin-top:10px}
     .chips{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;box-shadow:var(--shadow);font-size:12px;color:var(--muted)}
     .chip b{font-variant-numeric:tabular-nums;color:var(--text)}
 
     input[type=text]{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;box-shadow:var(--shadow);outline:none}
-    input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,70,229,.12)}
+    input[type=text]:focus-visible{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,70,229,.15)}
     button{background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:14px;cursor:pointer;box-shadow:var(--shadow)}
     button:hover{border-color:var(--accent)}
+    button:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,70,229,.15)}
 
     main{max-width:1200px;margin:16px auto;display:grid;grid-template-columns:320px 1fr;gap:16px}
     @media (max-width: 900px){main{grid-template-columns:1fr}.side{position:relative;top:0}.side-list{max-height:unset}}
 
-    /* Sidebar */
-    .side{position:sticky;top:152px;align-self:start;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+    /* ===== Sidebar ===== */
+    .side{position:sticky;top:140px;align-self:start;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
     .side-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--border)}
-    .side-list{max-height:calc(100vh - 220px);overflow:auto;padding:8px}
+    .side-list{max-height:calc(100vh - 210px);overflow:auto;padding:8px}
     .item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid transparent;border-radius:10px;cursor:pointer}
     .item:hover{background:#f1f2ff;border-color:rgba(79,70,229,.25)}
     .item.active{background:#eef0ff;border-color:rgba(79,70,229,.35)}
     .item .name{font-weight:700}
-    .item .count{font-size:12px;color:var(--muted)}
-    /* Chip lateral más estrecho */
+    .item .count{font-size:12px;color:var(--muted);background:#eef1ff;border-radius:999px;padding:2px 8px;min-width:22px;text-align:center;font-variant-numeric:tabular-nums}
     .side-head .badge{padding:2px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--muted);font-size:12px}
+    .item:focus-visible{outline:none;border-color:rgba(79,70,229,.35);box-shadow:0 0 0 3px rgba(79,70,229,.18)}
 
-    /* Content */
+    /* ===== Content ===== */
     .content{display:flex;flex-direction:column;gap:12px}
     .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
-    .title{font-weight:800;font-size:20px;margin:0 0 6px}
-    .def{color:#2d3748;line-height:1.5;white-space:pre-wrap}
-    .meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px}
+    .title{font-weight:800;font-size:24px;margin:0 0 10px;text-wrap:balance}
+    .def{color:#2d3748;line-height:1.6;white-space:pre-wrap;max-width:72ch}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px;align-items:center}
     .meta a{color:var(--accent);text-decoration:none}
     .meta a:hover{text-decoration:underline}
+    .meta a::after{content:"↗";font-size:.85em;margin-left:.25em}
 
     .tree{display:flex;flex-direction:column;gap:10px}
-    .node{border:1px solid var(--border);border-radius:12px;padding:12px;background:#fbfbfe}
-    .node .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .node{border:1px solid var(--border-soft);border-radius:12px;padding:12px;background:#fafbff}
+    .node .row{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer}
     .node h4{margin:0;font-size:15px}
     .chev{font-size:12px;color:var(--muted)}
     .body{margin-top:8px}
-    .leaf-def{color:#3a4452;font-size:14px;white-space:pre-wrap}
+    .leaf-def{color:#3a4452;font-size:14px;white-space:pre-wrap;line-height:1.6;max-width:72ch}
+
+    /* Guía vertical en anidados */
+    .node .node{background:#fff;border-color:var(--guide);border-left:2px solid var(--guide);padding-left:12px}
 
     .empty{padding:24px;text-align:center;color:var(--muted)}
   </style>
 </head>
 <body>
 
-  <!-- ====== HEADER ====== -->
+  <!-- ===== Encabezado ===== -->
   <header>
     <div class="wrap">
       <div class="brand">
@@ -80,25 +88,15 @@
         </div>
       </div>
 
-      <!--
-      <div class="helper">
-        Jerarquía: <strong>término padre → término hijo → subtermino → subtermino1</strong>.
-        La definición del padre proviene de la fila con <code>termino_hijo = 0</code>. Para el resto,
-        la definición se muestra <strong>solo en el último nivel disponible</strong>.
-      </div>
-      -->
-
       <div class="toolbar">
         <div class="chips">
-          <span class="chip"><b id="count">0</b> términos</span>
-          <!-- Chip de campos eliminado visualmente -->
-          <!-- <span class="chip" style="display:none"><b id="fields">0</b> campos</span> -->
+          <span class="chip" title="Número de términos padre"><b id="count">0</b> términos</span>
         </div>
         <input id="q" type="text" placeholder="Buscar por término (padre, hijo, subtermino, definición)"/>
         <div style="display:flex;gap:8px;justify-self:end">
-          <button id="clear">Limpiar</button>
-          <button id="expandAll">Abrir todo</button>
-          <button id="collapseAll">Cerrar todo</button>
+          <button id="clear" title="Limpiar búsqueda">Limpiar</button>
+          <button id="expandAll" title="Abrir todos los niveles">Abrir todo</button>
+          <button id="collapseAll" title="Cerrar todos los niveles">Cerrar todo</button>
         </div>
       </div>
     </div>
@@ -149,7 +147,7 @@
     function groupByHierarchy(rows, F){
       const map = new Map();
       const getGroup=(p)=>{ if(!map.has(p)) map.set(p,{name:p,pDef:'',pSource:'',pLink:'',children:[],_childMap:new Map()}); return map.get(p); };
-      const getChild=(g, name)=>{ const key=name||'(término)'; if(!g._childMap.has(key)) g._childMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_subMap:new Map()}); return g._childMap.get(key); };
+      const getChild=(g, name)=>{ const key=name||'(término)'; if(!g._childMap.has(key)) g._childMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_subMap:new Map(),_ghost:!name}); return g._childMap.get(key); };
       const getSub=(ch, name)=>{ const key=name||'(término)'; if(!ch._subMap.has(key)) ch._subMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_sub1Map:new Map()}); return ch._subMap.get(key); };
       const getSub1=(sub, name)=>{ const key=name||'(término)'; if(!sub._sub1Map.has(key)) sub._sub1Map.set(key,{name:key,def:'',source:'',link:''}); return sub._sub1Map.get(key); };
 
@@ -204,90 +202,84 @@
       const list=$('#sideList'); list.innerHTML='';
       const frag=document.createDocumentFragment();
       for(const g of groups){
-        const it=document.createElement('div'); it.className='item'; it.dataset.name=g.name;
+        const it=document.createElement('div'); it.className='item'; it.dataset.name=g.name; it.tabIndex=0;
         const count = g.children.reduce((acc,ch)=> acc + (ch.subs?.length||0) + (ch.def?1:0), 0);
         it.innerHTML=`<span class="name">${g.name}</span><span class="count">${count}</span>`;
-        it.addEventListener('click',()=>selectParent(g.name));
+        const go=()=>selectParent(g.name);
+        it.addEventListener('click',go);
+        it.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); }});
         frag.append(it);
       }
-      list.append(frag);
-      // Mantener actualizado el chip lateral
-      $('#sideCount').textContent=groups.length;
+      list.append(frag); $('#sideCount').textContent=groups.length;
     }
 
     function createNodeHeader(title){
-      const row=document.createElement('div'); row.className='row';
+      const row=document.createElement('div'); row.className='row'; row.tabIndex=0;
       const h=document.createElement('h4'); h.textContent=title; row.append(h);
       const chev=document.createElement('span'); chev.className='chev'; chev.textContent='▸'; row.append(chev);
       return {row,chev};
     }
 
-  function renderTree(g){
-    const tree=$('#tree'); tree.innerHTML='';
-    if(!g){ tree.innerHTML='<div class="empty">Selecciona un término</div>'; return; }
-  
-    for(const ch of g.children){
-  
-      // ⬇️ Caso especial: "(término)" sin subniveles -> mostrar sin encabezado
-      const isGhostLeaf = ch.name === '(término)' && (!ch.subs || ch.subs.length === 0);
-      if (isGhostLeaf){
-        const leaf=document.createElement('div'); leaf.className='node';
-        if(ch.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=ch.def; leaf.append(def); }
-        const meta=document.createElement('div'); meta.className='meta';
-        if(ch.source) meta.append(Object.assign(document.createElement('span'),{textContent:ch.source}));
-        if(ch.link){ const a=document.createElement('a'); a.href=ch.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-        if(meta.childNodes.length) leaf.append(meta);
-        tree.append(leaf);
-        continue;
+    function renderLeaf(name, def, source, link){
+      const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
+      if(name){ const t=document.createElement('h4'); t.textContent=name; leaf.append(t); }
+      if(def){ const d=document.createElement('div'); d.className='leaf-def'; d.textContent=def; leaf.append(d); }
+      const m=document.createElement('div'); m.className='meta';
+      if(source) m.append(Object.assign(document.createElement('span'),{textContent:source}));
+      if(link){
+        if(m.childNodes.length) m.append(document.createTextNode(' · '));
+        const a=document.createElement('a'); a.href=link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; m.append(a);
       }
-      // ⬆️ Fin del caso especial
-  
-      const n=document.createElement('div'); n.className='node';
-      const {row,chev}=createNodeHeader(ch.name); n.append(row);
-      const body=document.createElement('div'); body.className='body'; body.style.display='none';
-  
-      if(ch.subs && ch.subs.length){
-        for(const s of ch.subs){
-          const n2=document.createElement('div'); n2.className='node'; n2.style.marginTop='8px';
-          const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
-          const body2=document.createElement('div'); body2.className='body'; body2.style.display='none';
-  
-          if(Array.isArray(s.subs) && s.subs.length){
-            for(const s1 of s.subs){
-              const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
-              const leafTitle=document.createElement('h4'); leafTitle.textContent=s1.name; leaf.append(leafTitle);
-              if(s1.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s1.def; leaf.append(def); }
-              const meta=document.createElement('div'); meta.className='meta';
-              if(s1.source) meta.append(Object.assign(document.createElement('span'),{textContent:s1.source}));
-              if(s1.link){ const a=document.createElement('a'); a.href=s1.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-              if(meta.childNodes.length) leaf.append(meta);
-              body2.append(leaf);
-            }
-          } else {
-            const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
-            if(s.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s.def; leaf.append(def); }
-            const meta=document.createElement('div'); meta.className='meta';
-            if(s.source) meta.append(Object.assign(document.createElement('span'),{textContent:s.source}));
-            if(s.link){ const a=document.createElement('a'); a.href=s.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-            if(meta.childNodes.length) leaf.append(meta);
-            body2.append(leaf);
-          }
-  
-          row2.addEventListener('click',()=>{ const open=body2.style.display==='block'; body2.style.display=open?'none':'block'; chev2.textContent=open?'▸':'▾'; });
-          n2.append(body2); body.append(n2);
-        }
-      } else {
-        if(ch.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=ch.def; body.append(def); }
-        const meta=document.createElement('div'); meta.className='meta';
-        if(ch.source) meta.append(Object.assign(document.createElement('span'),{textContent:ch.source}));
-        if(ch.link){ const a=document.createElement('a'); a.href=ch.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-        if(meta.childNodes.length) body.append(meta);
-      }
-  
-      row.addEventListener('click',()=>{ const open=body.style.display==='block'; body.style.display=open?'none':'block'; chev.textContent=open?'▸':'▾'; });
-      n.append(body); tree.append(n);
+      if(m.childNodes.length) leaf.append(m);
+      return leaf;
     }
-  }
+
+    function renderTree(g){
+      const tree=$('#tree'); tree.innerHTML='';
+      if(!g){ tree.innerHTML='<div class="empty">Selecciona un término</div>'; return; }
+
+      for(const ch of g.children){
+
+        // Ocultar encabezado "(término)" cuando es hoja (definición del padre)
+        const isGhostLeaf = ch.name === '(término)' && (!ch.subs || ch.subs.length === 0);
+        if (isGhostLeaf){
+          tree.append(renderLeaf('', ch.def, ch.source, ch.link));
+          continue;
+        }
+
+        const n=document.createElement('div'); n.className='node';
+        const {row,chev}=createNodeHeader(ch.name); n.append(row);
+        const body=document.createElement('div'); body.className='body'; body.style.display='none';
+
+        if(ch.subs && ch.subs.length){
+          for(const s of ch.subs){
+            const n2=document.createElement('div'); n2.className='node'; n2.style.marginTop='8px';
+            const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
+            const body2=document.createElement('div'); body2.className='body'; body2.style.display='none';
+
+            if(Array.isArray(s.subs) && s.subs.length){
+              for(const s1 of s.subs){
+                body2.append(renderLeaf(s1.name, s1.def, s1.source, s1.link));
+              }
+            } else {
+              body2.append(renderLeaf('', s.def, s.source, s.link));
+            }
+
+            const toggle2=()=>{ const open=body2.style.display==='block'; body2.style.display=open?'none':'block'; chev2.textContent=open?'▸':'▾'; };
+            row2.addEventListener('click',toggle2);
+            row2.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle2(); }});
+            n2.append(body2); body.append(n2);
+          }
+        } else {
+          body.append(renderLeaf('', ch.def, ch.source, ch.link));
+        }
+
+        const toggle=()=>{ const open=body.style.display==='block'; body.style.display=open?'none':'block'; chev.textContent=open?'▸':'▾'; };
+        row.addEventListener('click',toggle);
+        row.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); }});
+        n.append(body); tree.append(n);
+      }
+    }
 
     function selectParent(name){
       const g = GROUPS.find(x=>x.name===name); if(!g) return;
@@ -297,7 +289,10 @@
       if(g.pDef){ const def=document.createElement('div'); def.className='def'; def.textContent=g.pDef; d.append(def); }
       const meta=document.createElement('div'); meta.className='meta';
       if(g.pSource) meta.append(Object.assign(document.createElement('span'),{textContent:g.pSource}));
-      if(g.pLink){ const a=document.createElement('a'); a.href=g.pLink; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
+      if(g.pLink){
+        if(meta.childNodes.length) meta.append(document.createTextNode(' · '));
+        const a=document.createElement('a'); a.href=g.pLink; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a);
+      }
       if(meta.childNodes.length) d.append(meta);
       renderTree(g);
     }
@@ -333,11 +328,9 @@
       const F = detectFields(COLUMNS);
       GROUPS = groupByHierarchy(RAW,F);
 
-      // chips compactos
-      $('#count').textContent = GROUPS.length;     // solo términos padre
-      renderSidebar(GROUPS);                       // también actualiza #sideCount
-      $('#sideCount').textContent = GROUPS.length; // refuerzo por si el filtro cambia la lista
-
+      // chips
+      $('#count').textContent = GROUPS.length;
+      renderSidebar(GROUPS);
       if(GROUPS[0]) selectParent(GROUPS[0].name);
     }
 
@@ -347,9 +340,8 @@
     $('#expandAll').addEventListener('click',()=>expandCollapseTree(true));
     $('#collapseAll').addEventListener('click',()=>expandCollapseTree(false));
 
-    load().catch(e=>{ console.error(e); });
+    load().catch(e=>{ console.error(e); $('#detail').innerHTML='<div class="empty">Error cargando datos</div>'; });
   </script>
 </body>
 </html>
-
 
