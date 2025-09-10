@@ -222,57 +222,72 @@
       return {row,chev};
     }
 
-    function renderTree(g){
-      const tree=$('#tree'); tree.innerHTML='';
-      if(!g){ tree.innerHTML='<div class="empty">Selecciona un término</div>'; return; }
-
-      for(const ch of g.children){
-        const n=document.createElement('div'); n.className='node';
-        const {row,chev}=createNodeHeader(ch.name); n.append(row);
-        const body=document.createElement('div'); body.className='body'; body.style.display='none';
-
-        if(ch.subs && ch.subs.length){
-          for(const s of ch.subs){
-            const n2=document.createElement('div'); n2.className='node'; n2.style.marginTop='8px';
-            const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
-            const body2=document.createElement('div'); body2.className='body'; body2.style.display='none';
-
-            if(Array.isArray(s.subs) && s.subs.length){
-              for(const s1 of s.subs){
-                const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
-                const leafTitle=document.createElement('h4'); leafTitle.textContent=s1.name; leaf.append(leafTitle);
-                if(s1.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s1.def; leaf.append(def); }
-                const meta=document.createElement('div'); meta.className='meta';
-                if(s1.source) meta.append(Object.assign(document.createElement('span'),{textContent:s1.source}));
-                if(s1.link){ const a=document.createElement('a'); a.href=s1.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-                if(meta.childNodes.length) leaf.append(meta);
-                body2.append(leaf);
-              }
-            } else {
+  function renderTree(g){
+    const tree=$('#tree'); tree.innerHTML='';
+    if(!g){ tree.innerHTML='<div class="empty">Selecciona un término</div>'; return; }
+  
+    for(const ch of g.children){
+  
+      // ⬇️ Caso especial: "(término)" sin subniveles -> mostrar sin encabezado
+      const isGhostLeaf = ch.name === '(término)' && (!ch.subs || ch.subs.length === 0);
+      if (isGhostLeaf){
+        const leaf=document.createElement('div'); leaf.className='node';
+        if(ch.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=ch.def; leaf.append(def); }
+        const meta=document.createElement('div'); meta.className='meta';
+        if(ch.source) meta.append(Object.assign(document.createElement('span'),{textContent:ch.source}));
+        if(ch.link){ const a=document.createElement('a'); a.href=ch.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
+        if(meta.childNodes.length) leaf.append(meta);
+        tree.append(leaf);
+        continue;
+      }
+      // ⬆️ Fin del caso especial
+  
+      const n=document.createElement('div'); n.className='node';
+      const {row,chev}=createNodeHeader(ch.name); n.append(row);
+      const body=document.createElement('div'); body.className='body'; body.style.display='none';
+  
+      if(ch.subs && ch.subs.length){
+        for(const s of ch.subs){
+          const n2=document.createElement('div'); n2.className='node'; n2.style.marginTop='8px';
+          const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
+          const body2=document.createElement('div'); body2.className='body'; body2.style.display='none';
+  
+          if(Array.isArray(s.subs) && s.subs.length){
+            for(const s1 of s.subs){
               const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
-              if(s.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s.def; leaf.append(def); }
+              const leafTitle=document.createElement('h4'); leafTitle.textContent=s1.name; leaf.append(leafTitle);
+              if(s1.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s1.def; leaf.append(def); }
               const meta=document.createElement('div'); meta.className='meta';
-              if(s.source) meta.append(Object.assign(document.createElement('span'),{textContent:s.source}));
-              if(s.link){ const a=document.createElement('a'); a.href=s.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
+              if(s1.source) meta.append(Object.assign(document.createElement('span'),{textContent:s1.source}));
+              if(s1.link){ const a=document.createElement('a'); a.href=s1.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
               if(meta.childNodes.length) leaf.append(meta);
               body2.append(leaf);
             }
-
-            row2.addEventListener('click',()=>{ const open=body2.style.display==='block'; body2.style.display=open?'none':'block'; chev2.textContent=open?'▸':'▾'; });
-            n2.append(body2); body.append(n2);
+          } else {
+            const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
+            if(s.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s.def; leaf.append(def); }
+            const meta=document.createElement('div'); meta.className='meta';
+            if(s.source) meta.append(Object.assign(document.createElement('span'),{textContent:s.source}));
+            if(s.link){ const a=document.createElement('a'); a.href=s.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
+            if(meta.childNodes.length) leaf.append(meta);
+            body2.append(leaf);
           }
-        } else {
-          if(ch.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=ch.def; body.append(def); }
-          const meta=document.createElement('div'); meta.className='meta';
-          if(ch.source) meta.append(Object.assign(document.createElement('span'),{textContent:ch.source}));
-          if(ch.link){ const a=document.createElement('a'); a.href=ch.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
-          if(meta.childNodes.length) body.append(meta);
+  
+          row2.addEventListener('click',()=>{ const open=body2.style.display==='block'; body2.style.display=open?'none':'block'; chev2.textContent=open?'▸':'▾'; });
+          n2.append(body2); body.append(n2);
         }
-
-        row.addEventListener('click',()=>{ const open=body.style.display==='block'; body.style.display=open?'none':'block'; chev.textContent=open?'▸':'▾'; });
-        n.append(body); tree.append(n);
+      } else {
+        if(ch.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=ch.def; body.append(def); }
+        const meta=document.createElement('div'); meta.className='meta';
+        if(ch.source) meta.append(Object.assign(document.createElement('span'),{textContent:ch.source}));
+        if(ch.link){ const a=document.createElement('a'); a.href=ch.link; a.target='_blank'; a.rel='noopener'; a.textContent='Abrir fuente'; meta.append(a); }
+        if(meta.childNodes.length) body.append(meta);
       }
+  
+      row.addEventListener('click',()=>{ const open=body.style.display==='block'; body.style.display=open?'none':'block'; chev.textContent=open?'▸':'▾'; });
+      n.append(body); tree.append(n);
     }
+  }
 
     function selectParent(name){
       const g = GROUPS.find(x=>x.name===name); if(!g) return;
