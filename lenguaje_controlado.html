@@ -3,35 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lenguaje controlado – Maestro‑Detalle (Jerárquico)</title>
+  <title>Lenguaje controlado – Maestro-Detalle (Jerárquico)</title>
   <style>
     :root{--bg:#f6f8fb;--panel:#fff;--muted:#5f6c7b;--text:#16202a;--accent:#4f46e5;--border:#e6eaf0;--shadow:0 6px 18px rgba(22,32,42,.06)}
     *{box-sizing:border-box}
     html,body{height:100%}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial;background:var(--bg);color:var(--text)}
+
+    /* ====== HEADER NUEVO ====== */
     header{position:sticky;top:0;z-index:10;background:rgba(246,248,251,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-    .wrap{max-width:1200px;margin:0 auto;padding:14px 16px}
-    h1{margin:0;font-size:22px}
-    .sub{color:var(--muted);font-size:13px;margin-top:4px}
-    .toolbar{display:grid;grid-template-columns:1fr 320px auto;gap:10px;align-items:center;margin-top:10px}
+    .wrap{max-width:1200px;margin:0 auto;padding:16px}
+    .brand{display:flex;align-items:flex-start;gap:14px}
+    .brand-logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#a78bfa);box-shadow:var(--shadow)}
+    .brand-text{display:flex;flex-direction:column}
+    .brand-eyebrow{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+    h1.brand-title{margin:2px 0 2px;font-size:28px;line-height:1.15}
+    .brand-sub{color:var(--muted);font-size:13px}
+    .helper{color:var(--muted);font-size:13px;margin-top:10px}
+
+    .toolbar{display:grid;grid-template-columns:1fr 320px auto;gap:10px;align-items:center;margin-top:12px}
+    .chips{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;box-shadow:var(--shadow);font-size:12px;color:var(--muted)}
+    .chip b{font-variant-numeric:tabular-nums;color:var(--text)}
+
     input[type=text]{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:14px;box-shadow:var(--shadow);outline:none}
     input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,70,229,.12)}
     button{background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:14px;cursor:pointer;box-shadow:var(--shadow)}
     button:hover{border-color:var(--accent)}
-    .badge{padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--muted);font-size:12px}
 
     main{max-width:1200px;margin:16px auto;display:grid;grid-template-columns:320px 1fr;gap:16px}
     @media (max-width: 900px){main{grid-template-columns:1fr}.side{position:relative;top:0}.side-list{max-height:unset}}
 
     /* Sidebar */
-    .side{position:sticky;top:92px;align-self:start;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+    .side{position:sticky;top:152px;align-self:start;background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
     .side-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--border)}
-    .side-list{max-height:calc(100vh - 160px);overflow:auto;padding:8px}
+    .side-list{max-height:calc(100vh - 220px);overflow:auto;padding:8px}
     .item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid transparent;border-radius:10px;cursor:pointer}
     .item:hover{background:#f1f2ff;border-color:rgba(79,70,229,.25)}
     .item.active{background:#eef0ff;border-color:rgba(79,70,229,.35)}
     .item .name{font-weight:700}
     .item .count{font-size:12px;color:var(--muted)}
+    /* Chip lateral más estrecho */
+    .side-head .badge{padding:2px 8px;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--muted);font-size:12px}
 
     /* Content */
     .content{display:flex;flex-direction:column;gap:12px}
@@ -54,13 +67,31 @@
   </style>
 </head>
 <body>
+
+  <!-- ====== HEADER NUEVO ====== -->
   <header>
     <div class="wrap">
-      <h1>Lenguaje controlado </h1>
-      <div class="sub">Jerarquía: <strong>término padre → término hijo → subtermino → subtermino1</strong>. La definición del padre proviene de la fila con <code>termino_hijo = 0</code>. Para el resto, la definición se muestra <strong>solo en el último nivel disponible</strong> (evitando títulos repetidos).</div>
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <div class="brand-text">
+          <div class="brand-eyebrow">Secretaría Distrital de la Mujer</div>
+          <h1 class="brand-title">Lenguaje Controlado</h1>
+          <div class="brand-sub">Oficina Asesora de Planeación</div>
+        </div>
+      </div>
+
+      <div class="helper">
+        Jerarquía: <strong>término padre → término hijo → subtermino → subtermino1</strong>.
+        La definición del padre proviene de la fila con <code>termino_hijo = 0</code>. Para el resto,
+        la definición se muestra <strong>solo en el último nivel disponible</strong>.
+      </div>
+
       <div class="toolbar">
-        <div class="badge"><span id="count">0</span> padres • <span id="fields">0</span> campos</div>
-        <input id="q" type="text" placeholder="Buscar por termino" />
+        <div class="chips">
+          <span class="chip"><b id="count">0</b> términos</span>
+          <span class="chip"><b id="fields">0</b> campos</span>
+        </div>
+        <input id="q" type="text" placeholder="Buscar por término (padre, hijo, subtermino, definición)"/>
         <div style="display:flex;gap:8px;justify-self:end">
           <button id="clear">Limpiar</button>
           <button id="expandAll">Abrir todo</button>
@@ -72,7 +103,7 @@
 
   <main>
     <aside class="side">
-      <div class="side-head"><strong>Terminos</strong><span id="sideCount" class="badge">0</span></div>
+      <div class="side-head"><strong>Términos</strong><span id="sideCount" class="badge">0</span></div>
       <div id="sideList" class="side-list"></div>
     </aside>
 
@@ -90,7 +121,7 @@
     const DATA_URL = './lenguaje.json';
 
     // ===== Estado =====
-    let RAW=[], COLUMNS=[], GROUPS=[]; // GROUPS = [{name,pDef,pSource,pLink,children:[{name,def,source,link,subs:[{name,def,source,link,subs:[{name,def,source,link}]}]}]}]
+    let RAW=[], COLUMNS=[], GROUPS=[];
 
     // ===== Utilidades =====
     const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
@@ -100,11 +131,7 @@
 
     function detectFields(cols){
       const ncols = cols.map(c=>[c,norm(c).replace(/[^a-z0-9]+/g,'_')]);
-      const pick = (arr)=>{
-        for(const p of arr){ const exact=ncols.find(([o,n])=>n===p); if(exact) return exact[0]; }
-        for(const p of arr){ const cand=ncols.find(([o,n])=>n.includes(p)); if(cand) return cand[0]; }
-        return null;
-      };
+      const pick = (arr)=>{ for(const p of arr){ const exact=ncols.find(([o,n])=>n===p); if(exact) return exact[0]; } for(const p of arr){ const cand=ncols.find(([o,n])=>n.includes(p)); if(cand) return cand[0]; } return null; };
       return {
         parent:     pick(['termino_padre','termino_padre_','t_rmino_padre','padre']),
         child:      pick(['termino_hijo','termino_hijo_','t_rmino_hijo','hijo']),
@@ -130,14 +157,12 @@
         const st1Raw = r?.[F.subterm1]; const st1Val = cleanNumPrefix(st1Raw);
 
         if(isZero(chRaw)){
-          // definición/metadata del padre
           g.pDef = r?.[F.definition] ?? g.pDef;
           g.pSource = r?.[F.source] ?? g.pSource;
           g.pLink = r?.[F.link] ?? g.pLink;
           continue;
         }
 
-        // Encontrar el nivel más profundo con valor no vacío
         const hasSub = !!stVal; const hasSub1 = !!st1Val;
         if(hasSub1){
           const ch = getChild(g, chVal || '(término)');
@@ -153,7 +178,6 @@
           sub.source= r?.[F.source] ?? sub.source;
           sub.link  = r?.[F.link] ?? sub.link;
         } else {
-          // sin subniveles → definición del hijo
           const ch = getChild(g, chVal || '(término)');
           ch.def   = r?.[F.definition] ?? ch.def;
           ch.source= r?.[F.source] ?? ch.source;
@@ -161,7 +185,6 @@
         }
       }
 
-      // Pasar de maps a arrays y ordenar
       const groups = Array.from(map.values());
       for(const g of groups){
         g.children = Array.from(g._childMap.values()); delete g._childMap;
@@ -204,7 +227,6 @@
         const body=document.createElement('div'); body.className='body'; body.style.display='none';
 
         if(ch.subs && ch.subs.length){
-          // subnivel presente: definiciones solo en hojas
           for(const s of ch.subs){
             const n2=document.createElement('div'); n2.className='node'; n2.style.marginTop='8px';
             const {row:row2,chev:chev2}=createNodeHeader(s.name); n2.append(row2);
@@ -222,7 +244,6 @@
                 body2.append(leaf);
               }
             } else {
-              // s es hoja (el título ya está en el encabezado)
               const leaf=document.createElement('div'); leaf.className='node'; leaf.style.marginTop='8px';
               if(s.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=s.def; leaf.append(def); }
               const meta=document.createElement('div'); meta.className='meta';
@@ -236,7 +257,6 @@
             n2.append(body2); body.append(n2);
           }
         } else {
-          // hijo es hoja
           if(ch.def){ const def=document.createElement('div'); def.className='leaf-def'; def.textContent=ch.def; body.append(def); }
           const meta=document.createElement('div'); meta.className='meta';
           if(ch.source) meta.append(Object.assign(document.createElement('span'),{textContent:ch.source}));
@@ -292,7 +312,9 @@
       RAW=arr; COLUMNS=Object.keys(arr[0]||{});
       const F = detectFields(COLUMNS);
       GROUPS = groupByHierarchy(RAW,F);
-      $('#count').textContent = GROUPS.length; $('#fields').textContent=COLUMNS.length;
+      // chips compactos
+      $('#count').textContent = GROUPS.length;
+      $('#fields').textContent = COLUMNS.length;
       renderSidebar(GROUPS);
       if(GROUPS[0]) selectParent(GROUPS[0].name);
     }
@@ -303,12 +325,10 @@
     $('#expandAll').addEventListener('click',()=>expandCollapseTree(true));
     $('#collapseAll').addEventListener('click',()=>expandCollapseTree(false));
 
-    load().catch(e=>{ console.error(e); $('#detail').innerHTML='<div class="empty">Error cargando datos</div>'; });
+    load().catch(e=>{ console.error(e); });
   </script>
 </body>
 </html>
-
-
 
 
 
