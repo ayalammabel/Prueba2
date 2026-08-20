@@ -843,14 +843,7 @@
         } else {
           $('#directoryView').style.display = 'none';
           $('#mapView').style.display = 'block';
-          // Buscar qué término está seleccionado actualmente
-          const activeName =
-            document.querySelector('.item.active')?.dataset.name;
-          // Si no hay ninguno seleccionado, utiliza el primero
-          const selected =
-            GROUPS.find(g => g.name === activeName) || GROUPS[0];
-          if(selected){
-            renderGraph();
+          renderGraph();
           }
         }
       });
