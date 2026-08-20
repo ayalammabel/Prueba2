@@ -282,7 +282,8 @@
       </div>
     </div>
   </section>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script>
     const DATA_URL = './lenguaje.json';
 
@@ -361,6 +362,65 @@
       groups.sort((a,b)=>a.name.localeCompare(b.name,'es',{sensitivity:'base'}));
       return groups;
     }
+
+
+    function groupToGraph(g){
+      const root = {
+        name: g.name,
+        level: 'Término padre',
+        def: g.pDef || '',
+        source: g.pSource || '',
+        link: g.pLink || '',
+        children: []
+      };
+    
+      for(const ch of g.children){
+    
+        // Evita mostrar nodos artificiales llamados "(término)"
+        if(ch.name === '(término)' && (!ch.subs || !ch.subs.length)){
+          continue;
+        }
+    
+        const childNode = {
+          name: ch.name,
+          level: 'Término hijo',
+          def: ch.def || '',
+          source: ch.source || '',
+          link: ch.link || '',
+          children: []
+        };
+    
+        if(ch.subs && ch.subs.length){
+          for(const s of ch.subs){
+            const subNode = {
+              name: s.name,
+              level: 'Subtérmino',
+              def: s.def || '',
+              source: s.source || '',
+              link: s.link || '',
+              children: []
+            };
+  
+            if(Array.isArray(s.subs) && s.subs.length){
+              for(const s1 of s.subs){
+    
+                subNode.children.push({
+                  name: s1.name,
+                  level: 'Subtérmino 1',
+                  def: s1.def || '',
+                  source: s1.source || '',
+                  link: s1.link || ''
+                });
+              }
+            }
+            childNode.children.push(subNode);
+          }
+        }
+        root.children.push(childNode);
+      }
+      return root;
+    }
+    
 
     // ===== Render =====
     function renderSidebar(groups){
