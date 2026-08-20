@@ -512,6 +512,174 @@
     }
   }
 
+    // ===== Árbol gráfico interactivo =====
+    let GRAPH_ROOT = null;
+  
+    function renderGraph(g){
+      if(!g) return;
+      const container = document.querySelector('#treeGraph');
+      container.innerHTML = '';
+      document.querySelector('#mapTitle').textContent = g.name;
+  
+      const data = groupToGraph(g);
+      const width = Math.max(container.clientWidth, 900);
+      const dx = 42;
+      const dy = 240;
+    
+      GRAPH_ROOT = d3.hierarchy(data);
+      GRAPH_ROOT.x0 = 0;
+      GRAPH_ROOT.y0 = 0;
+      // Asignar identificadores y cerrar niveles inferiores al inicio
+      GRAPH_ROOT.descendants().forEach((d,i)=>{
+    
+        d.id = i;
+    
+        if(d.depth >= 1 && d.children){
+          d._children = d.children;
+          d.children = null;
+        }
+    
+      });
+    
+      const treeLayout = d3.tree().nodeSize([dx,dy]);
+      const svg = d3.select('#treeGraph')
+        .append('svg')
+        .attr('width',width)
+        .attr('height',600)
+        .attr('viewBox',[-80,-40,width,600])
+        .style('font-family','inherit');
+    
+      const gLink = svg.append('g');
+      const gNode = svg.append('g');
+    
+      function update(){
+    
+        treeLayout(GRAPH_ROOT);
+        const nodes = GRAPH_ROOT.descendants();
+        const links = GRAPH_ROOT.links();
+        let left = GRAPH_ROOT;
+        let right = GRAPH_ROOT;
+    
+        GRAPH_ROOT.eachBefore(node=>{
+          if(node.x < left.x) left = node;
+          if(node.x > right.x) right = node;
+        });
+    
+        const height = Math.max(
+          right.x - left.x + 160,
+          300
+        );
+    
+        svg
+          .attr('height',height)
+          .attr(
+            'viewBox',
+            [-80,left.x - 80,width,height]
+          );
+    
+        // ===== CONEXIONES =====
+    
+        const link = gLink
+          .selectAll('path')
+          .data(links,d=>d.target.id);
+    
+        link.join(
+          enter=>enter
+            .append('path')
+            .attr('class','graph-link')
+            .attr(
+              'd',
+              d3.linkHorizontal()
+                .x(d=>d.y)
+                .y(d=>d.x)
+            ),
+    
+          update=>update
+            .transition()
+            .duration(300)
+            .attr(
+              'd',
+              d3.linkHorizontal()
+                .x(d=>d.y)
+                .y(d=>d.x)
+            ),
+    
+          exit=>exit.remove()
+        );
+    
+        // ===== NODOS =====
+    
+        const node = gNode
+          .selectAll('g')
+          .data(nodes,d=>d.id);
+    
+        const nodeEnter = node
+          .enter()
+          .append('g')
+          .attr(
+            'class',
+            d=>`graph-node ${d.depth===0?'parent':''}`
+          )
+          .attr(
+            'transform',
+            d=>`translate(${d.y},${d.x})`
+          )
+          .on('click',(event,d)=>{
+    
+            event.stopPropagation();
+    
+            showNodeInfo(d.data);
+    
+            if(d.children){
+    
+              d._children = d.children;
+              d.children = null;
+    
+            }else if(d._children){
+    
+              d.children = d._children;
+              d._children = null;
+    
+            }
+    
+            update();
+    
+          });
+    
+        nodeEnter
+          .append('circle')
+          .attr('r',7);
+    
+        nodeEnter
+          .append('text')
+          .attr('dy','0.32em')
+          .attr(
+            'x',
+            d=>d.children || d._children ? -14 : 14
+          )
+          .attr(
+            'text-anchor',
+            d=>d.children || d._children ? 'end':'start'
+          )
+          .text(d=>d.data.name);
+    
+        nodeEnter
+          .merge(node)
+          .transition()
+          .duration(300)
+          .attr(
+            'transform',
+            d=>`translate(${d.y},${d.x})`
+          );
+    
+        node.exit().remove();
+    
+      }
+    
+      update();
+    
+    }
+
     function selectParent(name){
       const g = GROUPS.find(x=>x.name===name); if(!g) return;
       $$('.item').forEach(n=>n.classList.toggle('active', n.dataset.name===name));
