@@ -705,14 +705,17 @@
         // etiqueta
         nodeEnter
           .append('text')
-          .attr('dy', '0.34em')
+          .attr(
+            'dy',
+            d => d.depth === 0 ? 42 : '0.34em'
+          )
           .attr(
             'x',
-            d => d.depth === 0 ? -26 : 14
+            d => d.depth === 0 ? 0 : 14
           )
           .attr(
             'text-anchor',
-            d => d.depth === 0 ? 'end' : 'start'
+            d => d.depth === 0 ? 'middle' : 'start'
           )
           .text(d => d.data.name);
     
