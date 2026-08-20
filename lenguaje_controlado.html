@@ -64,6 +64,141 @@
     .leaf-def{color:#3a4452;font-size:14px;white-space:pre-wrap}
 
     .empty{padding:24px;text-align:center;color:var(--muted)}
+
+    /* ====== VISTAS: DIRECTORIO / ÁRBOL ====== */
+    .view-tabs{
+      display:flex;
+      gap:6px;
+      margin-top:14px;
+    }
+    
+    .view-tab{
+      border:none;
+      box-shadow:none;
+      background:transparent;
+      color:var(--muted);
+      font-weight:700;
+      padding:8px 14px;
+      border-radius:8px;
+    }
+    
+    .view-tab:hover{
+      background:#eef0ff;
+    }
+    
+    .view-tab.active{
+      background:#eef0ff;
+      color:var(--accent);
+    }
+    
+    /* ====== VISTA DEL ÁRBOL ====== */
+    
+    .map-view{
+      max-width:1200px;
+      margin:16px auto;
+      padding:0 16px;
+    }
+    
+    .map-panel{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      min-height:620px;
+      overflow:hidden;
+    }
+    
+    .map-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 20px;
+      border-bottom:1px solid var(--border);
+    }
+    
+    .map-head h2{
+      margin:0;
+      font-size:18px;
+    }
+    
+    .map-head p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    
+    .map-body{
+      position:relative;
+    }
+    
+    #treeGraph{
+      width:100%;
+      min-height:560px;
+      overflow:auto;
+    }
+    
+    .graph-node{
+      cursor:pointer;
+    }
+    
+    .graph-node circle{
+      fill:#fff;
+      stroke:var(--accent);
+      stroke-width:2px;
+    }
+    
+    .graph-node.parent circle{
+      fill:var(--accent);
+    }
+    
+    .graph-node.parent text{
+      font-weight:800;
+    }
+    
+    .graph-node text{
+      font-size:13px;
+      fill:var(--text);
+    }
+    
+    .graph-link{
+      fill:none;
+      stroke:#cbd2dc;
+      stroke-width:1.5px;
+    }
+    
+    .node-info{
+      position:absolute;
+      right:24px;
+      top:24px;
+      width:300px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px;
+      box-shadow:0 12px 34px rgba(22,32,42,.12);
+      z-index:5;
+    }
+    
+    .node-info h3{
+      margin:0 0 8px;
+      font-size:17px;
+    }
+    
+    .node-info .node-level{
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    
+    .node-info .node-definition{
+      font-size:13px;
+      line-height:1.5;
+      color:#3a4452;
+    }
   </style>
 </head>
 <body>
