@@ -767,6 +767,36 @@
       if(GROUPS[0]) selectParent(GROUPS[0].name);
     }
 
+
+    // ===== Cambio de vista: Directorio / Árbol =====
+    $$('.view-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Quitar estado activo de las pestañas
+        $$('.view-tab').forEach(b => b.classList.remove('active'));
+        // Activar la pestaña seleccionada
+        btn.classList.add('active');
+
+        const view = btn.dataset.view;
+        if(view === 'directory'){
+          $('#directoryView').style.display = 'grid';
+          $('#mapView').style.display = 'none';
+    
+        } else {
+          $('#directoryView').style.display = 'none';
+          $('#mapView').style.display = 'block';
+          // Buscar qué término está seleccionado actualmente
+          const activeName =
+            document.querySelector('.item.active')?.dataset.name;
+          // Si no hay ninguno seleccionado, utiliza el primero
+          const selected =
+            GROUPS.find(g => g.name === activeName) || GROUPS[0];
+          if(selected){
+            renderGraph(selected);
+          }
+        }
+      });
+    });
+
     // ===== Eventos =====
     $('#q').addEventListener('input',()=>{ clearTimeout(window.__t); window.__t=setTimeout(applySearch,140);});
     $('#clear').addEventListener('click',()=>{ $('#q').value=''; applySearch(); });
