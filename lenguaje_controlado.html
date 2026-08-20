@@ -515,23 +515,34 @@
     // ===== Árbol gráfico interactivo =====
     let GRAPH_ROOT = null;
   
-    function renderGraph(g){
-      if(!g) return;
+
+    function renderGraph(){
       const container = document.querySelector('#treeGraph');
       container.innerHTML = '';
-      document.querySelector('#mapTitle').textContent = g.name;
-  
-      const data = groupToGraph(g);
-      const width = Math.max(container.clientWidth, 900);
-      const dx = 42;
-      const dy = 240;
+      document.querySelector('#mapTitle').textContent = 'Mapa de términos';
+    
+      // ===== Construir raíz general =====
+      const data = {
+        name: 'Lenguaje Controlado',
+        root: true,
+        children: GROUPS.map(g => groupToGraph(g))
+      };
+    
+      const width = Math.max(container.clientWidth, 1100);
+      // Separación vertical y horizontal
+      const dx = 46;
+      const dy = 260;
     
       GRAPH_ROOT = d3.hierarchy(data);
       GRAPH_ROOT.x0 = 0;
       GRAPH_ROOT.y0 = 0;
-      // Asignar identificadores y cerrar niveles inferiores al inicio
-      GRAPH_ROOT.descendants().forEach((d,i)=>{
     
+      // ===== Estado inicial =====
+      // Se ve la raíz + todos los términos principales.
+      // Los niveles inferiores empiezan cerrados.
+    
+      GRAPH_ROOT.descendants().forEach((d, i) => {
+  
         d.id = i;
     
         if(d.depth >= 1 && d.children){
@@ -541,142 +552,190 @@
     
       });
     
-      const treeLayout = d3.tree().nodeSize([dx,dy]);
+      // Pero la raíz sí debe mostrar sus 40 términos principales
+      if(GRAPH_ROOT._children){
+        GRAPH_ROOT.children = GRAPH_ROOT._children;
+        GRAPH_ROOT._children = null;
+      }
+    
+      const treeLayout = d3.tree()
+        .nodeSize([dx, dy]);
+    
       const svg = d3.select('#treeGraph')
         .append('svg')
-        .attr('width',width)
-        .attr('height',600)
-        .attr('viewBox',[-80,-40,width,600])
-        .style('font-family','inherit');
+        .attr('width', width)
+        .attr('height', 800)
+        .attr('viewBox', [-120, -60, width, 800])
+        .style('font-family', 'inherit');
     
-      const gLink = svg.append('g');
-      const gNode = svg.append('g');
+      const gLink = svg
+        .append('g')
+        .attr('fill', 'none');
+    
+      const gNode = svg
+        .append('g');
     
       function update(){
     
         treeLayout(GRAPH_ROOT);
+    
         const nodes = GRAPH_ROOT.descendants();
         const links = GRAPH_ROOT.links();
+    
         let left = GRAPH_ROOT;
         let right = GRAPH_ROOT;
     
-        GRAPH_ROOT.eachBefore(node=>{
+        GRAPH_ROOT.eachBefore(node => {
           if(node.x < left.x) left = node;
           if(node.x > right.x) right = node;
         });
     
         const height = Math.max(
-          right.x - left.x + 160,
-          300
+          right.x - left.x + 180,
+          500
         );
     
         svg
-          .attr('height',height)
+          .attr('height', height)
           .attr(
             'viewBox',
-            [-80,left.x - 80,width,height]
+            [-120, left.x - 90, width, height]
           );
     
-        // ===== CONEXIONES =====
-    
+        // ============================
+        // CONEXIONES CURVAS
+        // ============================
         const link = gLink
           .selectAll('path')
-          .data(links,d=>d.target.id);
+          .data(links, d => d.target.id);
     
         link.join(
-          enter=>enter
+    
+          enter => enter
             .append('path')
-            .attr('class','graph-link')
+            .attr('class', 'graph-link')
             .attr(
               'd',
               d3.linkHorizontal()
-                .x(d=>d.y)
-                .y(d=>d.x)
+                .x(d => d.y)
+                .y(d => d.x)
             ),
     
-          update=>update
+          update => update
             .transition()
-            .duration(300)
+            .duration(350)
             .attr(
               'd',
               d3.linkHorizontal()
-                .x(d=>d.y)
-                .y(d=>d.x)
+                .x(d => d.y)
+                .y(d => d.x)
             ),
     
-          exit=>exit.remove()
+          exit => exit
+            .transition()
+            .duration(250)
+            .style('opacity', 0)
+            .remove()
         );
     
-        // ===== NODOS =====
+        // ============================
+        // NODOS
+        // ============================
     
         const node = gNode
-          .selectAll('g')
-          .data(nodes,d=>d.id);
+          .selectAll('g.graph-node')
+          .data(nodes, d => d.id);
     
         const nodeEnter = node
           .enter()
           .append('g')
           .attr(
             'class',
-            d=>`graph-node ${d.depth===0?'parent':''}`
+            d => `graph-node ${d.depth === 0 ? 'root-node' : ''}`
           )
           .attr(
             'transform',
-            d=>`translate(${d.y},${d.x})`
+            d => `translate(${d.y},${d.x})`
           )
-          .on('click',(event,d)=>{
-    
+          .on('click', (event, d) => {
             event.stopPropagation();
     
-            showNodeInfo(d.data);
-    
+            // La raíz no necesita ficha
+            if(d.depth > 0){
+              showNodeInfo(d.data);
+            }
+            // Abrir / cerrar hijos
             if(d.children){
     
-              d._children = d.children;
-              d.children = null;
+              // No cerrar completamente la raíz
+              if(d.depth !== 0){
+                d._children = d.children;
+                d.children = null;
+              }
     
             }else if(d._children){
-    
               d.children = d._children;
               d._children = null;
-    
             }
-    
             update();
-    
           });
     
+        // círculo
         nodeEnter
           .append('circle')
-          .attr('r',7);
+          .attr(
+            'r',
+            d => d.depth === 0 ? 18 : 7
+          );
     
+        // etiqueta
         nodeEnter
           .append('text')
-          .attr('dy','0.32em')
+          .attr('dy', '0.34em')
           .attr(
             'x',
-            d=>d.children || d._children ? -14 : 14
+            d => d.depth === 0 ? -26 : 14
           )
           .attr(
             'text-anchor',
-            d=>d.children || d._children ? 'end':'start'
+            d => d.depth === 0 ? 'end' : 'start'
           )
-          .text(d=>d.data.name);
+          .text(d => d.data.name);
+    
+        // pequeño contador para nodos con descendientes
+        nodeEnter
+          .filter(d => d.depth > 0)
+          .filter(d => d._children || d.children)
+          .append('text')
+          .attr('class', 'node-count')
+          .attr('dy', '0.34em')
+          .attr('x', 190)
+          .text(d => {
+    
+            const count =
+              d._children?.length ||
+              d.children?.length ||
+              0;
+            return count ? count : '';
+          });
     
         nodeEnter
           .merge(node)
           .transition()
-          .duration(300)
+          .duration(350)
           .attr(
             'transform',
-            d=>`translate(${d.y},${d.x})`
+            d => `translate(${d.y},${d.x})`
           );
-    
-        node.exit().remove();
+        node.exit()
+          .transition()
+          .duration(250)
+          .style('opacity', 0)
+          .remove();
       }
       update();
     }
-
+    
 
     function showNodeInfo(data){
         const box = document.querySelector('#nodeInfo');
