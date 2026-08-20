@@ -248,7 +248,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="directoryView">
     <aside class="side">
       <div class="side-head"><strong>Términos</strong><span id="sideCount" class="badge">0</span></div>
       <div id="sideList" class="side-list"></div>
@@ -263,6 +263,25 @@
       <div id="empty" class="empty" style="display:none">Sin resultados</div>
     </section>
   </main>
+
+  <section id="mapView" class="map-view" style="display:none">
+    <div class="map-panel">
+      <div class="map-head">
+        <div>
+          <h2 id="mapTitle">Árbol de términos</h2>
+          <p>Selecciona un nodo para desplegar sus niveles.</p>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button id="graphExpand">Abrir todo</button>
+          <button id="graphCollapse">Cerrar todo</button>
+        </div>
+      </div>
+      <div class="map-body">
+        <div id="treeGraph"></div>
+        <div id="nodeInfo" class="node-info" style="display:none"></div>
+      </div>
+    </div>
+  </section>
 
   <script>
     const DATA_URL = './lenguaje.json';
