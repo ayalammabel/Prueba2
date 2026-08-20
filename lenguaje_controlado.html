@@ -757,7 +757,6 @@
     function showNodeInfo(data){
         const box = document.querySelector('#nodeInfo');
         let html = `
-          <div class="node-level">${data.level || ''}</div>
           <h3>${data.name || ''}</h3>
         `;
         if(data.def){
