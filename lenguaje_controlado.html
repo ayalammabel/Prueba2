@@ -865,8 +865,8 @@
     // ===== Eventos =====
     $('#q').addEventListener('input',()=>{ clearTimeout(window.__t); window.__t=setTimeout(applySearch,140);});
     $('#clear').addEventListener('click',()=>{ $('#q').value=''; applySearch(); });
-    $('#expandAll').addEventListener('click',()=>expandCollapseTree(true));
-    $('#collapseAll').addEventListener('click',()=>expandCollapseTree(false));
+    $('#expandAll')?.addEventListener('click',()=>expandCollapseTree(true));
+    $('#collapseAll')?.addEventListener('click',()=>expandCollapseTree(false));
 
     load().catch(e=>{ console.error(e); });
   </script>
