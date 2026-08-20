@@ -673,12 +673,47 @@
           );
     
         node.exit().remove();
-    
       }
-    
       update();
-    
     }
+
+
+    function showNodeInfo(data){
+        const box = document.querySelector('#nodeInfo');
+        let html = `
+          <div class="node-level">${data.level || ''}</div>
+          <h3>${data.name || ''}</h3>
+        `;
+        if(data.def){
+          html += `
+            <div class="node-definition">
+              ${data.def}
+            </div>
+          `;
+        }
+        if(data.source){
+          html += `
+            <div class="meta">
+              <span>${data.source}</span>
+            </div>
+          `;
+        }
+      
+        if(data.link){
+          html += `
+            <div class="meta">
+              <a href="${data.link}"
+                 target="_blank"
+                 rel="noopener">
+                Abrir fuente
+              </a>
+            </div>
+          `;
+        }
+        box.innerHTML = html;
+        box.style.display = 'block';
+      }
+          
 
     function selectParent(name){
       const g = GROUPS.find(x=>x.name===name); if(!g) return;
