@@ -1152,8 +1152,11 @@
 
     function showNodeInfo(data){
         const box = document.querySelector('#nodeInfo');
+        // Detectar automáticamente cuál botón está activo
+        const activeType =
+          document.querySelector('.map-type.active')?.dataset.type || 'SDM';
         const typeLabel =
-          CURRENT_MAP_TYPE === 'Sociodemográfico'
+          activeType === 'Sociodemográfico'
             ? 'Término sociodemográfico'
             : 'Término misional';
       
