@@ -632,6 +632,21 @@
       function update(){
     
         treeLayout(GRAPH_ROOT);
+
+        // Separación horizontal personalizada por nivel
+        GRAPH_ROOT.descendants().forEach(d => {
+        
+          if(d.depth === 0){
+            d.y = 0;}
+        
+          // Términos principales: mantener la distancia actual
+          else if(d.depth === 1){
+            d.y = 210;}
+        
+          // Subtérminos y niveles inferiores: dar más espacio
+          else{
+            d.y = 210 + ((d.depth - 1) * 320);}
+        });
     
         const nodes = GRAPH_ROOT.descendants();
         const links = GRAPH_ROOT.links();
