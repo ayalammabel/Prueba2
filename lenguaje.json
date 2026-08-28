@@ -37,7 +37,8 @@
     "ruta_jerarquica": "Acceso a la Justicia",
     "fuente": "Universidad Católica de Colombia, Revista Novum Jus, \"Acceso a la justicia de mujeres víctimas de violencia sexual con discapacidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115501",
@@ -77,7 +78,8 @@
     "ruta_jerarquica": "Afectaciones o Daños",
     "fuente": "Ley 1257 de 2008, artículos 2 y 3 (Concepto de daño contra la mujer)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115501",
@@ -117,7 +119,8 @@
     "ruta_jerarquica": "Afectaciones o Daños > Economica",
     "fuente": "Ley 1257 de 2008, artículo 2 (Definición de violencia contra la mujer, inciso sobre violencia económica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115501",
@@ -157,7 +160,8 @@
     "ruta_jerarquica": "Afectaciones o Daños > Fisica",
     "fuente": "Ley 1257 de 2008, artículo 3, literal b (Concepto de daño contra la mujer)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115501",
@@ -197,7 +201,8 @@
     "ruta_jerarquica": "Afectaciones o Daños > Psicológico",
     "fuente": "Ley 1257 de 2008, artículo 3, literal a (Concepto de daño contra la mujer)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115501",
@@ -237,7 +242,8 @@
     "ruta_jerarquica": "Afectaciones o Daños > Sexual",
     "fuente": "Ley 1257 de 2008, artículo 3, literal c (Concepto de daño contra la mujer)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115501",
@@ -277,7 +283,8 @@
     "ruta_jerarquica": "Afectaciones o Daños > Patrimonial",
     "fuente": "Ley 1257 de 2008, artículo 3, literal d (Concepto de daño contra la mujer)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "0",
@@ -317,7 +324,8 @@
     "ruta_jerarquica": "Afectaciones o Daños > Relacionales/Sociales",
     "fuente": "",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112205",
@@ -357,7 +365,8 @@
     "ruta_jerarquica": "Barrio",
     "fuente": "Unidad Administrativa Especial de Catastro Distrital (UAECD), Glosario catastral, \"Barrio\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112204",
@@ -397,7 +406,8 @@
     "ruta_jerarquica": "Departamento",
     "fuente": "Constitución Política de Colombia de 1991, artículos 286 y 298",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111008",
@@ -437,7 +447,8 @@
     "ruta_jerarquica": "Dirección domicilio",
     "fuente": "Código Civil Colombiano, artículo 76 (citado en Corte Constitucional, Sentencia C-049 de 1997)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112502",
@@ -477,7 +488,8 @@
     "ruta_jerarquica": "Entidad Promotora de Salud – EPS",
     "fuente": "Ley 100 de 1993, artículo 177 (Definición de las Entidades Promotoras de Salud)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -517,7 +529,8 @@
     "ruta_jerarquica": "Escolaridad",
     "fuente": "DANE, Sistema de Consulta de Conceptos, ficha \"Nivel educativo\" (con base en la Ley 115 de 1994, Ley General de Educación)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -557,7 +570,8 @@
     "ruta_jerarquica": "Escolaridad > Ninguno",
     "fuente": "Concepto estadístico estándar de categoría de ausencia (\"ninguno/a\"), empleado en encuestas y registros administrativos, entre ellos el Censo Nacional de Población y Vivienda del DANE",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -597,7 +611,8 @@
     "ruta_jerarquica": "Escolaridad > Preescolar",
     "fuente": "Ley 115 de 1994, artículo 15 (Ley General de Educación); DANE, ficha \"Nivel educativo\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -637,7 +652,8 @@
     "ruta_jerarquica": "Escolaridad > Básica primaria (1º - 5º) incompleta",
     "fuente": "Ley 115 de 1994 (Ley General de Educación), artículo 21; DANE, ficha \"Nivel educativo\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -677,7 +693,8 @@
     "ruta_jerarquica": "Escolaridad > Básica primaria (1º - 5º) completa",
     "fuente": "Ley 115 de 1994 (Ley General de Educación), artículo 21; DANE, ficha \"Nivel educativo\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -717,7 +734,8 @@
     "ruta_jerarquica": "Escolaridad > Básica secundaria (6º - 9º) incompleta",
     "fuente": "DANE, Producción Estadística (concepto estandarizado); Ley 115 de 1994",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -757,7 +775,8 @@
     "ruta_jerarquica": "Escolaridad > Básica secundaria (6º - 9º) completa",
     "fuente": "DANE, Producción Estadística (concepto estandarizado); Ley 115 de 1994",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -797,7 +816,8 @@
     "ruta_jerarquica": "Escolaridad > Media (10º--13º) incompleta",
     "fuente": "DANE, Producción Estadística (concepto estandarizado); Ley 115 de 1994",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -837,7 +857,8 @@
     "ruta_jerarquica": "Escolaridad > Media (10º--13º) completa",
     "fuente": "DANE, Producción Estadística (concepto estandarizado); Ley 115 de 1994",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -877,7 +898,8 @@
     "ruta_jerarquica": "Escolaridad > Técnico sin título",
     "fuente": "Ley 30 de 1992 (Educación Superior), artículo 42",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -917,7 +939,8 @@
     "ruta_jerarquica": "Escolaridad > Técnico con título",
     "fuente": "Ley 30 de 1992 (Educación Superior), artículo 42",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -957,7 +980,8 @@
     "ruta_jerarquica": "Escolaridad > Tecnológico sin título",
     "fuente": "Ley 30 de 1992 (Educación Superior), artículo 42",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -997,7 +1021,8 @@
     "ruta_jerarquica": "Escolaridad > Tecnológico con título",
     "fuente": "Ley 30 de 1992 (Educación Superior), artículo 42",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -1037,7 +1062,8 @@
     "ruta_jerarquica": "Escolaridad > Universitaria sin título",
     "fuente": "Ley 30 de 1992 (Educación Superior), artículo 42",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -1077,7 +1103,8 @@
     "ruta_jerarquica": "Escolaridad > Universitaria con título",
     "fuente": "Ley 30 de 1992 (Educación Superior), artículo 42",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -1117,7 +1144,8 @@
     "ruta_jerarquica": "Escolaridad > Postgrado sin título",
     "fuente": "Ley 30 de 1992 (Educación Superior); Función Pública, Concepto 134521 de 2021",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -1157,7 +1185,8 @@
     "ruta_jerarquica": "Escolaridad > Postgrado con título",
     "fuente": "Ley 30 de 1992 (Educación Superior); Función Pública, Concepto 134521 de 2021",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112209",
@@ -1197,7 +1226,8 @@
     "ruta_jerarquica": "Escolaridad > No Sabe / No responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "6200009",
@@ -1237,7 +1267,8 @@
     "ruta_jerarquica": "Espacios colectivos",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112212",
@@ -1277,7 +1308,8 @@
     "ruta_jerarquica": "Estado civil",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122012",
@@ -1317,7 +1349,8 @@
     "ruta_jerarquica": "Estado civil > Soltera(o)",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (categorías de estado civil)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122012",
@@ -1357,7 +1390,8 @@
     "ruta_jerarquica": "Estado civil > Casada(o)",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (categorías de estado civil)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122012",
@@ -1397,7 +1431,8 @@
     "ruta_jerarquica": "Estado civil > Divorciada(o)",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (categorías de estado civil)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122012",
@@ -1437,7 +1472,8 @@
     "ruta_jerarquica": "Estado civil > Viuda(o)",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (categorías de estado civil)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122012",
@@ -1477,7 +1513,8 @@
     "ruta_jerarquica": "Estado civil > No está casada(o) y vive en pareja hace menos de dos años",
     "fuente": "Ley 54 de 1990, artículo 2 (modificado por la Ley 979 de 2005)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122012",
@@ -1517,7 +1554,8 @@
     "ruta_jerarquica": "Estado civil > No está casado(o) y vive en pareja hace dos años o más",
     "fuente": "Ley 54 de 1990, artículo 2 (modificado por la Ley 979 de 2005)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122012",
@@ -1557,7 +1595,8 @@
     "ruta_jerarquica": "Estado civil > No Sabe / No responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2210008",
@@ -1597,7 +1636,8 @@
     "ruta_jerarquica": "Estrategia",
     "fuente": "Secretaría Distrital de la Mujer, Política Pública de Mujeres y Equidad de Género",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1637,7 +1677,8 @@
     "ruta_jerarquica": "Estrategia > Proceso de Atención a la Ciudadania",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Atención a la Ciudadanía de la Secretaría Distrital de la Mujer\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1677,7 +1718,8 @@
     "ruta_jerarquica": "Estrategia > Emprendimiento y empleabilidad",
     "fuente": "Secretaría Distrital de la Mujer, \"Emprendimiento y empleabilidad para mujeres en el Plan Distrital de Desarrollo\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1717,7 +1759,8 @@
     "ruta_jerarquica": "Estrategia > Sistema del Cuidado",
     "fuente": "Secretaría Distrital de la Mujer / Bogotá.gov.co, \"Todo lo que debes saber acerca del Sistema de Cuidado de Bogotá\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1757,7 +1800,8 @@
     "ruta_jerarquica": "Estrategia > Casa de Todas",
     "fuente": "Secretaría Distrital de la Mujer, \"Estrategia Casa de Todas\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1797,7 +1841,8 @@
     "ruta_jerarquica": "Estrategia > Casas de Justicia Ruta Integral",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1837,7 +1882,8 @@
     "ruta_jerarquica": "Estrategia > Sede Administrativa",
     "fuente": "Secretaría Distrital de la Mujer, \"Localización física, sucursales o regionales, horarios y días de atención al público\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1877,7 +1923,8 @@
     "ruta_jerarquica": "Estrategia > URI - Unidad de Reacción Inmediata",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1917,7 +1964,8 @@
     "ruta_jerarquica": "Estrategia > Casa de Justicia Modelo Tradicional",
     "fuente": "Portafolio de Servicios y Estrategias Versión 1 - 2026. Pág. 29",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1957,7 +2005,8 @@
     "ruta_jerarquica": "Estrategia > Casas de Igualdad de Oportunidades para las Mujeres - CIOM",
     "fuente": "Secretaría Distrital de la Mujer, \"Conoce las 20 Casas de Igualdad de Oportunidades para las Mujeres\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -1997,7 +2046,8 @@
     "ruta_jerarquica": "Estrategia > Agencia MUJ - Móvil Mujer",
     "fuente": "Secretaría Distrital de la Mujer, \"ABC sobre la Agencia MUJ, una estrategia en la Línea 123 que atiende casos de violencias contra las mujeres\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -2037,7 +2087,8 @@
     "ruta_jerarquica": "Estrategia > Casas Refugio",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -2077,7 +2128,8 @@
     "ruta_jerarquica": "Estrategia > Duplas de Atención Psicojurídica",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -2117,7 +2169,8 @@
     "ruta_jerarquica": "Estrategia > Duplas de Atención Psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -2157,7 +2210,8 @@
     "ruta_jerarquica": "Estrategia > Hospitales",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -2197,7 +2251,8 @@
     "ruta_jerarquica": "Estrategia > Agencia MUJ - 123",
     "fuente": "Secretaría Distrital de la Mujer, \"ABC sobre la Agencia MUJ, una estrategia en la Línea 123 que atiende casos de violencias contra las mujeres\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -2237,7 +2292,8 @@
     "ruta_jerarquica": "Estrategia > Línea Púrpura Distrital LPD",
     "fuente": "Portafolio de Servicios y Estrategias Versión 1 - 2026 Pág. 18",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210008",
@@ -2277,7 +2333,8 @@
     "ruta_jerarquica": "Estrategia > Sistema Articulado de Alertas Tempranas - SAAT",
     "fuente": "Portafolio de Servicios y Estrategias Versión 1 - 2026. Pág. 30",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112207",
@@ -2317,7 +2374,8 @@
     "ruta_jerarquica": "Estrato Socioeconómico",
     "fuente": "DANE, \"Estratificación socioeconómica\" (con base en la Ley 142 de 1994, Régimen de los Servicios Públicos Domiciliarios)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2357,7 +2415,8 @@
     "ruta_jerarquica": "Grupo étnico",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2397,7 +2456,8 @@
     "ruta_jerarquica": "Grupo étnico > Indígena",
     "fuente": "Decreto 2164 de 1995, artículo 2; DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2437,7 +2497,8 @@
     "ruta_jerarquica": "Grupo étnico > Gitano (a) o Rrom",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (pertenencia étnica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2477,7 +2538,8 @@
     "ruta_jerarquica": "Grupo étnico > Raizal del archipiélago de San Andrés, Providencia y Santa Catalina",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2517,7 +2579,8 @@
     "ruta_jerarquica": "Grupo étnico > Palanquero de San Basilio",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (pertenencia étnica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2557,7 +2620,8 @@
     "ruta_jerarquica": "Grupo étnico > Negro(a), afrocolombiano(a) o afrodescendiente",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (pertenencia étnica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2597,7 +2661,8 @@
     "ruta_jerarquica": "Grupo étnico > Ninguna",
     "fuente": "Concepto estadístico estándar de categoría de ausencia (\"ninguno/a\"), empleado en encuestas y registros administrativos, entre ellos el Censo Nacional de Población y Vivienda del DANE",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112203",
@@ -2637,7 +2702,8 @@
     "ruta_jerarquica": "Grupo étnico > No Sabe / No Responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "211213",
@@ -2677,7 +2743,8 @@
     "ruta_jerarquica": "Identidad de género",
     "fuente": "Corte Constitucional, Sentencia T-99 de 2015; retomado por Colombia Diversa, \"ABC Derechos LGBTIQ+\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112103",
@@ -2717,7 +2784,8 @@
     "ruta_jerarquica": "Identidad de género > Femenino",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, conceptos de sexo, género e identidad de género)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112103",
@@ -2757,7 +2825,8 @@
     "ruta_jerarquica": "Identidad de género > Masculino",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, conceptos de sexo, género e identidad de género)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112103",
@@ -2797,7 +2866,8 @@
     "ruta_jerarquica": "Identidad de género > Mujer Trans",
     "fuente": "Decreto 1227 de 2015; Ministerio de Salud y Protección Social, Resolución 2138 de 2023",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112103",
@@ -2837,7 +2907,8 @@
     "ruta_jerarquica": "Identidad de género > Hombre Trans",
     "fuente": "Decreto 1227 de 2015; Ministerio de Salud y Protección Social, Resolución 2138 de 2023",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112103",
@@ -2877,7 +2948,8 @@
     "ruta_jerarquica": "Identidad de género > No Binario",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, conceptos de sexo, género e identidad de género)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112103",
@@ -2917,7 +2989,8 @@
     "ruta_jerarquica": "Identidad de género > No Sabe / No Responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112103",
@@ -2957,7 +3030,8 @@
     "ruta_jerarquica": "Identidad de género > Otro - ¿Cúal?",
     "fuente": "Concepto estadístico estándar de categoría residual (\"otro\"), empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112503",
@@ -2997,7 +3071,8 @@
     "ruta_jerarquica": "Instituciones Prestadoras de servicios de Salud – IPS",
     "fuente": "Ley 100 de 1993, artículo 156 (Instituciones Prestadoras de Servicios de Salud)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112006",
@@ -3037,7 +3112,8 @@
     "ruta_jerarquica": "Localidad",
     "fuente": "Constitución Política de Colombia de 1991, artículo 322; Decreto Distrital 16 de 2013 (estructura de la Secretaría Distrital de Planeación)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112402",
@@ -3077,7 +3153,8 @@
     "ruta_jerarquica": "Modalidad de atención > Presencial",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112402",
@@ -3117,7 +3194,8 @@
     "ruta_jerarquica": "Modalidad de atención > Teléfónica",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112402",
@@ -3157,7 +3235,8 @@
     "ruta_jerarquica": "Modalidad de atención > Virtual",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112205",
@@ -3197,7 +3276,8 @@
     "ruta_jerarquica": "Municipio",
     "fuente": "Constitución Política de Colombia de 1991, artículos 286 y 311",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112202",
@@ -3237,7 +3317,8 @@
     "ruta_jerarquica": "Nacionalidad",
     "fuente": "Registraduría Nacional del Estado Civil / DANE, ficha \"Tipo de documento de identidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112104",
@@ -3277,7 +3358,8 @@
     "ruta_jerarquica": "Nombre Identitario",
     "fuente": "Decreto 1227 de 2015 (corrección del componente nombre y sexo en el registro civil)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122011",
@@ -3317,7 +3399,8 @@
     "ruta_jerarquica": "Actividad Principal",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3357,7 +3440,8 @@
     "ruta_jerarquica": "Actividad Principal > Empleada(o)",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH), clasificación de la población según su fuerza de trabajo",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3397,7 +3481,8 @@
     "ruta_jerarquica": "Actividad Principal > Buscando Trabajo",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH), clasificación de la población según su fuerza de trabajo",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3437,7 +3522,8 @@
     "ruta_jerarquica": "Actividad Principal > Estudiante",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3477,7 +3563,8 @@
     "ruta_jerarquica": "Actividad Principal > Independiente",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3517,7 +3604,8 @@
     "ruta_jerarquica": "Actividad Principal > Informal",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH), con base en la Resolución de la 17ª CIET de la OIT (2003)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3557,7 +3645,8 @@
     "ruta_jerarquica": "Actividad Principal > Trabajo de cuidado No Remunerado",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, con base en Tronto, 2012)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3597,7 +3686,8 @@
     "ruta_jerarquica": "Actividad Principal > Otro - ¿Cúal?",
     "fuente": "Concepto estadístico estándar de categoría residual (\"otro\"), empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122011",
@@ -3637,7 +3727,8 @@
     "ruta_jerarquica": "Actividad Principal > No Sabe / No Responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21121",
@@ -3677,7 +3768,8 @@
     "ruta_jerarquica": "Orientación Sexual",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, con base en el Decreto 1066 de 2015)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112102",
@@ -3717,7 +3809,8 @@
     "ruta_jerarquica": "Orientación Sexual > Heterosexual",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, con base en el Decreto 1066 de 2015)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112102",
@@ -3757,7 +3850,8 @@
     "ruta_jerarquica": "Orientación Sexual > Bisexual",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, con base en el Decreto 1066 de 2015)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112102",
@@ -3797,7 +3891,8 @@
     "ruta_jerarquica": "Orientación Sexual > Lesbiana",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, con base en el Decreto 1066 de 2015)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112102",
@@ -3837,7 +3932,8 @@
     "ruta_jerarquica": "Orientación Sexual > Gay",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, con base en el Decreto 1066 de 2015)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112102",
@@ -3877,7 +3973,8 @@
     "ruta_jerarquica": "Orientación Sexual > Pansexual",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, conceptos de sexo, género e identidad de género)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112102",
@@ -3917,7 +4014,8 @@
     "ruta_jerarquica": "Orientación Sexual > No Sabe / No Responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112102",
@@ -3957,7 +4055,8 @@
     "ruta_jerarquica": "Orientación Sexual > Otra - ¿Cúal?",
     "fuente": "Concepto estadístico estándar de categoría residual (\"otro\"), empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201",
@@ -3997,7 +4096,8 @@
     "ruta_jerarquica": "País de Nacimiento",
     "fuente": "DANE, ficha \"Tipo de documento de identidad\" / Censo Nacional de Población y Vivienda 2018",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2210001",
@@ -4037,7 +4137,8 @@
     "ruta_jerarquica": "Riesgo de Feminicidio",
     "fuente": "Instituto Nacional de Medicina Legal y Ciencias Forenses, \"Protocolo de valoración del riesgo de violencia mortal contra las mujeres por parte de su pareja o expareja\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "22100019",
@@ -4077,7 +4178,8 @@
     "ruta_jerarquica": "Riesgo de Feminicidio > Riesgo Bajo/Variable:",
     "fuente": "Instituto Nacional de Medicina Legal y Ciencias Forenses, \"Protocolo de valoración del riesgo de violencia mortal contra las mujeres por parte de su pareja o expareja\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "22100020",
@@ -4117,7 +4219,8 @@
     "ruta_jerarquica": "Riesgo de Feminicidio > Riesgo Moderado",
     "fuente": "Instituto Nacional de Medicina Legal y Ciencias Forenses, \"Protocolo de valoración del riesgo de violencia mortal contra las mujeres por parte de su pareja o expareja\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "22100021",
@@ -4157,7 +4260,8 @@
     "ruta_jerarquica": "Riesgo de Feminicidio > Riesgo Grave",
     "fuente": "Instituto Nacional de Medicina Legal y Ciencias Forenses, \"Protocolo de valoración del riesgo de violencia mortal contra las mujeres por parte de su pareja o expareja\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "22100022",
@@ -4197,7 +4301,8 @@
     "ruta_jerarquica": "Riesgo de Feminicidio > Riesgo Extremo",
     "fuente": "Instituto Nacional de Medicina Legal y Ciencias Forenses, \"Protocolo de valoración del riesgo de violencia mortal contra las mujeres por parte de su pareja o expareja\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21121",
@@ -4237,7 +4342,8 @@
     "ruta_jerarquica": "Sexo",
     "fuente": "Decreto 1227 de 2015 (modifica el Decreto 1069 de 2015)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112101",
@@ -4277,7 +4383,8 @@
     "ruta_jerarquica": "Sexo > Hombre",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, conceptos de sexo)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112101",
@@ -4317,7 +4424,8 @@
     "ruta_jerarquica": "Sexo > Mujer",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, conceptos de sexo)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112101",
@@ -4357,7 +4465,8 @@
     "ruta_jerarquica": "Sexo > Intersexual",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023, con base en el Decreto 1066 de 2015",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112101",
@@ -4397,7 +4506,8 @@
     "ruta_jerarquica": "Sexo > No Sabe / No Responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4437,7 +4547,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres (documento interno de procesos de atención)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4477,7 +4588,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Con empleo",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres (caracterización socioeconómica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4517,7 +4629,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Sin empleo",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres (caracterización socioeconómica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4557,7 +4670,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Jefa de hogar",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4597,7 +4711,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Negoco propio / emprendimiento",
     "fuente": "Secretaría Distrital de la Mujer, \"Emprendimiento y empleabilidad para mujeres en el Plan Distrital de Desarrollo\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4637,7 +4752,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Cuidadora",
     "fuente": "Secretaría Distrital de la Mujer, \"Todo lo que debes saber acerca del Sistema de Cuidado de Bogotá\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4677,7 +4793,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Dispone de ingresos a su favor: pensión, renta, salario,fijo, subsidios, etc",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres (caracterización socioeconómica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4717,7 +4834,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Trabajo remunerado en especie",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres (caracterización socioeconómica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4757,7 +4875,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Apoyo económico de red familiar y/o social",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres (caracterización socioeconómica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4797,7 +4916,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Actividades sexuales pagas",
     "fuente": "Secretaría Distrital de la Mujer, \"Estrategia Casa de Todas\" (Política Pública de Actividades Sexuales Pagadas 2020-2029)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4837,7 +4957,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Depende económicamente del agresor",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres (caracterización socioeconómica)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112301",
@@ -4877,7 +4998,8 @@
     "ruta_jerarquica": "Situación socioeconómica de la ciudadana > Otras",
     "fuente": "Concepto estadístico estándar de categoría residual (\"otro\"), empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112501",
@@ -4917,7 +5039,8 @@
     "ruta_jerarquica": "Tipo de afiliación",
     "fuente": "Ley 100 de 1993, Libro Segundo (Sistema General de Seguridad Social en Salud)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112501",
@@ -4957,7 +5080,8 @@
     "ruta_jerarquica": "Tipo de afiliación > CONTRIBUTIVO",
     "fuente": "Ley 100 de 1993, artículo 202 y siguientes",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112501",
@@ -4997,7 +5121,8 @@
     "ruta_jerarquica": "Tipo de afiliación > SUBSIDIADO",
     "fuente": "Ley 100 de 1993, artículo 211 y siguientes; Acuerdo 77 de 1997 del CNSSS",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112501",
@@ -5037,7 +5162,8 @@
     "ruta_jerarquica": "Tipo de afiliación > ESPECIAL",
     "fuente": "Ley 100 de 1993 (regímenes de excepción); Gerencie.com, \"Régimen especial o de excepción en salud\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112501",
@@ -5077,7 +5203,8 @@
     "ruta_jerarquica": "Tipo de afiliación > NINGUNO",
     "fuente": "Concepto estadístico estándar de categoría de ausencia (\"ninguno/a\"), empleado en encuestas y registros administrativos, entre ellos el Censo Nacional de Población y Vivienda del DANE",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2210009",
@@ -5117,7 +5244,8 @@
     "ruta_jerarquica": "Tipo de atenciones",
     "fuente": "Secretaría Distrital de la Mujer, Sistema de Información Misional (SIMISIONAL)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5157,7 +5285,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Atención a la Ciudadanía",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Atención a la Ciudadanía de la Secretaría Distrital de la Mujer\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5197,7 +5326,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Atención Dupla Psicojurídica",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5237,7 +5367,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Atención Dupla Psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5277,7 +5408,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Atención Linea 123",
     "fuente": "Secretaría Distrital de la Mujer, \"ABC sobre la Agencia MUJ\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5317,7 +5449,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Atención Móvil Mujer",
     "fuente": "Secretaría Distrital de la Mujer, \"ABC sobre la Agencia MUJ\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5357,7 +5490,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Atención Sofia Local",
     "fuente": "‘Sofia’, la estrategia para prevenir violencias de género en Bogotá",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5397,7 +5531,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CAF - Atención jurídica",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5437,7 +5572,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CAF - Atención psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5477,7 +5613,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CAF - Primera Atención - Trabajo Social",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5517,7 +5654,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casa de Justicia Modelo Tradicional - Atención Jurídica",
     "fuente": "Secretaría Distrital de la Mujer, \"Orientación, asesoría e intervención jurídica\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5557,7 +5695,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casa de Justicia Modelo Tradicional - Atención Jurídica psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5597,7 +5736,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casa de Todas - Atención Psicosocial",
     "fuente": "Datos Abiertos Bogotá, \"Total de atenciones de Orientaciones Psicosociales en Casa de Todas de Bogotá D.C. por localidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5637,7 +5777,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casa de Todas - Atención Sociojurídica",
     "fuente": "Datos Abiertos Bogotá, \"Total de atenciones de Orientaciones Sociojurídicas en Casa de Todas de Bogotá D.C. por localidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5677,7 +5818,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casa de Todas - Atención Trabajo Social",
     "fuente": "Datos Abiertos Bogotá, \"Total de Intervenciones Sociales en Casa de Todas en Bogotá D.C. por localidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5717,7 +5859,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casa Refugio - Solicitud de Cupo",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5757,7 +5900,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casas de Justicia Ruta Integral - Atención jurídica",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5797,7 +5941,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casas de Justicia Ruta Integral - Atención psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5837,7 +5982,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Casas de Justicia Ruta Integral - Primera Atención - Trabajo Social",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5877,7 +6023,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CIOM - Atención Psicosocial",
     "fuente": "Datos Abiertos Bogotá, \"Total de Orientaciones Psicosociales en CIOM en Bogotá D.C. por localidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5917,7 +6064,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CIOM - Atención Sociojurídica",
     "fuente": "Datos Abiertos Bogotá, \"Total de Orientaciones Sociojurídicas realizadas en CIOM en Bogotá D.C. por localidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5957,7 +6105,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CIOM - Atención Trabajo Social",
     "fuente": "Datos Abiertos Bogotá, \"Total de Intervenciones Sociales en CIOM en Bogotá D.C. por localidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -5997,7 +6146,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CIOM - Contacto Inicial Fallido",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6037,7 +6187,8 @@
     "ruta_jerarquica": "Tipo de atenciones > CIOM - Primera atención",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6077,7 +6228,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Agencia MUJ",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6117,7 +6269,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Casa de Justicia Modelo Tradicional",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6157,7 +6310,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Casa de Todas",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6197,7 +6351,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Casas Refugio",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6237,7 +6392,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Duplas de Atención Psicojurídica",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6277,7 +6433,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Duplas de Atención Psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6317,7 +6474,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Emprendimiento y Empleabilidad",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6357,7 +6515,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Hospitales",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6397,7 +6556,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - LPD",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6437,7 +6597,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Manzanas del Cuidado",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6477,7 +6638,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - SAAT",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6517,7 +6679,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - Sede Administrativa",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6557,7 +6720,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido - URI",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6597,7 +6761,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Contacto Inicial fallido -CAF",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6637,7 +6802,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Emprendimiento y Empleabilidad - Orientación",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6677,7 +6843,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Emprendimiento y Empleabilidad - Registro",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6717,7 +6884,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Emprendimiento y Empleabilidad - Unidades Productivas",
     "fuente": "Secretaría Distrital de la Mujer, \"SDMujer y Cámara de Comercio de Bogotá impulsan el emprendimiento femenino\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6757,7 +6925,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Hospitales - Atención Sociojurídica",
     "fuente": "Datos Abiertos Bogotá, \"Total de atenciones sociojurídicas en hospitales de Bogotá D.C., por localidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6797,7 +6966,8 @@
     "ruta_jerarquica": "Tipo de atenciones > LPD - Atención Bogotá",
     "fuente": "Bogotá.gov.co, \"Así funciona la Línea Púrpura Distrital para mujeres en Bogotá\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6837,7 +7007,8 @@
     "ruta_jerarquica": "Tipo de atenciones > LPD - Atención Fuera Bogotá",
     "fuente": "Bogotá.gov.co, \"Así funciona la Línea Púrpura Distrital para mujeres en Bogotá\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6877,7 +7048,8 @@
     "ruta_jerarquica": "Tipo de atenciones > LPD - Atención Otras Atenciones u Otras Consultas",
     "fuente": "Bogotá.gov.co, \"Así funciona la Línea Púrpura Distrital para mujeres en Bogotá\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6917,7 +7089,8 @@
     "ruta_jerarquica": "Tipo de atenciones > NUEVA - Atención Dupla Psicojurídica",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6957,7 +7130,8 @@
     "ruta_jerarquica": "Tipo de atenciones > NUEVA - Atención Dupla Psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -6997,7 +7171,8 @@
     "ruta_jerarquica": "Tipo de atenciones > SAAT - Atención",
     "fuente": "Secretaría Distrital de la Mujer, \"Sistema de Alertas Tempranas para prevenir el feminicidio en Bogotá\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7037,7 +7212,8 @@
     "ruta_jerarquica": "Tipo de atenciones > SAAT SOFIA Local Atención",
     "fuente": "Secretaría Distrital de la Mujer, \"Sistema de Alertas Tempranas para prevenir el feminicidio en Bogotá\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7077,7 +7253,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Sede Administrativa - Atención psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7117,7 +7294,8 @@
     "ruta_jerarquica": "Tipo de atenciones > Sede Administrativa - Atención sociojurírdica",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7157,7 +7335,8 @@
     "ruta_jerarquica": "Tipo de atenciones > SIDICU - Atención Psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, Sistema de Información Misional (SIMISIONAL)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7197,7 +7376,8 @@
     "ruta_jerarquica": "Tipo de atenciones > SIDICU - Atención Sociojurídica",
     "fuente": "Secretaría Distrital de la Mujer, Sistema de Información Misional (SIMISIONAL)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7237,7 +7417,8 @@
     "ruta_jerarquica": "Tipo de atenciones > URI - Primera Atención - Trabajo Social",
     "fuente": "Secretaría Distrital de la Mujer, \"Manual de Lineamientos Generales para la Atención a Mujeres Víctimas de Violencias\" (Código PAJM-MA-2)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7277,7 +7458,8 @@
     "ruta_jerarquica": "Tipo de atenciones > URI - Unidad de Reacción Inmediata - Atención jurídica",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2210009",
@@ -7317,7 +7499,8 @@
     "ruta_jerarquica": "Tipo de atenciones > URI - Unidad de Reacción Inmediata psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, Ruta de Atención a mujeres víctimas de violencias (RUA)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7357,7 +7540,8 @@
     "ruta_jerarquica": "Tipo de delito",
     "fuente": "Ley 599 de 2000 (Código Penal Colombiano)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7397,7 +7581,8 @@
     "ruta_jerarquica": "Tipo de delito > Aborto sin consentimiento",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 123 (Aborto sin consentimiento)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7437,7 +7622,8 @@
     "ruta_jerarquica": "Tipo de delito > Feminicidio",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 104A, adicionado por la Ley 1761 de 2015 \"Rosa Elvira Cely\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7477,7 +7663,8 @@
     "ruta_jerarquica": "Tipo de delito > Lesiones por ataque con agente quimico, acido y otras sustancias similares",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 116A, adicionado por la Ley 1773 de 2016",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7517,7 +7704,8 @@
     "ruta_jerarquica": "Tipo de delito > Tentativa de feminicidio",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 27 (Tentativa), en relación con el artículo 104A (Feminicidio)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7557,7 +7745,8 @@
     "ruta_jerarquica": "Tipo de delito > Tentativa de homicidio",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 27 (Tentativa), en relación con el artículo 103 (Homicidio)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7597,7 +7786,8 @@
     "ruta_jerarquica": "Tipo de delito > Tortura",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 178 (Tortura)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7637,7 +7827,8 @@
     "ruta_jerarquica": "Tipo de delito > Trata de personas",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 188A, modificado por la Ley 985 de 2005",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115502",
@@ -7677,7 +7868,8 @@
     "ruta_jerarquica": "Tipo de delito > Violencia intrafamiliar",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 229, modificado por la Ley 882 de 2004 y la Ley 1142 de 2007",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7717,7 +7909,8 @@
     "ruta_jerarquica": "Tipo de delito > Actos sexuales o acceso carnal con una persona menor de 14 años",
     "fuente": "Ley 599 de 2000 (Código Penal), artículos 138A y 139A, adicionados por la Ley 1719 de 2014",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7757,7 +7950,8 @@
     "ruta_jerarquica": "Tipo de delito > Acceso carnal o acto sexual con incapaz de resistir",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 207 (Acceso carnal o acto sexual en persona puesta en incapacidad de resistir)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7797,7 +7991,8 @@
     "ruta_jerarquica": "Tipo de delito > Explotación sexual",
     "fuente": "Ley 599 de 2000 (Código Penal), Título IV, Capítulo IV (De la explotación sexual), artículos 213 a 219B",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7837,7 +8032,8 @@
     "ruta_jerarquica": "Tipo de delito > Esclavitud sexual",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 141A, adicionado por la Ley 1719 de 2014",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7877,7 +8073,8 @@
     "ruta_jerarquica": "Tipo de delito > Prostitución forzada",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 141, modificado por la Ley 1719 de 2014",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7917,7 +8114,8 @@
     "ruta_jerarquica": "Tipo de delito > Esterilización forzada",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 139B, adicionado por la Ley 1719 de 2014",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7957,7 +8155,8 @@
     "ruta_jerarquica": "Tipo de delito > Embarazo forzado",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 139C, adicionado por la Ley 1719 de 2014",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "690000",
@@ -7997,7 +8196,8 @@
     "ruta_jerarquica": "Tipo de delito > Desnudez forzada",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 139D, adicionado por la Ley 1719 de 2014",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21122",
@@ -8037,7 +8237,8 @@
     "ruta_jerarquica": "Tipo de discapacidad",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8077,7 +8278,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Auditiva",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8117,7 +8319,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Cognitiva",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8157,7 +8360,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Física",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8197,7 +8401,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Múltiple",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8237,7 +8442,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Psicosocial (Mental)",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8277,7 +8483,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Sordo-ceguera",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8317,7 +8524,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Visual",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 1239 de 2022 (Clasificación de tipos de discapacidad)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8357,7 +8565,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > Ninguna",
     "fuente": "Concepto estadístico estándar de categoría de ausencia (\"ninguno/a\"), empleado en encuestas y registros administrativos, entre ellos el Censo Nacional de Población y Vivienda del DANE",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122014",
@@ -8397,7 +8606,8 @@
     "ruta_jerarquica": "Tipo de discapacidad > No Sabe / No Responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8437,7 +8647,8 @@
     "ruta_jerarquica": "Tipo de Documento > RC- Registro Civil",
     "fuente": "Decreto 1260 de 1970 (Estatuto del Registro del Estado Civil); Registraduría Nacional del Estado Civil",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8477,7 +8688,8 @@
     "ruta_jerarquica": "Tipo de Documento > TI- Tarjeta de identidad",
     "fuente": "Registraduría Nacional del Estado Civil, \"Tarjeta de identidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8517,7 +8729,8 @@
     "ruta_jerarquica": "Tipo de Documento > CC- Cédula de ciudadanía",
     "fuente": "Registraduría Nacional del Estado Civil; DANE, ficha \"Tipo de documento de identidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8557,7 +8770,8 @@
     "ruta_jerarquica": "Tipo de Documento > CE- Cédula de extranjería",
     "fuente": "DANE, ficha \"Tipo de documento de identidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8597,7 +8811,8 @@
     "ruta_jerarquica": "Tipo de Documento > PA- Pasaporte",
     "fuente": "DANE, ficha \"Tipo de documento de identidad\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8637,7 +8852,8 @@
     "ruta_jerarquica": "Tipo de Documento > NV- Certificado de nacido vivo",
     "fuente": "Registraduría Nacional del Estado Civil / DANE",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8677,7 +8893,8 @@
     "ruta_jerarquica": "Tipo de Documento > PE-Permiso especial de permanencia",
     "fuente": "Migración Colombia / Decretos reglamentarios sobre permisos de permanencia",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8717,7 +8934,8 @@
     "ruta_jerarquica": "Tipo de Documento > NUIP-Número único de identificación personal",
     "fuente": "Ley 962 de 2005, artículo 22 (Número Único de Identificación Personal)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8757,7 +8975,8 @@
     "ruta_jerarquica": "Tipo de Documento > PPT-Permiso de Protección Temporal",
     "fuente": "Migración Colombia / Estatuto Temporal de Protección para Migrantes Venezolanos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8797,7 +9016,8 @@
     "ruta_jerarquica": "Tipo de Documento > CD-Carné Diplomático",
     "fuente": "Ministerio de Relaciones Exteriores de Colombia",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8837,7 +9057,8 @@
     "ruta_jerarquica": "Tipo de Documento > SC-Salvo Conducto de Permanencia",
     "fuente": "Migración Colombia",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8877,7 +9098,8 @@
     "ruta_jerarquica": "Tipo de Documento > PR-Pasaporte de la ONU",
     "fuente": "Organización de las Naciones Unidas",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2111003",
@@ -8917,7 +9139,8 @@
     "ruta_jerarquica": "Tipo de Documento > NI-NIT",
     "fuente": "Estatuto Tributario / DIAN",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2220002",
@@ -8957,7 +9180,8 @@
     "ruta_jerarquica": "Tipo de dupla > Dupla Psicosocial",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2220002",
@@ -8997,7 +9221,8 @@
     "ruta_jerarquica": "Tipo de dupla > Dupla Psicojurídica",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Qué son las duplas psicosociales de la Secretaría de la Mujer?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112303",
@@ -9037,7 +9262,8 @@
     "ruta_jerarquica": "Tipo de empleo",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112303",
@@ -9077,7 +9303,8 @@
     "ruta_jerarquica": "Tipo de empleo > Formal",
     "fuente": "DANE, \"Boletín técnico de ocupación informal\" (GEIH)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112303",
@@ -9117,7 +9344,8 @@
     "ruta_jerarquica": "Tipo de empleo > Informal",
     "fuente": "DANE, \"Boletín técnico de ocupación informal\" (GEIH), con base en la Resolución de la 17ª CIET de la OIT (2003)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112303",
@@ -9157,7 +9385,8 @@
     "ruta_jerarquica": "Tipo de empleo > Independiente",
     "fuente": "DANE, Gran Encuesta Integrada de Hogares (GEIH)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112303",
@@ -9197,7 +9426,8 @@
     "ruta_jerarquica": "Tipo de empleo > Labores De cuidado No Remunerada",
     "fuente": "Ministerio de Salud y Protección Social, Resolución 2138 de 2023 (Anexo técnico, con base en Tronto, 2012)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112303",
@@ -9237,7 +9467,8 @@
     "ruta_jerarquica": "Tipo de empleo > Pensionada(o)",
     "fuente": "Ley 100 de 1993, Libro Primero (Sistema General de Pensiones)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2113001",
@@ -9277,7 +9508,8 @@
     "ruta_jerarquica": "Tipo de Hogar",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9317,7 +9549,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogares nucleares",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9357,7 +9590,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogares extensos",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9397,7 +9631,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogar monoparental",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9437,7 +9672,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogar amplio",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9477,7 +9713,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogares compuestos",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9517,7 +9754,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogares familiares sin núcleo",
     "fuente": "DANE, respuesta PQR No. 20221000002071T; \"Jefatura de hogar: usos del concepto\" (INE Chile, sobre tipologías DANE/CELADE)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9557,7 +9795,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogar unipersonal",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9597,7 +9836,8 @@
     "ruta_jerarquica": "Tipo de Hogar > Hogares no familiares sin núcleo",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2113001",
@@ -9637,7 +9877,8 @@
     "ruta_jerarquica": "Tipo de Hogar > No sabe no responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "21122013",
@@ -9677,7 +9918,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad",
     "fuente": "Ley 1448 de 2011, artículo 13 (enfoque diferencial); Secretaría Distrital de la Mujer, Manual de Atención a Mujeres",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220131",
@@ -9717,7 +9959,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Actividad sexual pagada",
     "fuente": "Secretaría Distrital de la Mujer, \"Estrategia Casa de Todas\" (Política Pública de Actividades Sexuales Pagadas 2020-2029)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220132",
@@ -9757,7 +10000,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Campesina(o)",
     "fuente": "Constitución Política de Colombia, artículo 64, modificado por el Acto Legislativo 01 de 2023",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220133",
@@ -9797,7 +10041,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Jefa(e)de Hogar",
     "fuente": "DANE, respuesta PQR No. 20221000002071T (tipologías de hogar, Censo 2018)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220134",
@@ -9837,7 +10082,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Lideresa de Derechos Humanos",
     "fuente": "Ley 975 de 2005 (Ley de Justicia y Paz), en concordancia con el artículo 13 de la Ley 1448 de 2011 (enfoque diferencial)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220135",
@@ -9877,7 +10123,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Víctima de ataques con agentes químicos",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 116A, adicionado por la Ley 1773 de 2016",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220136",
@@ -9917,7 +10164,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Víctima del desplazamiento",
     "fuente": "Ley 1448 de 2011 (Ley de Víctimas y Restitución de Tierras), artículo 60, parágrafo 2",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220137",
@@ -9957,7 +10205,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Víctima del conflicto armado e interno",
     "fuente": "Ley 1448 de 2011 (Ley de Víctimas y Restitución de Tierras), artículo 3",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220138",
@@ -9997,7 +10246,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Mujeres privadas de la libertad",
     "fuente": "Ley 1257 de 2008, artículo 18, literal c",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "211220139",
@@ -10037,7 +10287,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Persona con habitabilidad en calle",
     "fuente": "Ley 1641 de 2013, artículo 2 (lineamientos para la política pública social para habitantes de la calle)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201310",
@@ -10077,7 +10328,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Víctima de trata de personas",
     "fuente": "Ley 599 de 2000 (Código Penal), artículo 188A, modificado por la Ley 985 de 2005",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201311",
@@ -10117,7 +10369,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Consumidor(a) de SPA",
     "fuente": "Ley 1566 de 2012 (garantía de atención integral a personas que consumen sustancias psicoactivas)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201312",
@@ -10157,7 +10410,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Firmantes de paz",
     "fuente": "Decreto Ley 899 de 2017, artículo 2; Decreto 846 de 2024 (reglamentación del Sistema Nacional de Reincorporación)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201313",
@@ -10197,7 +10451,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > En proceso de desarme- Desmovilización y Reintegración",
     "fuente": "Ley 782 de 2002 (que prorroga y modifica la Ley 418 de 1997) y Ley 975 de 2005 (Ley de Justicia y Paz)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201314",
@@ -10237,7 +10492,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Persona en condicion de pobreza extrema",
     "fuente": "DANE, medición de pobreza monetaria y pobreza extrema en Colombia",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201315",
@@ -10277,7 +10533,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Analfabeta",
     "fuente": "DANE, \"Definiciones de algunos conceptos básicos\" (concepto de alfabetismo, en sentido negativo)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201316",
@@ -10317,7 +10574,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Proceso de reincorporación",
     "fuente": "Decreto Ley 899 de 2017 (medidas e instrumentos para la reincorporación económica y social de integrantes de las FARC-EP)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201317",
@@ -10357,7 +10615,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Migrantes, refugiadas y retornadas",
     "fuente": "Decreto 216 de 2021 (Estatuto Temporal de Protección para Migrantes Venezolanos)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201318",
@@ -10397,7 +10656,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Recicladoras de oficio",
     "fuente": "Unidad Administrativa Especial de Servicios Públicos (UAESP) / Datos Abiertos Bogotá, \"Registro Único de Recicladores de Oficio - RURO\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201319",
@@ -10437,7 +10697,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > No Sabe / No responde",
     "fuente": "Concepto estadístico estándar \"No sabe / No contesta (NS/NC)\", empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112201320",
@@ -10477,7 +10738,8 @@
     "ruta_jerarquica": "Características de Vulnerabilidad > Otro",
     "fuente": "Concepto estadístico estándar de categoría residual (\"otro\"), empleado en encuestas y registros administrativos",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "21110010",
@@ -10517,7 +10779,8 @@
     "ruta_jerarquica": "Tipo persona",
     "fuente": "Secretaría Distrital de la Mujer, Sistema de Información Misional (SIMISIONAL)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10557,7 +10820,8 @@
     "ruta_jerarquica": "Tipos de Violencia",
     "fuente": "Ley 1257 de 2008, artículos 2 y 3",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10597,7 +10861,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia física",
     "fuente": "Secretaría Distrital de la Mujer, \"Derecho de las mujeres a una vida libre de violencias\" (con base en la Ley 1257 de 2008)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10637,7 +10902,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia psicológica",
     "fuente": "Secretaría Distrital de la Mujer, \"Derecho de las mujeres a una vida libre de violencias\" (con base en la Ley 1257 de 2008)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10677,7 +10943,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia sexual",
     "fuente": "Secretaría Distrital de la Mujer, \"Derecho de las mujeres a una vida libre de violencias\" (con base en la Ley 1257 de 2008)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10717,7 +10984,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia económica y/o patrimonial",
     "fuente": "Secretaría Distrital de la Mujer, \"Derecho de las mujeres a una vida libre de violencias\" (con base en la Ley 1257 de 2008)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10757,7 +11025,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia simbólica",
     "fuente": "Ministerio de Igualdad y Equidad, \"Programas para el abordaje integral de las violencias contra las mujeres\" (2025)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10797,7 +11066,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia institucional",
     "fuente": "Literatura académica colombiana sobre \"violencia institucional de género en el sistema jurídico colombiano\" (Universidad, Revista Diversitas - Scielo)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10837,7 +11107,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia política",
     "fuente": "Secretaría Distrital de la Mujer, \"¿Cuáles son las violencias de género que busca erradicar la Estrategia Mujeres?\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10877,7 +11148,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia obstétrica",
     "fuente": "Movimiento Nacional por la Salud Sexual y Reproductiva / Salud Mental Perinatal, \"Incidencia de la violencia obstétrica en Colombia dentro del marco de Violencias Basadas en Género\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10917,7 +11189,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia gineco-obstétrica",
     "fuente": "Lesiones personales (Art. 111), abuso de autoridad (Art. 416), no penalizada de forma autónoma.",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10957,7 +11230,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia mediática",
     "fuente": "No tipificada penalmente, pero puede encajar en injuria o discriminación.",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -10997,7 +11271,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia por orientación sexual, identidad o expresión de género",
     "fuente": "Decreto 762 de 2018 (Política Pública para la garantía del ejercicio efectivo de los derechos de las personas de los sectores sociales LGBTI)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -11037,7 +11312,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia digital",
     "fuente": "Corte Constitucional, Sentencia T-280 de 2022",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2115503",
@@ -11077,7 +11353,8 @@
     "ruta_jerarquica": "Tipos de Violencia > Violencia vicaria",
     "fuente": "Secretaría Distrital de la Mujer, \"Qué es la violencia vicaria y cómo identificar si es víctima\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "61000044",
@@ -11117,7 +11394,8 @@
     "ruta_jerarquica": "Traslado Prioritario",
     "fuente": "Secretaría Distrital de la Mujer, Manual de Atención a Mujeres",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "SDM"
   },
   {
     "cod": "2112208",
@@ -11157,7 +11435,8 @@
     "ruta_jerarquica": "Ubicación del domicilio",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (clasificación del territorio)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112208",
@@ -11197,7 +11476,8 @@
     "ruta_jerarquica": "Ubicación del domicilio > Rural",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (clasificación del territorio)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112208",
@@ -11237,7 +11517,8 @@
     "ruta_jerarquica": "Ubicación del domicilio > Urbano",
     "fuente": "DANE, Censo Nacional de Población y Vivienda 2018, Glosario de conceptos (clasificación del territorio)",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112206",
@@ -11277,7 +11558,8 @@
     "ruta_jerarquica": "UPL",
     "fuente": "Plan de Ordenamiento Territorial (POT) de Bogotá 2022-2035",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   },
   {
     "cod": "2112206",
@@ -11317,6 +11599,7 @@
     "ruta_jerarquica": "UPZ",
     "fuente": "Unidad Administrativa Especial de Catastro Distrital (UAECD), Glosario catastral, \"Unidades de Planeamiento Zonal - UPZ\"",
     "codigo": "",
-    "updated_at": "2026-08-13"
+    "updated_at": "2026-08-28",
+    "tipo_general": "Sociodemográfico"
   }
 ]
