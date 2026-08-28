@@ -546,17 +546,23 @@
     let GRAPH_ROOT = null;
   
 
-    function renderGraph(){
+    function renderGraph(type = 'SDM'){
       const container = document.querySelector('#treeGraph');
       container.innerHTML = '';
       document.querySelector('#mapTitle').textContent = 'Mapa de términos';
     
+      // ===== Filtrar términos según tipo_general =====
+      const filteredGroups = GROUPS.filter(
+        g => g.typeGeneral === type
+      );
+      
       // ===== Construir raíz general =====
       const data = {
-        name: 'Lenguaje Controlado',
+        name: type === 'SDM'
+          ? 'Términos misionales'
+          : 'Términos sociodemográficos',
         root: true,
-        children: GROUPS.map(g => groupToGraph(g))
-      };
+        children: filteredGroups.map(g => groupToGraph(g))};
     
       const width = Math.max(container.clientWidth, 1100);
       // Separación vertical y horizontal
