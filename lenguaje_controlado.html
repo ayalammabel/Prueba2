@@ -759,21 +759,15 @@
           .text(d => d.data.name);
     
         // pequeño contador para nodos con descendientes
+       // indicador para nodos que tienen subniveles
         nodeEnter
           .filter(d => d.depth > 0)
           .filter(d => d._children || d.children)
           .append('text')
-          .attr('class', 'node-count')
+          .attr('class', 'node-expand-icon')
           .attr('dy', '0.34em')
           .attr('x', 190)
-          .text(d => {
-    
-            const count =
-              d._children?.length ||
-              d.children?.length ||
-              0;
-            return count ? count : '';
-          });
+          .text('+');
     
         nodeEnter
           .merge(node)
