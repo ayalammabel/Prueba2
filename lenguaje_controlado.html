@@ -201,19 +201,57 @@
       opacity:.55;
       pointer-events:none;
     }
-    
-    .node-info{
-      position:absolute;
-      right:24px;
-      top:24px;
-      width:300px;
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:16px;
-      box-shadow:0 12px 34px rgba(22,32,42,.12);
-      z-index:5;
-    }
+
+  /* ===== Panel de detalle del término ===== */  
+  .node-info{
+    position:relative;
+    width:100%;
+    max-width:380px;
+    min-width:320px;
+  
+    background:#fff;
+    border-left:1px solid var(--border);
+  
+    padding:28px 30px;
+  
+    box-shadow:none;
+    border-radius:0;
+  
+    align-self:stretch;
+  }
+
+.node-info h3{
+  margin:0 0 22px;
+  font-size:22px;
+  line-height:1.25;
+  color:var(--text);
+}
+
+.node-info .node-definition{
+  font-size:14px;
+  line-height:1.65;
+  color:#374151;
+  margin-bottom:20px;
+}
+
+.node-info .meta{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  margin-top:16px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.node-info .meta a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+}
+
+.node-info .meta a:hover{
+  text-decoration:underline;
+}
     
     .node-info h3{
       margin:0 0 8px;
