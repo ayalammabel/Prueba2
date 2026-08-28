@@ -178,6 +178,20 @@
   font-size:13px;
   fill:var(--text);
   font-weight:600;
+  pointer-events:none;
+}
+
+/* Fondo delicado de las etiquetas */
+.node-label-bg{
+  fill:rgba(255,255,255,.94);
+  stroke:rgba(226,230,238,.85);
+  stroke-width:1px;
+  filter:drop-shadow(0 3px 7px rgba(22,32,42,.07));
+}
+
+.graph-node:hover .node-label-bg{
+  stroke:rgba(79,70,229,.22);
+  filter:drop-shadow(0 4px 9px rgba(79,70,229,.10));
 }
 
   /* Nodo raíz */
