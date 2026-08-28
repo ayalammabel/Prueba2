@@ -983,7 +983,7 @@
           .attr('class', 'node-expand-icon')
           .attr('dy', '0.34em')
           .attr('x', 280)
-          .text('+');
+          .text(d => d.children ? '−' : '+');
     
         nodeEnter
           .merge(node)
@@ -998,6 +998,10 @@
           .duration(250)
           .style('opacity', 0)
           .remove();
+        // Actualizar símbolo + / − según el estado del nodo
+        gNode
+          .selectAll('.node-expand-icon')
+          .text(d => d.children ? '−' : '+');
       }
       update();
     }
