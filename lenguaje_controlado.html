@@ -928,6 +928,21 @@
         
             return getBranchColor(fakeLink);
           });
+
+        // fondo sutil para la etiqueta
+        nodeEnter
+          .filter(d => d.depth > 0)
+          .append('rect')
+          .attr('class', 'node-label-bg')
+          .attr('x', 10)
+          .attr('y', -13)
+          .attr('rx', 8)
+          .attr('ry', 8)
+          .attr('height', 26)
+          .attr('width', d => {
+            const text = d.data.name || '';
+            return Math.max(70, text.length * 7.2 + 22);
+          });
             
         // etiqueta
         nodeEnter
