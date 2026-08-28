@@ -855,12 +855,13 @@
           enter => enter
             .append('path')
             .attr('class', 'graph-link')
-            .attr('d', linkPath),
+            .attr('stroke', d => getBranchColor(d)),
         
           update => update
             .transition()
             .duration(350)
-            .attr('d', linkPath),
+            .attr('d', linkPath)
+            .attr('stroke', d => getBranchColor(d)),
         
           exit => exit
             .transition()
