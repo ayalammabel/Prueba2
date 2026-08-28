@@ -943,44 +943,38 @@
             return getBranchColor(fakeLink);
           });
 
-        // fondo sutil para la etiqueta
-        nodeEnter
-            .filter(d => d.depth > 0)
-            .append('rect')
-            .attr('class', 'node-label-bg')
-            .attr('x', 10)
-            .attr('y', -11)
-            .attr('rx', 7)
-            .attr('ry', 7)
-            .attr('height', 22)
-            .attr('width', d => {
-              const text = d.data.name || '';
-              // ancho proporcional al texto,
-              // pero evitando cápsulas exageradamente grandes
-              return Math.min(
-                Math.max(85, text.length * 6.4 + 24),
-                300
-              );
-            });
-
         // etiqueta
-        nodeEnter
+        const labels = nodeEnter
+          .filter(d => d.depth > 0)
           .append('text')
-          .attr(
-            'dy',
-            d => d.depth === 0 ? 42 : '0.34em'
-          )
-          .attr(
-            'x',
-            d => d.depth === 0 ? 0 : 14
-          )
-          .attr(
-            'text-anchor',
-            d => d.depth === 0 ? 'middle' : 'start'
-          )
-          .text(d => d.depth === 0 ? '' : d.data.name);
+          .attr('class', 'node-label')
+          .attr('dy', '0.34em')
+          .attr('x', 14)
+          .attr('text-anchor', 'start')
+          .text(d => d.data.name || '');
+
+        // fondo ajustado al ancho REAL del texto
+        nodeEnter
+          .filter(d => d.depth > 0)
+          .insert('rect', '.node-label')
+          .attr('class', 'node-label-bg')
+          .attr('x', 10)
+          .attr('y', -11)
+          .attr('rx', 7)
+          .attr('ry', 7)
+          .attr('height', 22)
+          .attr('width', function() {
+        
+            const textNode =
+              this.parentNode.querySelector('.node-label');
+        
+            if(!textNode) return 70;
+        
+            const textWidth = textNode.getBBox().width;
+        
+            return textWidth + 18;
+          });
     
-        // pequeño contador para nodos con descendientes
        // indicador para nodos que tienen subniveles
         nodeEnter
           .filter(d => d.depth > 0)
