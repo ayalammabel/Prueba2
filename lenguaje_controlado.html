@@ -479,7 +479,14 @@
         const stRaw = r?.[F.subterm]; const stVal = cleanNumPrefix(stRaw);
         const st1Raw = r?.[F.subterm1]; const st1Val = cleanNumPrefix(st1Raw);
 
-        if(isZero(chRaw)){
+        // Definición del término padre:
+        // puede venir con termino_hijo = 0
+        // o con los niveles inferiores vacíos
+        const isParentRow =
+          isZero(chRaw) ||
+          (!chVal && !stVal && !st1Val);
+        
+        if(isParentRow){
           g.pDef = r?.[F.definition] ?? g.pDef;
           g.pSource = r?.[F.source] ?? g.pSource;
           g.pLink = r?.[F.link] ?? g.pLink;
