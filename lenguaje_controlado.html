@@ -919,8 +919,17 @@
           .attr(
             'r',
             d => d.depth === 0 ? 10 : 7
-          );
-    
+          )
+          .attr('stroke', d => {
+            if(d.depth === 0) return 'var(--accent)';
+        
+            const fakeLink = {
+              target: d
+            };
+        
+            return getBranchColor(fakeLink);
+          });
+            
         // etiqueta
         nodeEnter
           .append('text')
