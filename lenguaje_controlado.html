@@ -283,33 +283,45 @@
       <div class="map-head">
         <div>
           <h2 id="mapTitle">Mapa de términos</h2>
-          <p>Explora la estructura del lenguaje controlado. Haz clic en un nodo para desplegar sus niveles.</p>
+          <p>
+            Explora la estructura del lenguaje controlado.
+            Haz clic en un nodo para desplegar sus niveles.
+          </p>
         </div>
-        <div style="display:flex;gap:8px;">
-          <button id="graphExpand">Abrir todo</button>
-          <button id="graphCollapse">Cerrar todo</button>
-        </div>
+      </div>
+  
+      <div class="map-types">
+        <button
+          class="map-type active"
+          data-type="SDM">
+          Términos misionales
+        </button>
+        <button
+          class="map-type"
+          data-type="Sociodemográfico">
+          Términos sociodemográficos
+        </button>
       </div>
       <div class="map-body">
         <div id="treeGraph"></div>
-        <div id="nodeInfo" class="node-info" style="display:none"></div>
+        <div
+          id="nodeInfo"
+          class="node-info"
+          style="display:none">
+        </div>
       </div>
     </div>
   </section>
-  
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script>
     const DATA_URL = './lenguaje.json';
-
     // ===== Estado =====
     let RAW=[], COLUMNS=[], GROUPS=[];
-
     // ===== Utilidades =====
     const $=s=>document.querySelector(s); const $$=s=>Array.from(document.querySelectorAll(s));
     const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu,'');
     const cleanNumPrefix=s=>String(s??'').trim().replace(/^\s*\d+[\s\-.:)]*/,'').trim();
     const isZero=v=>v===0 || v==='0' || /^0(\.0+)?$/.test(String(v||''));
-
     function detectFields(cols){
       const ncols = cols.map(c=>[c,norm(c).replace(/[^a-z0-9]+/g,'_')]);
       const pick = (arr)=>{ for(const p of arr){ const exact=ncols.find(([o,n])=>n===p); if(exact) return exact[0]; } for(const p of arr){ const cand=ncols.find(([o,n])=>n.includes(p)); if(cand) return cand[0]; } return null; };
