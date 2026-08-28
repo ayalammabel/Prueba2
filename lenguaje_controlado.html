@@ -142,47 +142,64 @@
   cursor:pointer;
 }
 
-    .graph-node circle{
-      fill:#fff;
-      stroke:var(--accent);
-      stroke-width:2px;
-      transition:.2s ease;
-    }
-    
-    .graph-node:hover circle{
-      stroke-width:4px;
-    }
-    
-    .graph-node text{
-      font-size:13px;
-      fill:var(--text);
-      font-weight:600;
-    }
-    
-    .graph-node.root-node circle{
-      fill:var(--accent);
-      stroke:rgba(79,70,229,.18);
-      stroke-width:12px;
-    }
-    
-    .graph-node.root-node text{
-      font-size:15px;
-      font-weight:800;
-      fill:var(--text);
-    }
-    
-    .graph-link{
-      fill:none;
-      stroke:#c7c9e8;
-      stroke-width:2px;
-      opacity:.85;
-    }
-    
-    .node-count{
-      font-size:11px !important;
-      fill:var(--accent) !important;
-      font-weight:700 !important;
-    }
+    /* ===== NODOS DEL MAPA ===== */
+
+.graph-node{
+  cursor:pointer;
+}
+
+.graph-node circle{
+  fill:#fff;
+  stroke:var(--accent);
+  stroke-width:2px;
+  transition:.2s ease;
+}
+
+.graph-node:hover circle{
+  stroke-width:4px;
+}
+
+.graph-node text{
+  font-size:13px;
+  fill:var(--text);
+  font-weight:600;
+}
+
+  /* Nodo raíz */
+  .graph-node.root-node circle{
+    fill:var(--accent);
+    stroke:rgba(79,70,229,.18);
+    stroke-width:10px;
+  }
+  
+  .graph-node.root-node text{
+    font-size:14px;
+    font-weight:800;
+  }
+  
+  /* ===== RAMAS ===== */
+  
+  .graph-link{
+    fill:none;
+    stroke:#c9c8ef;
+    stroke-width:8px;
+    stroke-linecap:round;
+    opacity:.72;
+    transition:.25s ease;
+  }
+  
+  /* Cuando pasas por el nodo, que se sienta más activo */
+  .graph-node:hover{
+    opacity:1;
+  }
+  
+  /* Contadores */
+  .node-count{
+    font-size:11px !important;
+    fill:var(--accent) !important;
+    font-weight:700 !important;
+  }
+   
     
     .node-info{
       position:absolute;
