@@ -659,32 +659,54 @@
         // ============================
         // CONEXIONES CURVAS
         // ============================
+        
+        // Desplazamiento horizontal desde donde nace la rama.
+        // Para los términos padre coincide visualmente con el símbolo +
+        const linkOffset = 190;
+        
+        const linkGenerator = d3.linkHorizontal()
+          .x(d => {
+            // source = nodo desde donde sale la rama
+            if (d === d.parent) return d.y;
+            return d.y;
+          })
+          .y(d => d.x);
+        
+        const linkPath = d => {
+          const source = {
+            x: d.source.x,
+            y: d.source.depth > 0
+              ? d.source.y + linkOffset
+              : d.source.y
+          };
+        
+          const target = {
+            x: d.target.x,
+            y: d.target.y
+          };
+        
+          return linkGenerator({
+            source: source,
+            target: target
+          });
+        };
+        
         const link = gLink
           .selectAll('path')
           .data(links, d => d.target.id);
-    
+        
         link.join(
-    
+        
           enter => enter
             .append('path')
             .attr('class', 'graph-link')
-            .attr(
-              'd',
-              d3.linkHorizontal()
-                .x(d => d.y)
-                .y(d => d.x)
-            ),
-    
+            .attr('d', linkPath),
+        
           update => update
             .transition()
             .duration(350)
-            .attr(
-              'd',
-              d3.linkHorizontal()
-                .x(d => d.y)
-                .y(d => d.x)
-            ),
-    
+            .attr('d', linkPath),
+        
           exit => exit
             .transition()
             .duration(250)
