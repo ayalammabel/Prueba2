@@ -920,6 +920,81 @@
             'transform',
             d => `translate(${d.y},${d.x})`
           )
+          .on('mouseenter', (event, d) => {
+
+              // No aplicar efecto sobre la raíz
+              if(d.depth === 0) return;
+            
+              // Identificar la rama principal a la que pertenece el nodo
+              let family = d;
+            
+              while(family.parent && family.parent.depth > 0){
+                family = family.parent;
+              }
+            
+              // Atenuar las demás líneas
+              gLink.selectAll('.graph-link')
+                .classed('dimmed', l => {
+            
+                  let n = l.target;
+            
+                  while(n.parent && n.parent.depth > 0){
+                    n = n.parent;
+                  }
+            
+                  return n !== family;
+                })
+                .classed('highlighted', l => {
+            
+                  let n = l.target;
+            
+                  while(n.parent && n.parent.depth > 0){
+                    n = n.parent;
+                  }
+            
+                  return n === family;
+                });
+            
+              // Atenuar los demás nodos
+              gNode.selectAll('.graph-node')
+                .classed('dimmed', n => {
+            
+                  if(n.depth === 0) return false;
+            
+                  let f = n;
+            
+                  while(f.parent && f.parent.depth > 0){
+                    f = f.parent;
+                  }
+            
+                  return f !== family;
+                })
+                .classed('highlighted', n => {
+            
+                  if(n.depth === 0) return false;
+            
+                  let f = n;
+            
+                  while(f.parent && f.parent.depth > 0){
+                    f = f.parent;
+                  }
+            
+                  return f === family;
+                });
+            
+            })
+            
+            .on('mouseleave', () => {
+            
+              gLink.selectAll('.graph-link')
+                .classed('dimmed', false)
+                .classed('highlighted', false);
+            
+              gNode.selectAll('.graph-node')
+                .classed('dimmed', false)
+                .classed('highlighted', false);
+            
+            })
           .on('click', (event, d) => {
             event.stopPropagation();
     
