@@ -819,6 +819,32 @@
             target: target
           });
         };
+
+        const branchColors = [
+            '#8B5CF6', // violeta
+            '#5B8DEF', // azul
+            '#45C4D9', // turquesa
+            '#48B978', // verde
+            '#B6CC45', // verde lima suave
+            '#F4C95D', // amarillo
+            '#F29A5B', // naranja
+            '#E879B5', // rosa
+            '#A56AD9'  // lavanda
+        ];
+        
+        function getBranchColor(d){
+            let node = d.target;
+        
+            // Buscar el término padre al que pertenece la rama
+            while(node.parent && node.parent.depth > 0){
+                node = node.parent;
+            }
+        
+            const siblings = node.parent ? node.parent.children : [];
+            const index = siblings.indexOf(node);
+        
+            return branchColors[index % branchColors.length];
+        }
         
         const link = gLink
           .selectAll('path')
