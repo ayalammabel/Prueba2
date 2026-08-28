@@ -909,7 +909,7 @@
             'text-anchor',
             d => d.depth === 0 ? 'middle' : 'start'
           )
-          .text(d => d.data.name);
+          .text(d => d.depth === 0 ? '' : d.data.name);
     
         // pequeño contador para nodos con descendientes
        // indicador para nodos que tienen subniveles
