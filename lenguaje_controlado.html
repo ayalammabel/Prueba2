@@ -955,7 +955,12 @@
           .attr('height', 26)
           .attr('width', d => {
             const text = d.data.name || '';
-            return Math.max(70, text.length * 7.2 + 22);
+            const calculated = text.length * 6.6 + 22;
+          
+            return Math.min(
+              Math.max(70, calculated),
+              210
+            );
           });
 
         // etiqueta
