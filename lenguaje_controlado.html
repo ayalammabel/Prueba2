@@ -887,6 +887,48 @@
       });
     });
     
+
+// ===== Eventos de los botones del mapa =====
+$$('.map-type').forEach(btn => {
+
+  btn.addEventListener('click', () => {
+
+    // Quitar selección de los dos botones
+    $$('.map-type').forEach(b => {
+      b.classList.remove('active');
+    });
+
+    // Activar el seleccionado
+    btn.classList.add('active');
+
+    // Obtener el tipo
+    const type = btn.dataset.type;
+
+    // Redibujar el mapa
+    renderGraph(type);
+
+  });
+
+});
+
+    // ===== Eventos =====
+    $('#q')?.addEventListener('input',()=>{
+      clearTimeout(window.__t);
+      window.__t = setTimeout(applySearch,140);
+    });
+    
+    $('#clear')?.addEventListener('click',()=>{
+      if($('#q')) $('#q').value = '';
+      applySearch();
+    });
+    
+    $('#expandAll')?.addEventListener('click',()=>expandCollapseTree(true));
+    $('#collapseAll')?.addEventListener('click',()=>expandCollapseTree(false));
+    
+    
+    load().catch(e=>{
+      console.error(e);
+    });
     
     // ===== Eventos =====
     $('#q')?.addEventListener('input',()=>{clearTimeout(window.__t);window.__t = setTimeout(applySearch,140);});
