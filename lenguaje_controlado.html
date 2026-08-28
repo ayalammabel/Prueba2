@@ -1155,14 +1155,7 @@
         // Detectar automáticamente cuál botón está activo
         const activeType =
           document.querySelector('.map-type.active')?.dataset.type || 'SDM';
-        const typeLabel =
-          activeType === 'Sociodemográfico'
-            ? 'Término sociodemográfico'
-            : 'Término misional';
-      
         let html = `
-          <div class="detail-badge">${typeLabel}</div>
-      
           <h3>${data.name || ''}</h3>
         `;
       
