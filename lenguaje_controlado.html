@@ -583,8 +583,8 @@
     
       const width = Math.max(container.clientWidth, 1100);
       // Separación vertical y horizontal
-      const dx = 46;
-      const dy = 260;
+      const dx = 40;
+      const dy = 210;
     
       GRAPH_ROOT = d3.hierarchy(data);
       GRAPH_ROOT.x0 = 0;
@@ -618,7 +618,7 @@
         .append('svg')
         .attr('width', width)
         .attr('height', 800)
-        .attr('viewBox', [-220, -60, width, 800])
+        .attr('viewBox', [-140, -60, width, 800])
         .style('font-family', 'inherit');
     
       const gLink = svg
@@ -652,7 +652,7 @@
           .attr('height', height)
           .attr(
             'viewBox',
-            [-220, left.x - 90, width, height]
+            [-140, left.x - 90, width, height]
           );
     
         // ============================
