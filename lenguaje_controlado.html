@@ -837,7 +837,8 @@
       RAW=arr; COLUMNS=Object.keys(arr[0]||{});
       const F = detectFields(COLUMNS);
       GROUPS = groupByHierarchy(RAW,F);
-
+      console.table(
+      GROUPS.map(g => ({termino: g.name, tipo_general: g.typeGeneral})));
       // chips compactos
       $('#count').textContent = GROUPS.length;     // solo términos padre
       renderSidebar(GROUPS);                       // también actualiza #sideCount
