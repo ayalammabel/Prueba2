@@ -945,23 +945,23 @@
 
         // fondo sutil para la etiqueta
         nodeEnter
-          .filter(d => d.depth > 0)
-          .append('rect')
-          .attr('class', 'node-label-bg')
-          .attr('x', 10)
-          .attr('y', -13)
-          .attr('rx', 8)
-          .attr('ry', 8)
-          .attr('height', 26)
-          .attr('width', d => {
-            const text = d.data.name || '';
-            const calculated = text.length * 6.6 + 22;
+            .filter(d => d.depth > 0)
+            .append('rect')
+            .attr('class', 'node-label-bg')
+            .attr('x', 10)
+            .attr('y', -11)
+            .attr('rx', 7)
+            .attr('ry', 7)
+            .attr('height', 22)
+            .attr('width', d => {
+              const text = d.data.name || '';
+              const calculated = text.length * 6.6 + 22;
           
-            return Math.min(
-              Math.max(70, calculated),
-              210
-            );
-          });
+              return Math.min(
+                Math.max(70, calculated),
+                210
+              );
+            });
 
         // etiqueta
         nodeEnter
