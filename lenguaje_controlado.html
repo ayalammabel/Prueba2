@@ -327,7 +327,7 @@
 
     function groupByHierarchy(rows, F){
       const map = new Map();
-      const getGroup=(p)=>{ if(!map.has(p)) map.set(p,{name:p,pDef:'',pSource:'',pLink:'',children:[],_childMap:new Map()}); return map.get(p); };
+      const getGroup=(p)=>{if(!map.has(p)) map.set(p, {name:p,pDef:'',pSource:'', pLink:'', children:[],_childMap:new Map()}); return map.get(p); };
       const getChild=(g, name)=>{ const key=name||'(término)'; if(!g._childMap.has(key)) g._childMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_subMap:new Map()}); return g._childMap.get(key); };
       const getSub=(ch, name)=>{ const key=name||'(término)'; if(!ch._subMap.has(key)) ch._subMap.set(key,{name:key,def:'',source:'',link:'',subs:[],_sub1Map:new Map()}); return ch._subMap.get(key); };
       const getSub1=(sub, name)=>{ const key=name||'(término)'; if(!sub._sub1Map.has(key)) sub._sub1Map.set(key,{name:key,def:'',source:'',link:''}); return sub._sub1Map.get(key); };
