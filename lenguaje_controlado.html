@@ -315,6 +315,7 @@
       const pick = (arr)=>{ for(const p of arr){ const exact=ncols.find(([o,n])=>n===p); if(exact) return exact[0]; } for(const p of arr){ const cand=ncols.find(([o,n])=>n.includes(p)); if(cand) return cand[0]; } return null; };
       return {
         parent:     pick(['termino_padre','termino_padre_','t_rmino_padre','padre']),
+        typeGeneral: pick(['tipo_general','tipo_general_','tipogeneral']),
         child:      pick(['termino_hijo','termino_hijo_','t_rmino_hijo','hijo']),
         subterm:    pick(['subtermino','subtermino_','subtemrino','sub_t_rmino']),
         subterm1:   pick(['subtermino1','subtermino_1','subtermino01','sub_t_rmino1']),
