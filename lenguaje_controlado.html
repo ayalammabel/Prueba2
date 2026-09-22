@@ -464,19 +464,19 @@
         <div style="display:flex;gap:8px;justify-self:end">
         </div>
         <div class="view-tabs">
-          <button class="view-tab active" data-view="directory">
-            Directorio
-          </button>
-        
-          <button class="view-tab" data-view="map">
+          <button class="view-tab active" data-view="map">
             Mapa de términos
+          </button>
+
+          <button class="view-tab" data-view="directory">
+            Directorio
           </button>
         </div>
       </div>
     </div>
   </header>
 
-  <main id="directoryView">
+  <main id="directoryView" style="display:none">
     <aside class="side">
       <div class="side-head"><strong>Términos</strong><span id="sideCount" class="badge">0</span></div>
       <div id="sideList" class="side-list"></div>
@@ -492,7 +492,7 @@
     </section>
   </main>
 
-  <section id="mapView" class="map-view" style="display:none">
+  <section id="mapView" class="map-view" style="display:block">
     <div class="map-panel">
       <div class="map-head">
         <div>
@@ -1266,6 +1266,7 @@
       $('#sideCount').textContent = GROUPS.length; // refuerzo por si el filtro cambia la lista
 
       if(GROUPS[0]) selectParent(GROUPS[0].name);
+      if($('#mapView').style.display !== 'none') renderGraph('SDM');
     }
 
     // ===== Cambio de vista: Directorio / Mapa =====
